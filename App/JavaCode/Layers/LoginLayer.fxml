@@ -12,6 +12,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -82,13 +85,34 @@
                                     </font>
                                 </Text>
 
-                                <Button id="login_btn" fx:id="login_btn" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#login" style="-fx-text-fill: #0e2c7e; -fx-background-radius: 5;" styleClass="shadow-button" text="Đăng nhập" textAlignment="CENTER" textFill="#53e2ec">
+                                <Button id="login_btn" fx:id="login_btn" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#login" style="-fx-text-fill: #0e2c7e; -fx-background-radius: 5;" styleClass="shadow-button" stylesheets="@../../resources/Css/style.css" text="Đăng nhập" textAlignment="CENTER">
                                     <VBox.margin>
                                         <Insets bottom="10.0" left="10.0" right="10.0" top="40.0" />
                                     </VBox.margin>
                                     <font>
                                         <Font name="System Bold" size="14.0" />
                                     </font>
+                           <textFill>
+                              <LinearGradient endX="0.6022727272727273" endY="1.0" startY="0.0037878932374896257">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.2549019753932953" green="0.6745098233222961" blue="0.9098039269447327" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="0.006729475100942127">
+                                       <color>
+                                          <Color red="0.17037037014961243" green="0.7096296548843384" blue="1.0" opacity="0.7599999904632568" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="0.6888889074325562" green="0.9844444394111633" blue="1.0" opacity="0.5" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
                                 </Button>
                                 <Button id="login_create" fx:id="loginToSigUp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchForm" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #2173ed, #04b4e0ec)linear-gradient(from 25% 25% to 100% 100%, #2173ed, #04b4e0ec); -fx-text-fill: white; -fx-background-radius: 5;" styleClass="shadow-button" text="Tạo tài khoản">
                                     <VBox.margin>
@@ -106,7 +130,7 @@
                     </children>
                 </AnchorPane>
 
-                <AnchorPane fx:id="forgot_form" layoutX="2.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="702.0">
+                      <AnchorPane fx:id="forgot_form" layoutX="2.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="702.0" visible="false">
                     <children>
                         <VBox alignment="TOP_CENTER" layoutX="411.0" layoutY="60.0" prefHeight="350.0" prefWidth="238.0">
                             <children>
@@ -120,7 +144,7 @@
                                     </VBox.margin> <!-- Set text color -->
                                 </Label>
 
-                                <!-- TextField for Username -->
+                                      <!-- TextField for Username -->
                                 <TextField id="forgot_username" fx:id="forgot_username" prefHeight="30.0" prefWidth="222.0" promptText="Tên đăng nhập" style="-fx-background-radius: 5;" styleClass="button_effect" stylesheets="@../../resources/Css/style.css">
                                     <VBox.margin>
                                         <Insets bottom="10.0" left="10.0" right="10.0" />
@@ -135,7 +159,7 @@
                                     </VBox.margin>
                                 </ComboBox>
 
-                                <!-- TextField for Answer -->
+                                      <!-- TextField for Answer -->
                                 <TextField id="forgot_answer" fx:id="forgot_answer" prefHeight="30.0" prefWidth="222.0" promptText="Câu trả lời" style="-fx-background-radius: 5;" styleClass="button_effect" stylesheets="@../../resources/Css/style.css">
                                     <VBox.margin>
                                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -145,12 +169,11 @@
                                     </font>
                                 </TextField>
 
-                                <!-- Button for Proceed -->
-                                <Button id="forgot_proceedBtn" fx:id="forgot_proceedBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#forgotPassword" styleClass="shadow-button" stylesheets="@../../resources/Css/style.css" text="Xác nhận" textAlignment="CENTER" textFill="#FFFFFF">
+                                      <!-- Button for Proceed -->
+                                <Button id="forgot_proceedBtn" fx:id="forgot_proceedBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#forgotPassword" styleClass="shadow-button" stylesheets="@../../resources/Css/style.css" text="Xác nhận" textAlignment="CENTER" textFill="#0f2e7d">
                                     <style>
                                         -fx-background-color: #4CAF50; /* Button background color */
-                                        -fx-background-radius: 5; /* Button corner radius */
-                                    </style>
+                                        -fx-background-radius: 5; /* Button corner radius */-fx-background-radius: 5; -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #99c9f9, #acf3f8);;</style>
                                     <font>
                                         <Font name="System Bold" size="14.0" />
                                     </font>
@@ -159,7 +182,7 @@
                                     </VBox.margin>
                                 </Button>
 
-                                <!-- Button for Back -->
+                                      <!-- Button for Back -->
                                 <Button fx:id="forgot_backBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchForm" styleClass="shadow-button" stylesheets="@../../resources/Css/style.css" text="Quay lại" textFill="#FFFFFF">
                                     <style>
                                         -fx-background-color: #008CBA; /* Button background color */
@@ -174,7 +197,7 @@
                             </children>
                         </VBox>
 
-                    </children>
+                          </children>
                 </AnchorPane>
 
                 <!--                <AnchorPane fx:id="changePass_form" layoutX="2.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="610.0" visible="false">-->
@@ -190,7 +213,7 @@
                 <!--                        <TextField id="changePass_cPassword" fx:id="changePass_cPassword" layoutX="188.0" layoutY="162.0" prefHeight="26.0" prefWidth="222.0" promptText="Xác nhận mật khẩu" />-->
                 <!--                    </children>-->
                 <!--                </AnchorPane>-->
-                <AnchorPane fx:id="changePass_form" layoutX="2.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="712.0" style="-fx-background-color: linear-gradient(from 2.2727% 64.7727% to 100.0% 100.0%, #54b3ff 0.0%, #ffffff 100.0%);">
+                <AnchorPane fx:id="changePass_form" layoutX="2.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="712.0" style="-fx-background-color: linear-gradient(from 2.2727% 64.7727% to 100.0% 100.0%, #54b3ff 0.0%, #ffffff 100.0%);" visible="false">
                     <children>
                         <Label alignment="CENTER" layoutX="247.0" layoutY="72.0" prefHeight="34.0" prefWidth="215.0" text="Đổi mật khẩu" textFill="#0e2c7e">
                             <font>
@@ -199,11 +222,10 @@
                         </Label>
 
                         <!-- Button for Proceed -->
-                        <Button id="changePass_proceedBtn" fx:id="changePass_proceedBtn" alignment="CENTER" layoutX="271.0" layoutY="252.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="30.0" prefWidth="170.0" styleClass="shadow-button" stylesheets="@../../resources/Css/style.css" text="Xác nhận" textFill="#FFFFFF">
+                        <Button id="changePass_proceedBtn" fx:id="changePass_proceedBtn" alignment="CENTER" layoutX="271.0" layoutY="252.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="30.0" prefWidth="170.0" styleClass="shadow-button" stylesheets="@../../resources/Css/style.css" text="Xác nhận" textFill="#0e2c7e">
                             <style>
                                 -fx-background-color: #4CAF50; /* Button background color */
-                                -fx-background-radius: 5; /* Button corner radius */
-                            </style>
+                                -fx-background-radius: 5; /* Button corner radius */-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #99c9f9, #acf3f8);;</style>
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -254,7 +276,7 @@
                 <!--                        <ComboBox id="signup_selectQuestion" fx:id="signup_selectQuestion" layoutX="204.0" layoutY="253.0" prefHeight="26.0" prefWidth="222.0" promptText="Chọn câu hỏi" />-->
                 <!--                    </children>-->
                 <!--                </AnchorPane>-->
-                <AnchorPane fx:id="signup_form" layoutX="2.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="712.0" visible="false">
+                <AnchorPane fx:id="signup_form" layoutX="2.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="712.0">
                     <children>
                         <VBox alignment="CENTER" layoutX="409.0" layoutY="17.0" prefHeight="442.0" prefWidth="238.0" spacing="10.0">
                             <children>
