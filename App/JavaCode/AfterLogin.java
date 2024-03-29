@@ -14,7 +14,7 @@ public class AfterLogin {
 
     public void userLogOut(ActionEvent event) throws IOException {
         Dictionary_main m = new Dictionary_main();
-        m.changeScene("Layers/LoginView.fxml");
+        m.changeScene("Layers/LoginLayer.fxml");
 
     }
 }

@@ -320,6 +320,9 @@
     -fx-text-fill: #FFF;
     -fx-background-color: #4285f4;
 }
+.forgot-text:hover{
+    -fx-font-weight: bold;
+    }
 .answer-button .radio {
     -fx-background-color: transparent;
     -fx-background-insets: 0;
