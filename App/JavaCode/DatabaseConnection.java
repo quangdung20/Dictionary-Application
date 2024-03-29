@@ -2,18 +2,16 @@ package JavaCode;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import Constants.Constant;
 
 public class DatabaseConnection {
     public Connection databaseLink;
 
     public Connection getConnection(){
-        String databaseName = "demo";
-        String databaseUser = "root";
-        String databasePassword = "Quangdung@202";
-        String url = "jdbc:mysql://localhost:3306/" + databaseName;
+
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
+            Class.forName(Constant.DRIVER);
+            databaseLink = DriverManager.getConnection(Constant.URL, Constant.DATABASE_USER, Constant.DATABASE_PASSWORD);
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
