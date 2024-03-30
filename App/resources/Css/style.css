@@ -14,11 +14,21 @@
 .menu{
     -fx-padding: 0;
 }
-
+.logout_button{
+     -fx-background-radius: 50;
+      -fx-background-insets: 0;
+    -fx-background-color: #6ba5eb;
+    -fx-cursor: hand;
+}
+.logout_button:hover{
+      -fx-background-radius: 100;
+    -fx-background-color: #d8644f;
+}
+.logout_button:pressed{
+    -fx-background-color: #ff0000;
+}
 .menu-item{
- -fx-background-color: transparent;
  -fx-background-radius: 50;
- -fx-background-insets: 0;
  -fx-text-fill: #fff;
  -fx-font-weight: bold;
  -fx-font-family: "Roboto";
@@ -31,29 +41,20 @@
  -fx-background-color: #4dc3f1;
 }
 .search-box{
-    -fx-background-color:   #4285f4;
+    -fx-background-color:   #ffffff;
     -fx-background-radius: 20;
     -fx-border-radius: 20;
-}
-.search-field{
-  -fx-background-color: transparent;
-   -fx-prompt-text-fill: #FFF;
-  -fx-text-fill: #FFF;
-  -fx-font-family: "Roboto";
-  -fx-font-weight: bold;
-  -fx-font-size: 13;
-  -fx-border: none ;
-}
-.search-field:pressed > .search-box{
-   -fx-background-color: white;
+    -fx-border-color: #1740af;
+    -fx-border-width:2;
 }
 .cancel-button{
     -fx-background-color: transparent;
     -fx-text-fill: #2b2b2b;
     -fx-cursor: hand;
 }
+
 .cancel-button:hover{
-    -fx-effect: dropshadow(three-pass-box, #418816, 3, 0, 0, 1) ;
+    -fx-effect: dropshadow(three-pass-box, #92002e, 3, 0, 0, 1) ;
 }
 .cancel-button:pressed{
     -fx-effect: dropshadow(three-pass-box, #62ff00, 4, 0, 0, 1) ;
@@ -72,6 +73,11 @@
 .shadow-button{
    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #99c9f9, #acf3f8);
     -fx-effect: dropshadow(three-pass-box, #040917, 4, 0, 0, 1.5) ;
+    -fx-fill-color: #FFF;
+}
+.background_form{
+   -fx-background-color: linear-gradient(from 0.0% 51.4205% to 25.7576% 51.5152%, #99eef9 0.0%, #bcf7f6 99.4616%, #bcf7f6 100.0%);
+    -fx-effect: dropshadow(three-pass-box, #082d93, 4, 0, 0, 1.5) ;
     -fx-fill-color: #FFF;
 }
 .main_form{

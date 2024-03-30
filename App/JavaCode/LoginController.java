@@ -1,11 +1,16 @@
 package JavaCode;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
+import java.util.Objects;
 
 import AlertBox.AlertMessage;
 
@@ -15,6 +20,11 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+
+import static Constants.Constant.*;
 
 
 public class LoginController extends DatabaseConnection{
@@ -128,7 +138,6 @@ public class LoginController extends DatabaseConnection{
     }
 
     private void checkLogIn() {
-        Dictionary_main m = new Dictionary_main();
         AlertMessage alert = new AlertMessage();
         String verifyLogin = "SELECT count(1) FROM user_account WHERE username = " +
                 "'" + login_username.getText() + "' AND password = '" + login_password.getText() + "'";
@@ -139,8 +148,8 @@ public class LoginController extends DatabaseConnection{
 
             while (queryResult.next()) {
                 if (queryResult.getInt(1) == 1) {
-
-                    m.changeScene("Layers/afterLogin.fxml");
+//                    alert.successMessage("Đăng nhập thành công");
+                    gotoMainApp();
                 } else {
                     alert.errorMessage("Thông tin đăng nhập không chính xác, vui lòng kiểm tra lại");
                 }
@@ -151,6 +160,23 @@ public class LoginController extends DatabaseConnection{
             e.getCause();
         }
     }
+
+    private void gotoMainApp() throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Layers/Menubarlayer.fxml")));
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle(NAME_APP);
+        primaryStage.setResizable(false);
+        ClassLoader classLoader = Dictionary_main.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(LOGO_IMAGE_PATH);
+        assert inputStream != null;
+        Image image = new Image(inputStream);
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.getIcons().add(image);
+        primaryStage.show();
+        main_form.getScene().getWindow().hide();
+    }
+
     public void SelectQuestion(ActionEvent event) {
         String questionSign = selectQuestion_signup.getValue();
         String questionPass = answerCheckPass.getValue();
