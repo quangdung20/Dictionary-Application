@@ -18,18 +18,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="706.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaCode.LoginController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaCode.LoginController">
     <children>
-        <AnchorPane id="main_form" fx:id="main_form" prefHeight="381.0" prefWidth="593.0" styleClass="decrement-button">
+        <AnchorPane id="main_form" fx:id="main_form" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="decrement-button">
             <children>
-                <Pane prefHeight="471.0" prefWidth="714.0">
+                <Pane prefHeight="499.0" prefWidth="750.0">
                     <children>
-                        <ImageView fitHeight="475.0" fitWidth="713.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                        <ImageView fitHeight="514.0" fitWidth="767.0" layoutX="-9.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true" smooth="false">
                             <image>
                                 <Image url="@../../resources/Image/Background.png" />
                             </image>
                         </ImageView>
-                        <VBox alignment="CENTER" layoutX="52.0" layoutY="50.0" prefHeight="353.0" prefWidth="304.0">
+                        <VBox alignment="CENTER" layoutX="110.0" layoutY="64.0" prefHeight="336.0" prefWidth="222.0">
                             <children>
                                 <ImageView fitHeight="184.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -50,9 +50,9 @@
                         </VBox>
                     </children>
                 </Pane>
-                <AnchorPane fx:id="login_form" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.4" prefWidth="701.6" stylesheets="@../../resources/Css/style.css" visible="false" AnchorPane.bottomAnchor="0.7999999999999545" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <AnchorPane fx:id="login_form" layoutX="-7.0" layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" stylesheets="@../../resources/Css/style.css" visible="false" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
                     <children>
-                        <VBox alignment="TOP_CENTER" layoutX="413.0" layoutY="64.0" prefHeight="336.0" prefWidth="238.0" spacing="10.0">
+                        <VBox alignment="TOP_CENTER" layoutX="413.0" layoutY="83.0" prefHeight="336.0" prefWidth="238.0" spacing="10.0">
                             <children>
                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="235.0" text="ĐĂNG NHẬP" textAlignment="CENTER">
                                     <font>
@@ -130,9 +130,9 @@
                     </children>
                 </AnchorPane>
 
-                      <AnchorPane fx:id="forgot_form" layoutX="2.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="702.0" visible="false">
+                      <AnchorPane fx:id="forgot_form" layoutX="2.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="750.0" visible="false">
                     <children>
-                        <VBox alignment="TOP_CENTER" layoutX="411.0" layoutY="60.0" prefHeight="350.0" prefWidth="238.0">
+                        <VBox alignment="TOP_CENTER" layoutX="410.0" layoutY="75.0" prefHeight="350.0" prefWidth="238.0">
                             <children>
                                 <Label alignment="CENTER" prefHeight="35.0" prefWidth="172.0" text="Quên mật khẩu">
                                     <font>
@@ -200,7 +200,7 @@
                           </children>
                 </AnchorPane>
 
-                <!--                <AnchorPane fx:id="changePass_form" layoutX="2.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="610.0" visible="false">-->
+                            <!--                <AnchorPane fx:id="changePass_form" layoutX="2.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="610.0" visible="false">-->
                 <!--                    <children>-->
                 <!--                        <Label alignment="CENTER" layoutX="197.0" layoutY="24.0" prefHeight="34.0" prefWidth="215.0" text="Quên mật khẩu">-->
                 <!--                            <font>-->
@@ -213,16 +213,16 @@
                 <!--                        <TextField id="changePass_cPassword" fx:id="changePass_cPassword" layoutX="188.0" layoutY="162.0" prefHeight="26.0" prefWidth="222.0" promptText="Xác nhận mật khẩu" />-->
                 <!--                    </children>-->
                 <!--                </AnchorPane>-->
-                <AnchorPane fx:id="changePass_form" layoutX="2.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="712.0" style="-fx-background-color: linear-gradient(from 2.2727% 64.7727% to 100.0% 100.0%, #54b3ff 0.0%, #ffffff 100.0%);" visible="false">
+                <AnchorPane fx:id="changePass_form" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="760.0" style="-fx-background-color: linear-gradient(from 2.2727% 64.7727% to 100.0% 100.0%, #54b3ff 0.0%, #ffffff 100.0%);" visible="false">
                     <children>
-                        <Label alignment="CENTER" layoutX="247.0" layoutY="72.0" prefHeight="34.0" prefWidth="215.0" text="Đổi mật khẩu" textFill="#0e2c7e">
+                        <Label alignment="CENTER" layoutX="268.0" layoutY="72.0" prefHeight="34.0" prefWidth="215.0" text="Đổi mật khẩu" textFill="#0e2c7e">
                             <font>
                                 <Font name="System Bold" size="24.0" />
                             </font> <!-- Set text color -->
                         </Label>
 
-                        <!-- Button for Proceed -->
-                        <Button id="changePass_proceedBtn" fx:id="changePass_proceedBtn" alignment="CENTER" layoutX="271.0" layoutY="252.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="30.0" prefWidth="170.0" styleClass="shadow-button" stylesheets="@../../resources/Css/style.css" text="Xác nhận" textFill="#0e2c7e">
+                                    <!-- Button for Proceed -->
+                        <Button id="changePass_proceedBtn" fx:id="changePass_proceedBtn" alignment="CENTER" layoutX="271.0" layoutY="250.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="30.0" prefWidth="170.0" styleClass="shadow-button" stylesheets="@../../resources/Css/style.css" text="Xác nhận" textFill="#0e2c7e">
                             <style>
                                 -fx-background-color: #4CAF50; /* Button background color */
                                 -fx-background-radius: 5; /* Button corner radius */-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #99c9f9, #acf3f8);;</style>
@@ -234,7 +234,7 @@
                             </padding>
                         </Button>
 
-                        <!-- Button for Back -->
+                                    <!-- Button for Back -->
                         <Button id="changePass_backBtn" fx:id="changePass_backBtn" focusTraversable="false" layoutX="271.0" layoutY="304.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="30.0" prefWidth="170.0" styleClass="shadow-button" stylesheets="@../../resources/Css/style.css" text="Quay lại" textFill="#FFFFFF">
                             <style>
                                 -fx-background-color: #008CBA; /* Button background color */
@@ -244,20 +244,20 @@
                                 <Font name="System Bold" size="14.0" />
                             </font>
                         </Button>
-                  <PasswordField id="signup_cPassword" fx:id="changeConFirmPassword" layoutX="240.0" layoutY="188.0" prefHeight="26.0" prefWidth="222.0" promptText="Xác nhận mật khẩu" style="-fx-prompt-text-fill: #808080; -fx-background-radius: 5; -fx-pref-height: 30;" styleClass="button_effect" stylesheets="@../../resources/Css/style.css">
+                  <PasswordField id="signup_cPassword" fx:id="changeConFirmPassword" layoutX="245.0" layoutY="189.0" prefHeight="26.0" prefWidth="222.0" promptText="Xác nhận mật khẩu" style="-fx-prompt-text-fill: #808080; -fx-background-radius: 5; -fx-pref-height: 30;" styleClass="button_effect" stylesheets="@../../resources/Css/style.css">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </PasswordField>
 
-                        <!-- TextField for New Password -->
-                        <TextField id="changePass_password" fx:id="changePass_password" layoutX="240.0" layoutY="131.0" prefHeight="30.0" prefWidth="222.0" promptText="Mật khẩu mới" style="-fx-background-radius: 5;" styleClass="button_effect" stylesheets="@../../resources/Css/style.css">
+                                    <!-- TextField for New Password -->
+                        <TextField id="changePass_password" fx:id="changePass_password" layoutX="245.0" layoutY="132.0" prefHeight="30.0" prefWidth="222.0" promptText="Mật khẩu mới" style="-fx-background-radius: 5;" styleClass="button_effect" stylesheets="@../../resources/Css/style.css">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </TextField>
 
-                    </children>
+                                </children>
                 </AnchorPane>
                 <!--                <AnchorPane fx:id="signup_form" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="610.0" visible="false">-->
                 <!--                    <children>-->
@@ -276,9 +276,9 @@
                 <!--                        <ComboBox id="signup_selectQuestion" fx:id="signup_selectQuestion" layoutX="204.0" layoutY="253.0" prefHeight="26.0" prefWidth="222.0" promptText="Chọn câu hỏi" />-->
                 <!--                    </children>-->
                 <!--                </AnchorPane>-->
-                <AnchorPane fx:id="signup_form" layoutX="2.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="712.0">
+                <AnchorPane fx:id="signup_form" layoutX="2.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0">
                     <children>
-                        <VBox alignment="CENTER" layoutX="409.0" layoutY="17.0" prefHeight="442.0" prefWidth="238.0" spacing="10.0">
+                        <VBox alignment="CENTER" layoutX="408.0" layoutY="29.0" prefHeight="442.0" prefWidth="238.0" spacing="10.0">
                             <children>
                                 <Label alignment="CENTER" prefHeight="34.0" prefWidth="230.0" text="ĐĂNG KÝ">
                                     <font>
@@ -303,7 +303,7 @@
                                     </VBox.margin>
                                 </TextField>
 
-                                <!-- PasswordField for Password -->
+                                                                                            <!-- PasswordField for Password -->
                                 <PasswordField id="signup_password" fx:id="signup_password" prefHeight="30.0" prefWidth="222.0" promptText="Mật khẩu" style="-fx-prompt-text-fill: #808080; -fx-background-radius: 5; -fx-pref-height: 30;" styleClass="button_effect" stylesheets="@../../resources/Css/style.css">
                                     <VBox.margin>
                                         <Insets bottom="5.0" />
@@ -352,7 +352,7 @@
                             </padding>
                         </VBox>
 
-                    </children>
+                                                                                </children>
                 </AnchorPane>
 
             </children>

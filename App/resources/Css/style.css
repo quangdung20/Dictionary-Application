@@ -17,18 +17,18 @@
 
 .menu-item{
  -fx-background-color: transparent;
- -fx-background-radius: 30;
- -fx-padding: 0 0 0 10;
+ -fx-background-radius: 50;
  -fx-background-insets: 0;
  -fx-text-fill: #fff;
  -fx-font-weight: bold;
  -fx-font-family: "Roboto";
 }
 .menu-item:hover{
-    -fx-background-color: #bbd5aa;
+    -fx-background-color: #a8d6e2;
+    -fx-background-radius: 100;
 }
 .menu-item:focused{
- -fx-background-color: #a0e376;
+ -fx-background-color: #4dc3f1;
 }
 .search-box{
     -fx-background-color:   #4285f4;
