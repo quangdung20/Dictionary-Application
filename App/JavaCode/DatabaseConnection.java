@@ -3,7 +3,6 @@ package JavaCode;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import Constants.Constant;
-
 public class DatabaseConnection {
     public Connection databaseLink;
 

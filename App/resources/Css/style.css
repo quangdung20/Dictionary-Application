@@ -47,14 +47,16 @@
     -fx-border-color: #1740af;
     -fx-border-width:2;
 }
+
 .cancel-button{
+   -fx-opacity: 0.5 ;
     -fx-background-color: transparent;
     -fx-text-fill: #2b2b2b;
     -fx-cursor: hand;
 }
-
 .cancel-button:hover{
-    -fx-effect: dropshadow(three-pass-box, #92002e, 3, 0, 0, 1) ;
+    -fx-effect: dropshadow(three-pass-box, #418816, 3, 0, 0, 1) ;
+       -fx-opacity: 1 ;
 }
 .cancel-button:pressed{
     -fx-effect: dropshadow(three-pass-box, #62ff00, 4, 0, 0, 1) ;
@@ -71,10 +73,11 @@
     -fx-effect: dropshadow(three-pass-box, #040917, 4, 0, 0, 1.5) ;
 }
 .shadow-button{
-   -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #99c9f9, #acf3f8);
+   -fx-background-color: #cef8bc;
     -fx-effect: dropshadow(three-pass-box, #040917, 4, 0, 0, 1.5) ;
     -fx-fill-color: #FFF;
 }
+
 .background_form{
    -fx-background-color: linear-gradient(from 0.0% 51.4205% to 25.7576% 51.5152%, #99eef9 0.0%, #bcf7f6 99.4616%, #bcf7f6 100.0%);
     -fx-effect: dropshadow(three-pass-box, #082d93, 4, 0, 0, 1.5) ;
@@ -85,130 +88,21 @@
     -fx-background-radius: 5;
     -fx-border-radius: 5;
 }
-.explanation-field{
-    -fx-background-color: transparent;
-    -fx-background-radius: 5;
-    -fx-border-radius: 5;
-    -fx-border-width: 0;
-    -fx-text-fill: #9f45b0;
-    -fx-font-size: 16px;
-}
-.explanation-menu{
-    -fx-border-color: #4285f4;
-    -fx-border-width: 0 0 2 0;
-}
-.edit-button, .delete-button,
-.volume-button{
-    -fx-padding:0;
-    -fx-background-radius: 5;
-    -fx-border-radius: 5;
-    -fx-background-color: #f8f8f8;
-    -fx-border: none;
-    -fx-background-insets: 0;
-    -fx-effect: dropshadow(three-pass-box, #718093, 2, 0, 0, 1) ;
-}
-.edit-button:hover, .delete-button:hover,
-.volume-button:hover{
-    -fx-background-color: #edeff1;
-    -fx-effect: dropshadow(three-pass-box, #2b2b2b, 3, 0, 0, 1) ;
-}
-.edit-button:pressed, .delete-button:pressed,
-.volume-button:pressed{
-    -fx-effect: dropshadow(three-pass-box, #4f2258, 4, 0, 0, 1) ;
-}
-.save-button{
-    -fx-background-color: #e1efdb;
-    -fx-padding:0;
-    -fx-background-radius: 5;
-    -fx-border-radius: 5;
-    -fx-text-fill: #9f45b0;
-    -fx-font-weight: bold;
-    -fx-background-insets: 0;
-}
-.save-button:hover{
-    -fx-background-color:  #4a7b35;
-}
-.save-button:pressed{
-    -fx-background-color: #e1efdb;
-}
-.title{
-     -fx-background-color:   #4285f4;
-     -fx-effect: dropshadow(three-pass-box, #8c7ae6, 10, 0, 0, 0);
-     -fx-background-radius: 5;
-     -fx-border-radius: 5;
-}
-.list-cell{
-    -fx-text-fill: #4285f4;
-    -fx-font-size: 16;
-    -fx-font-weight: 700;
-    -fx-padding: 5;
-    -fx-background-color: -fx-box-border, -fx-control-inner-background;
-     -fx-background-radius: 5;
-     -fx-border-radius: 5;
-}
-.list-cell:even, .list-cell:odd{
-    -fx-background-radius: 0;
-    -fx-border-radius: 0;
-}
-.list-cell:even{
-     -fx-background-color: #f5f6fa;
-}
-.list-cell:odd {
-    -fx-background-color: #eff0fb;
-}
-.list-cell:filled:hover,
-.list-cell:filled:selected{
-    -fx-background-color: linear-gradient(to top right, #4285f4, #0f9d58);
-    -fx-text-fill: white;
-}
-.list-cell .scroll-bar:horizontal .track,
-.list-cell .scroll-bar:vertical .track ,
-.explanation-field .scroll-bar:horizontal .track,
-.explanation-field .scroll-bar:vertical .track{
-    -fx-background-color:transparent;
-    -fx-border-color:transparent;
-    -fx-background-radius: 0em;
-    -fx-border-radius:2em;
-}
-.list-cell .scroll-bar:vertical .increment-button ,
-.list-cell .scroll-bar:vertical .decrement-button ,
-.explanation-field .scroll-bar:vertical .increment-button ,
-.explanation-field .scroll-bar:vertical .decrement-button{
-    -fx-background-color:transparent;
-    -fx-background-radius: 0em;
-    -fx-padding:0 10 0 0;
-}
-.list-cell .scroll-bar:horizontal .increment-button ,
-.list-cell .scroll-bar:horizontal .decrement-button ,
-.explanation-field .scroll-bar:horizontal .increment-button ,
-.explanation-field .scroll-bar:horizontal .decrement-button{
-    -fx-background-color:transparent;
-   	-fx-background-radius: 0em;
-   	-fx-padding:0 0 10 0;
-}
-.list-cell .scroll-bar .increment-arrow,
-.list-cell .scroll-bar .decrement-arrow,
-.explanation-field .scroll-bar .increment-arrow,
-.explanation-field .scroll-bar .decrement-arrow
- {
-	-fx-padding:0;
-}
-.list-cell .scroll-bar:vertical .thumb,
-.list-cell .scroll-bar:horizontal .thumb,
-.explanation-field .scroll-bar:vertical .thumb,
-.explanation-field .scroll-bar:horizontal .thumb{
-    -fx-background-color: #BFB1CD;
-   	-fx-background-insets: 2, 0, 0;
-   	-fx-background-radius: 2em;
-}
-.english-word-input,
-.meaning-input {
-    -fx-text-fill: #007acc;
-    -fx-border-color: #4285f4;
+.english-word-input {
+    -fx-text-fill: #0e2c7e;
+    -fx-border-color: #0e2c7e;
     -fx-font-size: 14px;
     -fx-border-width: 1.5;
     -fx-background-radius: 5;
     -fx-border-radius: 5;
+}
+.border-menubar{
+    -fx-background-color: #b8f1ed;
+    -fx-border-color: #0e2c7e;
+    -fx-background-radius: 5;
+    -fx-border-radius: 10;
+    -fx-border-width: 1.5;
+
 }
 .add-button{
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 0);
@@ -230,16 +124,9 @@
     -fx-pref-height: 25px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 0);
 }
-.add-button:pressed, .trans-button:pressed{
+.scale-button:pressed{
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
-}
-.success-alert{
-    -fx-font-size: 14px;
-    -fx-text-fill: #009432;
-    -fx-background-color:  #CAF7D8;
-     -fx-background-radius: 5;
-     -fx-border-radius: 5;
 }
 .warning-alert{
     -fx-font-size: 12px;
@@ -254,28 +141,18 @@
     -fx-background-radius: 7 7 0 0;
     -fx-border-radius: 7 7 0 0;
 }
-.src-speech-field,.to-speech-field{
-    -fx-text-fill: #333333;
-    -fx-border-color: #4285f4;
-    -fx-font-size: 14px;
-    -fx-border-width: 1.5;
-}
-.src-speech-field{
-    -fx-background-radius: 0 0 0 7;
-    -fx-border-radius: 0 0 0 7;
-}
+
+
 .to-speech-field{
     -fx-background-radius: 0 0 7 0;
     -fx-border-radius: 0 0 7 0;
 }
-.switch-button{
-    -fx-background-color: transparent;
-}
-.switch-button:pressed{
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
-    -fx-background-color: #dfe6e9;
-}
+
+ .color-box{
+    -fx-background-color: #FFF;
+    -fx-border-color: #a3ed66;
+    -fx-border-width: 1.5;
+ }
 
 .exit-button{
      -fx-background-color: transparent;
@@ -335,69 +212,37 @@
     -fx-background-radius: 0;
     -fx-padding: 0;
 }
-.answer-button .box {
-    -fx-padding: 0;
-}
-.answer-button:selected .dot {
-    -fx-background-color: transparent;
-}
+
 .question-box{
      -fx-background-color: linear-gradient(to top right, #4285f4, #0f9d58);
      -fx-effect: dropshadow(three-pass-box, #8c7ae6, 10, 0, 0, 0);
      -fx-background-radius: 5;
      -fx-border-radius: 5;
 }
-
-.title-learning{
-     -fx-background-color:   #4285f4;
-     -fx-effect: dropshadow(three-pass-box, #8c7ae6, 10, 0, 0, 0);
+.title-button{
+    -fx-text-fill: #0e2c7e;
+     -fx-font-size: 12px;
+     -fx-font-weight: bold;
+}
+.title-coler{
+     -fx-text-fill:   #0e2c7e;
+     -fx-font-size: 16px;
+     -fx-font-weight: bold;
 }
 .question-title{
     -fx-text-fill: #FFF;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
-/* Apply styles to the entire PieChart */
-.pie-chart {
-    -fx-background-color: transparent;
-}
 
-/* Apply styles to individual PieChart segments */
-.chart-pie {
-    -fx-pie-color: transparent;
-}
-/* Apply styles to the entire LineChart */
-.line-chart {
-    -fx-background-color: transparent;
-}
 
-/* Apply styles to individual LineChart series (lines) */
-.series0.chart-series-line {
-    -fx-stroke: #007acc; /* Blue for the line */
-}
-
-/* Apply styles to individual LineChart series data points (markers) */
-.series0.chart-line-symbol {
-    -fx-background-color: #00FF00, #00FF00; /* Blue for the marker (circle) */
-    -fx-background-radius: 30; /* Set background radius to 0 to remove the default marker shape */
-    -fx-padding: 3px; /* Adjust padding to control the size of the marker */
-}
 
 /* Apply styles to tick labels on the X-axis */
 .axis-label {
     -fx-font-size: 10px; /* Adjust font size */
 }
-.title-button{
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 0);
-    -fx-text-fill: #ecf0f1;
-    -fx-background-radius: 5px;
-    -fx-font-size: 13px;
-    -fx-font-weight: 700;
-    -fx-background-color: linear-gradient(to top right, #4285f4, #0f9d58);
-    -fx-pref-width: 100px;
-    -fx-pref-height: 20px;
-}
-.title-button:pressed, .trans-button:pressed{
+
+ .trans-button:pressed{
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
 }

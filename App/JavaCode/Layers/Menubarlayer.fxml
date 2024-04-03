@@ -5,6 +5,7 @@
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,138 +13,162 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 50.0%, radius 50.0%, #0f2e7deb 0.0%, #ebebeb 0.6711%, #bdf0ff 100.0%);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaCode.MenuBarController">
-    <children>
-      <Pane prefHeight="65.0" prefWidth="65.0" stylesheets="@../../resources/Css/style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaCode.MenuBarController">
+   <children>
+      <AnchorPane stylesheets="@../../resources/Css/style.css" StackPane.alignment="CENTER">
          <children>
-            <GridPane alignment="CENTER" prefHeight="480.0" prefWidth="65.0" stylesheets="@../../resources/Css/style.css">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
-               </rowConstraints>
+            <Pane layoutX="14.0" layoutY="4.0" prefHeight="462.0" prefWidth="66.0" styleClass="shadow-button" stylesheets="@../../resources/Css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="684.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button fx:id="searchBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="37.0" styleClass="menu-item" stylesheets="@../../resources/Css/style.css">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="37.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../resources/Css/Icons/icons8-search-64.png" />
-                           </image>
-                           <viewport>
-                              <Rectangle2D />
-                           </viewport>
-                        </ImageView>
-                     </graphic>
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" top="20.0" />
-                     </GridPane.margin>
-                  </Button>
-                  <Button fx:id="addWordBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="menu-item" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fitHeight="33.0" fitWidth="34.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../resources/Css/Icons/icons8-plus-and-minus-96.png" />
-                           </image>
-                           <viewport>
-                              <Rectangle2D />
-                           </viewport>
-                        </ImageView>
-                     </graphic>
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </Button>
-                  <Button fx:id="translateBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="menu-item" text="    Translate" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fitHeight="34.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../resources/Css/Icons/icons8-translate-50.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </Button>
-                  <Button fx:id="learningEngBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="menu-item" text="Learning" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fitHeight="37.0" fitWidth="36.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../resources/Css/Icons/icons8-homework-50.png" />
-                           </image>
-                           <viewport>
-                              <Rectangle2D />
-                           </viewport>
-                        </ImageView>
-                     </graphic>
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </Button>
-                  <Button fx:id="btnLogout" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#setLogout" styleClass="logout_button" text="    Logout" GridPane.rowIndex="8">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" styleClass="menu-item">
-                           <image>
-                              <Image url="@../../resources/Css/Icons/icons8-logout-64.png" />
-                           </image>
-                           <viewport>
-                              <Rectangle2D />
-                           </viewport>
-                        </ImageView>
-                     </graphic>
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" top="-20.0" />
-                     </GridPane.margin>
-                  </Button>
+                  <GridPane alignment="CENTER" prefHeight="450.0" prefWidth="65.0" stylesheets="@../../resources/Css/style.css">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="72.79998168945312" minHeight="10.0" prefHeight="57.599999999999994" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="72.80000915527344" minHeight="10.0" prefHeight="31.000006103515624" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="102.60001220703126" minHeight="10.0" prefHeight="40.599999999999994" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="89.99998626708984" minHeight="0.0" prefHeight="26.80000000000001" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="97.20000610351562" minHeight="10.0" prefHeight="42.600006103515625" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="89.99998626708984" minHeight="0.0" prefHeight="29.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="106.60000000000002" minHeight="10.0" prefHeight="43.20000000000002" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="144.8" minHeight="0.0" prefHeight="144.8" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="70.39999999999998" minHeight="10.0" prefHeight="34.00003662109373" valignment="TOP" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Button fx:id="searchBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="37.0" stylesheets="@../../resources/Css/style.css">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="36.0" fitWidth="37.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/Css/Icons/icons8-search-64.png" />
+                                 </image>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                           </graphic>
+                           <GridPane.margin>
+                              <Insets left="10.0" right="10.0" top="20.0" />
+                           </GridPane.margin>
+                           <styleClass>
+                              <String fx:value="menu-item" />
+                              <String fx:value="scale-button" />
+                           </styleClass>
+                        </Button>
+                        <Label alignment="CENTER" contentDisplay="CENTER" minWidth="66.0" prefHeight="24.0" prefWidth="66.0" styleClass="title-button" text="Search" textOverrun="CLIP" GridPane.rowIndex="1" />
+                        <Button fx:id="addWordBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="42.0" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="33.0" fitWidth="34.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/Css/Icons/icons8-plus-and-minus-96.png" />
+                                 </image>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                           </graphic>
+                           <GridPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </GridPane.margin>
+                           <styleClass>
+                              <String fx:value="menu-item" />
+                              <String fx:value="scale-button" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="translateBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="    Translate" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="34.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/Css/Icons/icons8-translate-50.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <GridPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </GridPane.margin>
+                           <styleClass>
+                              <String fx:value="menu-item" />
+                              <String fx:value="scale-button" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="learningEngBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Learning" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="36.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/Css/Icons/icons8-homework-50.png" />
+                                 </image>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                           </graphic>
+                           <GridPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </GridPane.margin>
+                           <styleClass>
+                              <String fx:value="menu-item" />
+                              <String fx:value="scale-button" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="btnLogout" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#setLogout" styleClass="logout_button" text="    Logout" GridPane.rowIndex="8">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" styleClass="menu-item">
+                                 <image>
+                                    <Image url="@../../resources/Css/Icons/icons8-logout-64.png" />
+                                 </image>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                           </graphic>
+                           <GridPane.margin>
+                              <Insets left="10.0" right="10.0" top="-20.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Label alignment="CENTER" contentDisplay="CENTER" minWidth="66.0" prefHeight="10.0" prefWidth="66.0" styleClass="title-button" text="Add Word" textOverrun="CLIP" GridPane.rowIndex="3" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" minWidth="66.0" prefHeight="10.0" prefWidth="66.0" styleClass="title-button" text="Translate" textOverrun="CLIP" GridPane.rowIndex="5" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" minWidth="66.0" prefHeight="10.0" prefWidth="66.0" styleClass="title-button" text="Games" textOverrun="CLIP" GridPane.rowIndex="7" />
+                     </children>
+                  </GridPane>
                </children>
-            </GridPane>
+            </Pane>
+            <AnchorPane fx:id="container" layoutX="80.8" layoutY="13.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="470.0" prefWidth="670.0" style="-fx-background-color: #fff;" styleClass="shadow-button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
-         <styleClass>
-            <String fx:value="search-box" />
-            <String fx:value="background_form" />
-         </styleClass>
-      </Pane>
-        <AnchorPane fx:id="container" layoutX="55.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 50.0%, radius 50.0%, #0f2e7deb 0.0%, #ebebeb 0.6711%, #bdf0ff 100.0%); -fx-background-radius: 5;" styleClass="container" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-    </children>
-</AnchorPane>
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
+      </AnchorPane>
+   </children>
+</StackPane>

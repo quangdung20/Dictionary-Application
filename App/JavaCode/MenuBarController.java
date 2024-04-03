@@ -19,76 +19,16 @@ import java.util.ResourceBundle;
 public class MenuBarController extends DatabaseConnection {
     @FXML
     private Button addWordBtn;
-
     @FXML
     private Button btnLogout;
-
     @FXML
     private AnchorPane container;
-
     @FXML
     private Button learningEngBtn;
-
     @FXML
     private Button searchBtn;
-
     @FXML
     private Button translateBtn;
-
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        addWordBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/AddWordView.fxml"));
-                    AnchorPane pane = loader.load();
-                    container.getChildren().setAll(pane);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        searchBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/SearchWordView.fxml"));
-                    AnchorPane pane = loader.load();
-                    container.getChildren().setAll(pane);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        translateBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/TranslationView.fxml"));
-                    AnchorPane pane = loader.load();
-                    container.getChildren().setAll(pane);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        learningEngBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/LearningEngView.fxml"));
-                    AnchorPane pane = loader.load();
-                    container.getChildren().setAll(pane);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
 
     @FXML
     void setLogout(ActionEvent event) throws Exception {
@@ -110,4 +50,45 @@ public class MenuBarController extends DatabaseConnection {
             main.initializeStage(stage);
         }
     }
+    @FXML
+    void initialize() {
+
+        // Set the default component to display when the application is started.
+        showComponent("Layers/SearchLayer.fxml");
+        addWordBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                showComponent("layers/AddWordLayer.fxml");
+            }
+        });
+        searchBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                showComponent("Layers/SearchLayer.fxml");
+            }
+        });
+        translateBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                showComponent("Layers/TranslateLayer.fxml");
+            }
+        });
+        learningEngBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                showComponent("Layers/ActiveLayer.fxml");
+            }
+        });
+
+    }
+
+    void showComponent(String path) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(path));
+            container.getChildren().setAll(pane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

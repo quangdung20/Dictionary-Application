@@ -1,14 +1,165 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="JavaCode.TranslateComponent"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="470.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaCode.TranslateComponent">
+   <children>
+      <BorderPane prefHeight="470.0" prefWidth="670.0" stylesheets="@../../resources/Css/style.css">
+         <top>
+            <Pane prefHeight="45.0" prefWidth="470.0" styleClass="shadow-button" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="14.0" layoutY="5.0" prefHeight="35.0" styleClass="title-coler" text="Phiên dịch " textFill="#fff">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/Css/Icons/icons8-translate-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </BorderPane.margin>
+            </Pane>
+         </top>
+         <center>
+            <AnchorPane prefHeight="404.0" prefWidth="670.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="426.0" prefWidth="670.0">
+                     <children>
+                        <Pane minHeight="40.0" prefHeight="40.0" prefWidth="470.0" styleClass="english-word-input">
+                           <children>
+                              <HBox alignment="CENTER" layoutY="2.0" maxHeight="64.0" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="650.0">
+                                 <children>
+                                    <Label fx:id="targetLangLabel" styleClass="title-coler" text="Tiếng Việt" textFill="#4285f4">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Button fx:id="btnListenTarget" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" style="-fx-background-color: none;">
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/Css/Icons/icons8-sound-50.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <styleClass>
+                                          <String fx:value="cancel-button" />
+                                          <String fx:value="scale-button" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button fx:id="switchToggle" mnemonicParsing="false" style="-fx-background-color: none;">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/Css/Icons/icons8-change-64.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets left="100.0" right="100.0" />
+                                       </HBox.margin>
+                                       <styleClass>
+                                          <String fx:value="cancel-button" />
+                                          <String fx:value="scale-button" />
+                                       </styleClass>
+                                    </Button>
+                                    <Label fx:id="sourceLangLabel" styleClass="title-coler" text="Tiếng Anh" textFill="#4285f4">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="btnListenSource" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" style="-fx-background-color: none;">
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/Css/Icons/icons8-sound-50.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <styleClass>
+                                          <String fx:value="cancel-button" />
+                                          <String fx:value="scale-button" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Pane>
+                        <Button fx:id="translateBtn" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefWidth="100.0" text="Dịch" textFill="#0e2c7e">
+                           <styleClass>
+                              <String fx:value="shadow-button" />
+                              <String fx:value="button_effect" />
+                              <String fx:value="scale-button" />
+                           </styleClass>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="344.0" prefWidth="650.0">
+                           <children>
+                              <TextArea fx:id="sourceTextField" layoutY="-1.0" minHeight="310.0" minWidth="308.0" prefHeight="315.0" prefWidth="310.0" promptText="Nhập văn bản..." style="-fx-background-color: none;" styleClass="english-word-input" wrapText="true">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </TextArea>
+                              <TextArea fx:id="translationTextField" layoutX="321.0" layoutY="-1.0" minHeight="310.0" minWidth="310.0" prefHeight="316.0" prefWidth="329.0" style="-fx-background-color: none;" styleClass="english-word-input" wrapText="true">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </TextArea>
+                              <Button fx:id="clearBtn" layoutX="266.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="29.0" style="-fx-background-color: none;">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/Css/Icons/icons8-cancel-50.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="cancel-button" />
+                                    <String fx:value="scale-button" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Pane>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
 </AnchorPane>

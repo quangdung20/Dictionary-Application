@@ -1,14 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="JavaCode.AddWordComponent"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane minHeight="470.0" minWidth="670.0" prefHeight="470.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaCode.AddWordComponent">
+   <children>
+      <BorderPane minHeight="470.0" minWidth="670.0" prefHeight="470.0" prefWidth="670.0" stylesheets="@../../resources/Css/style.css">
+         <top>
+            <Pane maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="670.0" styleClass="shadow-button" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="14.0" layoutY="6.0" prefHeight="22.0" prefWidth="298.0" styleClass="title-coler" text="Thêm từ mới" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/Css/Icons/icons8-result-24.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" />
+               </BorderPane.margin>
+            </Pane>
+         </top>
+         <center>
+            <AnchorPane prefWidth="670.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <children>
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="414.0" prefWidth="670.0" styleClass="title-coler" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label styleClass="title-coler" text="Từ mới">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Pane prefHeight="39.0" prefWidth="640.0" styleClass="english-word-input">
+                           <children>
+                              <TextField fx:id="inpputAddword" layoutX="1.0" prefHeight="40.0" prefWidth="573.0" promptText="Nhập từ tiếng anh..." style="-fx-background-color: none;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                              <Button fx:id="cancel_inputBtn" layoutX="588.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: none;" styleClass="cancel-button">
+                                 <graphic>
+                                    <ImageView fitHeight="24.0" fitWidth="26.0" opacity="0.88" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/Css/Icons/icons8-cancel-50.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Label layoutX="10.0" layoutY="10.0" styleClass="title-coler" text="Giải thích nghĩa">
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Pane prefHeight="280.0" prefWidth="641.0" styleClass="english-word-input">
+                           <children>
+                              <TextArea fx:id="input_meaning" layoutX="2.0" layoutY="2.0" prefHeight="271.0" prefWidth="635.0" promptText="Nhập giải nghĩa của từ...." style="-fx-background-color: none;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextArea>
+                              <Button layoutX="593.0" layoutY="2.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="6.0" style="-fx-background-color: none;" styleClass="cancel-button">
+                                 <graphic>
+                                    <ImageView fx:id="cancel_inputBtn2" fitHeight="24.0" fitWidth="26.0" opacity="0.88" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/Css/Icons/icons8-cancel-50.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </Pane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </center>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" />
+         </padding>
+      </BorderPane>
+   </children>
 </AnchorPane>
