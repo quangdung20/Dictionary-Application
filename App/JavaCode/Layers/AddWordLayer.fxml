@@ -26,7 +26,7 @@
                      <graphic>
                         <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../resources/Css/Icons/icons8-result-24.png" />
+                              <Image url="@../../resources/Icons/icons8-result-24.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -61,7 +61,7 @@
                                  <graphic>
                                     <ImageView fitHeight="24.0" fitWidth="26.0" opacity="0.88" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../resources/Css/Icons/icons8-cancel-50.png" />
+                                          <Image url="@../../resources/Icons/icons8-cancel-50.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -84,7 +84,7 @@
                                  <graphic>
                                     <ImageView fx:id="cancel_inputBtn2" fitHeight="24.0" fitWidth="26.0" opacity="0.88" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../resources/Css/Icons/icons8-cancel-50.png" />
+                                          <Image url="@../../resources/Icons/icons8-cancel-50.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>

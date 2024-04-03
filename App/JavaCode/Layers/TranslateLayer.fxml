@@ -27,7 +27,7 @@
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../resources/Css/Icons/icons8-translate-50.png" />
+                              <Image url="@../../resources/Icons/icons8-translate-50.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -59,7 +59,7 @@
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../resources/Css/Icons/icons8-sound-50.png" />
+                                                <Image url="@../../resources/Icons/icons8-sound-50.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
@@ -72,7 +72,7 @@
                                        <graphic>
                                           <ImageView fitHeight="25.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../resources/Css/Icons/icons8-change-64.png" />
+                                                <Image url="@../../resources/Icons/icons8-change-64.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
@@ -93,7 +93,7 @@
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../resources/Css/Icons/icons8-sound-50.png" />
+                                                <Image url="@../../resources/Icons/icons8-sound-50.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
@@ -138,7 +138,7 @@
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../resources/Css/Icons/icons8-cancel-50.png" />
+                                          <Image url="@../../resources/Icons/icons8-cancel-50.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>

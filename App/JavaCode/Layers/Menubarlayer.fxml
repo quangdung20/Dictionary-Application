@@ -48,7 +48,7 @@
                            <graphic>
                               <ImageView fitHeight="36.0" fitWidth="37.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../resources/Css/Icons/icons8-search-64.png" />
+                                    <Image url="@../../resources/Icons/icons8-search-64.png" />
                                  </image>
                                  <viewport>
                                     <Rectangle2D />
@@ -74,7 +74,7 @@
                            <graphic>
                               <ImageView fitHeight="33.0" fitWidth="34.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../resources/Css/Icons/icons8-plus-and-minus-96.png" />
+                                    <Image url="@../../resources/Icons/icons8-plus-and-minus-96.png" />
                                  </image>
                                  <viewport>
                                     <Rectangle2D />
@@ -99,7 +99,7 @@
                            <graphic>
                               <ImageView fitHeight="34.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../resources/Css/Icons/icons8-translate-50.png" />
+                                    <Image url="@../../resources/Icons/icons8-translate-50.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -121,7 +121,7 @@
                            <graphic>
                               <ImageView fitHeight="37.0" fitWidth="36.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../resources/Css/Icons/icons8-homework-50.png" />
+                                    <Image url="@../../resources/Icons/icons8-homework-50.png" />
                                  </image>
                                  <viewport>
                                     <Rectangle2D />
@@ -146,7 +146,7 @@
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" styleClass="menu-item">
                                  <image>
-                                    <Image url="@../../resources/Css/Icons/icons8-logout-64.png" />
+                                    <Image url="@../../resources/Icons/icons8-logout-64.png" />
                                  </image>
                                  <viewport>
                                     <Rectangle2D />

@@ -36,7 +36,7 @@
                            <graphic>
                               <ImageView fx:id="cancelBtn" fitHeight="24.0" fitWidth="26.0" opacity="0.88" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../resources/Css/Icons/icons8-cancel-50.png" />
+                                    <Image url="@../../resources/Icons/icons8-cancel-50.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -47,7 +47,7 @@
                         </Button>
                         <ImageView fitHeight="24.0" fitWidth="26.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../resources/Css/Icons/icons8-search-64.png" />
+                              <Image url="@../../resources/Icons/icons8-search-64.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -68,7 +68,7 @@
                      <graphic>
                         <ImageView fitHeight="22.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../resources/Css/Icons/icons8-result-24.png" />
+                              <Image url="@../../resources/Icons/icons8-result-24.png" />
                            </image>
                         </ImageView>
                      </graphic>

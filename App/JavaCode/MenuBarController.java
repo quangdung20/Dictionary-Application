@@ -21,8 +21,7 @@ public class MenuBarController extends DatabaseConnection {
     private Button addWordBtn;
     @FXML
     private Button btnLogout;
-    @FXML
-    private AnchorPane container;
+
     @FXML
     private Button learningEngBtn;
     @FXML
@@ -80,15 +79,6 @@ public class MenuBarController extends DatabaseConnection {
             }
         });
 
-    }
-
-    void showComponent(String path) {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource(path));
-            container.getChildren().setAll(pane);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 }
