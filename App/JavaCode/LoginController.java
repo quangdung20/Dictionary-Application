@@ -1,6 +1,7 @@
 package JavaCode;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -9,8 +10,10 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.sql.*;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 import AlertBox.AlertMessage;
 
@@ -27,7 +30,7 @@ import javafx.scene.image.Image;
 import static Constants.Constant.*;
 
 
-public class LoginController extends DatabaseConnection{
+public class LoginController extends DatabaseConnection implements Initializable {
 
     @FXML
     private AnchorPane main_form;
@@ -182,18 +185,6 @@ public class LoginController extends DatabaseConnection{
         String questionPass = answerCheckPass.getValue();
     }
 
-    public void initialize() {
-        ObservableList<String> questions = FXCollections.observableArrayList(
-                "Món ăn nào bạn thích nhất",
-                "Màu sắc yêu thích nhất của bạn?",
-                "Tên thú cưng của bạn?",
-                "Môn thể thao bạn yêu thích nhất ?"
-        );
-        selectQuestion_signup.setItems(questions);
-        answerCheckPass.setItems(questions);
-        forgotPassText.setOnMouseClicked(event -> switchForgotForm(event));
-    }
-
     @FXML
     void SigUp(ActionEvent event) throws SQLException {
         AlertMessage alert = new AlertMessage();
@@ -276,4 +267,16 @@ public class LoginController extends DatabaseConnection{
         }
     }
 
+    @Override
+    public void initialize(java.net.URL url, ResourceBundle resourceBundle) {
+        ObservableList<String> questions = FXCollections.observableArrayList(
+                "Món ăn nào bạn thích nhất",
+                "Màu sắc yêu thích nhất của bạn?",
+                "Tên thú cưng của bạn?",
+                "Môn thể thao bạn yêu thích nhất ?"
+        );
+        selectQuestion_signup.setItems(questions);
+        answerCheckPass.setItems(questions);
+        forgotPassText.setOnMouseClicked(event -> switchForgotForm(event));
+    }
 }

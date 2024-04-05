@@ -7,6 +7,7 @@ import com.google.gson.stream.JsonReader;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
+import java.util.Date;
 import java.util.HashMap;
 
 import static Constants.Constant.*;
@@ -202,4 +203,5 @@ public class StudyRecord {
             throw new RuntimeException(e);
         }
     }
+
 }

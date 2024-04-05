@@ -14,36 +14,35 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" prefHeight="510.0" prefWidth="769.0" stylesheets="@../../resources/Css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaCode.ActiveComponent">
+<AnchorPane fx:id="container" maxHeight="470.0" minHeight="470.0" minWidth="670.0" prefHeight="470.0" prefWidth="670.0" stylesheets="@../../resources/Css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaCode.ActiveComponent">
     <children>
-        <GridPane prefHeight="510.0" prefWidth="769.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <GridPane maxHeight="470.0" maxWidth="670.0" minHeight="470.0" minWidth="670.0" prefHeight="470.0" prefWidth="670.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="656.5999328613282" minWidth="10.0" prefWidth="523.7999450683594" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="375.4000244140625" minWidth="10.0" prefWidth="245.40005493164062" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="249.79999389648438" minHeight="10.0" prefHeight="35.000003051757815" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="489.0000118255615" minHeight="10.0" prefHeight="474.1999969482422" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="249.79999389648438" minHeight="10.0" prefHeight="44.00000114440918" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="489.0000118255615" minHeight="10.0" prefHeight="425.5999988555908" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <VBox style="-fx-background-color: #fff;" GridPane.rowIndex="1">
+                <VBox prefHeight="423.0" prefWidth="474.0" style="-fx-background-color: #fff;" GridPane.rowIndex="1">
                     <children>
-                        <GridPane VBox.vgrow="ALWAYS">
+                        <GridPane prefWidth="470.0" VBox.vgrow="ALWAYS">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="ALWAYS" maxWidth="524.8" minWidth="10.0" prefWidth="496.8000305175781" />
                             </columnConstraints>
                             <rowConstraints>
                                 <RowConstraints maxHeight="243.20000000000002" minHeight="8.799981880188" prefHeight="188.4" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="334.4000244140625" minHeight="0.0" prefHeight="284.4" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="334.4000244140625" minHeight="0.0" prefHeight="200.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <GridPane>
+                                <GridPane prefHeight="146.0" prefWidth="475.0">
                                     <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="476.6000122070312" minWidth="10.0" prefWidth="267.9999755859375" />
                                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.3999755859375" minWidth="10.0" prefWidth="256.0000244140625" />
@@ -52,12 +51,12 @@
                                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <PieChart fx:id="pieChartQuestion" prefHeight="190.0" prefWidth="273.0" title="Thống kê" titleSide="BOTTOM">
+                                        <PieChart fx:id="pieChartQuestion" prefHeight="126.0" prefWidth="243.0" title="Thống kê" titleSide="BOTTOM">
                                             <padding>
                                                 <Insets bottom="10.0" />
                                             </padding>
                                         </PieChart>
-                                        <VBox alignment="CENTER_LEFT" GridPane.columnIndex="1">
+                                        <VBox alignment="CENTER_LEFT" prefHeight="76.0" prefWidth="211.0" GridPane.columnIndex="1">
                                             <children>
                                                 <Label fx:id="labelTotalAttempt" alignment="TOP_RIGHT" contentDisplay="TOP" text="Tổng số lần học: NA" textFill="#636b66">
                                                     <font>
@@ -98,7 +97,7 @@
                                         </VBox>
                                     </children>
                                 </GridPane>
-                                <LineChart fx:id="lineChartTime" axisSortingPolicy="NONE" prefHeight="185.0" prefWidth="287.0" titleSide="BOTTOM" GridPane.rowIndex="1">
+                                <LineChart fx:id="lineChartTime" axisSortingPolicy="NONE" prefHeight="245.0" prefWidth="445.0" titleSide="BOTTOM" GridPane.rowIndex="1">
                                     <xAxis>
                                         <CategoryAxis />
                                     </xAxis>
@@ -113,7 +112,7 @@
                         </GridPane>
                     </children>
                 </VBox>
-                <GridPane styleClass="definition-wrapper" stylesheets="@../Utils/style.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <GridPane styleClass="definition-wrapper" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                     </columnConstraints>
@@ -124,19 +123,12 @@
                     <children>
                         <BorderPane GridPane.rowIndex="1">
                             <center>
-                                <ListView fx:id="listViewRanking" prefHeight="71.0" prefWidth="331.0" styleClass="list-cell" stylesheets="@../Utils/style.css" />
+                                <ListView fx:id="listViewRanking" prefHeight="71.0" prefWidth="196.0" styleClass="list-cell" stylesheets="@../Utils/style.css" />
                             </center>
                             <top>
                                 <Pane prefHeight="30.0" prefWidth="768.0" styleClass="border-menubar" BorderPane.alignment="CENTER">
                                     <children>
                                         <Label fx:id="progressTitle11" layoutX="8.0" layoutY="-1.0" prefHeight="30.0" styleClass="title-coler" text="Bảng xếp hạng" textFill="#FFF" wrapText="true">
-                                            <graphic>
-                                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                                    <image>
-                                                        <Image url="@../Utils/icons/ranking.png" />
-                                                    </image>
-                                                </ImageView>
-                                            </graphic>
                                             <padding>
                                                 <Insets top="5.0" />
                                             </padding>
@@ -147,9 +139,9 @@
                         </BorderPane>
                         <VBox>
                             <children>
-                                <VBox alignment="CENTER" prefHeight="191.0" prefWidth="430.0" style="-fx-background-color: #fff;" VBox.vgrow="ALWAYS">
+                                <VBox alignment="CENTER" prefHeight="191.0" prefWidth="166.0" style="-fx-background-color: #fff;" VBox.vgrow="ALWAYS">
                                     <children>
-                                        <ImageView fx:id="imageRanking" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fx:id="imageRanking" fitHeight="103.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../Utils/images/bronze_medal.png" />
                                             </image>
@@ -168,34 +160,19 @@
                         </VBox>
                     </children>
                 </GridPane>
-                <Pane prefHeight="26.0" prefWidth="438.0" styleClass="border-menubar" stylesheets="@../../resources/Css/style.css">
+                <Pane prefHeight="70.0" prefWidth="474.0" styleClass="border-menubar" stylesheets="@../../resources/Css/style.css">
                     <children>
-                        <Label fx:id="progressTitle" alignment="TOP_LEFT" layoutX="2.0" layoutY="-1.0" prefHeight="35.0" prefWidth="186.0" styleClass="title-coler" text="Thông số - NA" textFill="#FFF" wrapText="true">
-                            <graphic>
-                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../Utils/icons/analytics.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
+                        <Label fx:id="progressTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" layoutY="-1.0" prefHeight="45.0" prefWidth="226.0" styleClass="title-coler" text="Thông số - NA" textFill="#FFF" wrapText="true">
                             <padding>
                                 <Insets top="5.0" />
                             </padding>
                         </Label>
-                        <HBox layoutX="410.0" layoutY="-1.0" spacing="10.0">
-                            <children>
-                                <Button fx:id="btnOffline" mnemonicParsing="false" styleClass="title-button" text="Vào học">
-                                    <HBox.margin>
-                                        <Insets left="5.0" top="5.0" />
-                                    </HBox.margin>
-                                </Button>
-                            </children>
-                        </HBox>
+                  <Button fx:id="btnOffline" layoutX="352.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" styleClass="title-button" text="Vào học" />
                     </children>
                 </Pane>
                 <Pane prefHeight="30.0" prefWidth="768.0" styleClass="border-menubar" GridPane.columnIndex="1">
                     <children>
-                        <Label fx:id="progressTitle1" layoutX="-3.0" layoutY="-1.0" prefHeight="35.0" prefWidth="246.0" styleClass="title-coler" text="Xếp hạng của bạn" textFill="#FFF" wrapText="true">
+                        <Label fx:id="progressTitle1" layoutX="-3.0" layoutY="-1.0" prefHeight="45.0" prefWidth="196.0" styleClass="title-coler" text="Xếp hạng của bạn" textFill="#FFF" wrapText="true">
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>

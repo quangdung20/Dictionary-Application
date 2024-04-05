@@ -8,8 +8,8 @@ public class Constant {
     public static final String DRIVER = Key.DRIVER;
     public static final String LOGO_IMAGE_PATH = "resources/Image/logo.png";
     public static final String NAME_APP = "Dictionary Application";
-    public static final String QUESTION_FILE = "resources/Data/questions.txt";
-    public static final String STUDY_RECORD_FILE = "resources/Data/studyRecord.txt";
+    public static final String QUESTION_FILE = "resources/Data/Questions.txt";
+    public static final String STUDY_RECORD_FILE = "resources/Data/Question.txt";
     public static final String USER_INFO_FILE = "resources/Data/users.txt";
     public static final String IMAGE_BRONZE = "resources/Image/bronze.png";
     public static final String IMAGE_SILVER = "resources/Image/silver.png";
@@ -19,4 +19,25 @@ public class Constant {
     public static final String IMAGE_MASTER = "resources/Image/master.png";
     public static final String IMAGE_GRANDMASTER = "resources/Image/grandmaster.png";
     public static final String IMAGE_CHALLENGER = "resources/Image/challenger.png";
+
+    public static final String DELETED_WORD_MARK = "<deleted>";
+
+    public static final String PATH_TO_IMAGE_FIREWORK = "";
+
+    public static final String PATH_TO_IMAGE_DICTIONARY = "";
+
+    public static final String PATH_TO_IMAGE_SAD = "";
+
+    public static final String PATH_TO_CORRECT_CHEERING = "";
+
+    public static final String PATH_TO_INCORRECT_SOUND = "";
+
+    public static final String MENU_LAYER = "Layers/MenubarLayer.fxml";
+    public static final String LOGIN_LAYER = "Layers/LoginLayer.fxml";
+    public static final String SEARCH_LAYER = "Layers/SearchLayer.fxml";
+    public static final String ADD_WORD_LAYER = "Layers/AddWordLayer.fxml";
+    public static final String ACTIVE_COMPONENT_LAYER = "Layers/ActiveLayer.fxml";
+    public static final String TRANSLATE_LAYER = "Layers/TranslateLayer.fxml";
+    public static final String LEARNING_LAYER = "Layers/LearningEngLayer.fxml";
+
 }

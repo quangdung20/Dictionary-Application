@@ -52,11 +52,10 @@ public class ActiveComponent extends DatabaseConnection implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         getListUserData();
-
         btnOffline.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                showComponent("/Layers/LearningEngLayer.fxml");
+                showComponent("Layers/LearningEngLayer.fxml");
             }
         });
 

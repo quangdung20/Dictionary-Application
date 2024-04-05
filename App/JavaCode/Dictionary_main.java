@@ -20,7 +20,7 @@ public class Dictionary_main extends Application {
 
     public void initializeStage(Stage primaryStage) throws IOException {
         stg = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("Layers/LoginLayer.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(MENU_LAYER));
         primaryStage.setTitle("Dictionary Application");
         primaryStage.setResizable(false);
         ClassLoader classLoader = Dictionary_main.class.getClassLoader();

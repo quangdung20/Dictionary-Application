@@ -4,12 +4,14 @@ import Models.User;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import java.io.IOException;
+import java.net.URL;
 import java.security.cert.PolicyNode;
 import java.sql.*;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.ResourceBundle;
 
 import Constants.Constant;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +19,7 @@ import javafx.scene.layout.AnchorPane;
 
 import static JavaCode.ActiveComponent.listRankingUsers;
 
-public class DatabaseConnection {
+public abstract class DatabaseConnection {
 
     @FXML
     AnchorPane container;
@@ -86,4 +88,5 @@ public class DatabaseConnection {
         Collections.sort(listUsers);
         Collections.reverse(listUsers);
     }
+
 }

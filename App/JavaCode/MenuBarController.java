@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
@@ -16,7 +17,9 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class MenuBarController extends DatabaseConnection {
+import static Constants.Constant.*;
+
+public class MenuBarController extends DatabaseConnection implements Initializable {
     @FXML
     private Button addWordBtn;
     @FXML
@@ -53,32 +56,36 @@ public class MenuBarController extends DatabaseConnection {
     void initialize() {
 
         // Set the default component to display when the application is started.
-        showComponent("Layers/SearchLayer.fxml");
+        showComponent(SEARCH_LAYER);
         addWordBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                showComponent("layers/AddWordLayer.fxml");
+                showComponent(ADD_WORD_LAYER);
             }
         });
         searchBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                showComponent("Layers/SearchLayer.fxml");
+                showComponent(SEARCH_LAYER);
             }
         });
         translateBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                showComponent("Layers/TranslateLayer.fxml");
+                showComponent(TRANSLATE_LAYER);
             }
         });
         learningEngBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                showComponent("Layers/ActiveLayer.fxml");
+                showComponent(ACTIVE_COMPONENT_LAYER);
             }
         });
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        initialize();
+    }
 }
