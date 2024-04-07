@@ -2,11 +2,11 @@ package Models;
 
 public class Word {
     private String word;
-    private String def;
+    private String meaning;
 
-    public Word(String word, String def) {
+    public Word(String word, String meaning) {
         this.word = word;
-        this.def = def;
+        this.meaning= meaning;
     }
 
     public String getWord() {
@@ -17,11 +17,11 @@ public class Word {
         this.word = word;
     }
 
-    public String getDef() {
-        return def;
+    public String getMeaning() {
+        return meaning;
     }
 
-    public void setDef(String def) {
-        this.def = def;
+    public void setMeaning(String meaning) {
+        this.meaning = meaning;
     }
 }

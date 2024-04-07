@@ -208,12 +208,6 @@
     -fx-padding: 0;
 }
 
-.question-box{
-     -fx-background-color: linear-gradient(to top right, #4285f4, #0f9d58);
-     -fx-effect: dropshadow(three-pass-box, #8c7ae6, 10, 0, 0, 0);
-     -fx-background-radius: 5;
-     -fx-border-radius: 5;
-}
 .title-button{
     -fx-text-fill: #0e2c7e;
      -fx-font-size: 12px;
@@ -221,16 +215,58 @@
 }
 .title-coler{
      -fx-text-fill:   #0e2c7e;
-     -fx-font-size: 16px;
+     -fx-font-size: 18px;
      -fx-font-weight: bold;
+}
+.title{
+    -fx-text-fill: #0e2c7e;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+
 }
 .question-title{
     -fx-text-fill: #FFF;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
+.choice-box {
+    -fx-mark-color: orange; /* Arrow color */
+    -fx-text-fill: #0e2c7e;
+    -fx-font-weight: bold;
+}
+#choice-box-popup-menu { 
+        -fx-background-color: #d9faf8;  
+}  
+/* Set background color of the arrow */ 
+.choice-box .label { 
+        -fx-text-fill: #0e2c7e; 
+        -fx-font-size: 16px;
 
+} 
+  
+/* Set the text color and text font size for choices in the popup list */ 
+#choice-box-menu-item * { 
+        -fx-text-fill: #0e2c7e;
+        -fx-font-size: 13px;
+} 
 
+.text-area {
+    -fx-background-insets: 0;
+    -fx-background-color: white;
+    -fx-text-prompt-size: 30px;
+    
+}
+
+.text-area .content {
+    -fx-background-color: white;
+    -fx-font-size: 16px;
+    -fx-text-fill: #0e2c7e; 
+}
+
+.text-area:focused {
+    -fx-background-color:white;
+    -fx-font-size: 16px;
+}
 
 /* Apply styles to tick labels on the X-axis */
 .axis-label {

@@ -40,4 +40,5 @@ public class Constant {
     public static final String TRANSLATE_LAYER = "Layers/TranslateLayer.fxml";
     public static final String LEARNING_LAYER = "Layers/LearningEngLayer.fxml";
 
+    public static final String URL_API = "https://api.dictionaryapi.dev/api/v2";
 }
