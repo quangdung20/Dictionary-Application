@@ -1,4 +1,4 @@
-package Interface;
+package API_Dictionary;
 
 import java.io.BufferedReader;
 import java.io.IOException;

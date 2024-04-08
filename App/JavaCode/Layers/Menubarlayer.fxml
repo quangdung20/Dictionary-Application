@@ -6,14 +6,13 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <StackPane maxHeight="600.0" maxWidth="900.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaCode.MenuBarController">
@@ -22,24 +21,9 @@
          <children>
             <Pane layoutX="14.0" layoutY="4.0" maxWidth="100.0" minWidth="90.0" prefHeight="462.0" prefWidth="87.0" styleClass="shadow-button" stylesheets="@../../resources/Css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="810.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <GridPane alignment="CENTER" layoutX="13.0" layoutY="12.0" prefHeight="577.0" prefWidth="65.0" stylesheets="@../../resources/Css/style.css">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints maxHeight="78.4000030517578" minHeight="10.0" prefHeight="76.80001220703124" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="79.80000534057618" minHeight="10.0" prefHeight="60.79998779296875" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="79.80000228881836" minHeight="10.0" prefHeight="23.799999999999983" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="118.40000610351564" minHeight="10.0" prefHeight="38.40001831054687" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="145.60000610351562" minHeight="0.0" prefHeight="23.20000610351562" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="178.80002136230468" minHeight="10.0" prefHeight="42.9999938964844" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="171.2000213623047" minHeight="0.0" prefHeight="23.199993896484386" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="192.40000915527344" minHeight="10.0" prefHeight="46.20002441406251" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="296.79999999999995" minHeight="0.0" prefHeight="212.60000000000002" valignment="TOP" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="70.39999999999998" minHeight="10.0" prefHeight="34.00003662109373" valignment="TOP" vgrow="SOMETIMES" />
-                     </rowConstraints>
+                  <VBox alignment="CENTER" prefHeight="428.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="searchBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="37.0" stylesheets="@../../resources/Css/style.css" GridPane.rowIndex="1">
+                        <Button fx:id="searchBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" stylesheets="@../../resources/Css/style.css">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -47,7 +31,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <graphic>
-                              <ImageView fitHeight="36.0" fitWidth="37.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="56.0" fitWidth="46.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../resources/Icons/icons8-search-64.png" />
                                  </image>
@@ -56,16 +40,20 @@
                                  </viewport>
                               </ImageView>
                            </graphic>
-                           <GridPane.margin>
-                              <Insets left="10.0" right="10.0" top="20.0" />
-                           </GridPane.margin>
                            <styleClass>
                               <String fx:value="menu-item" />
                               <String fx:value="scale-button" />
                            </styleClass>
+                           <tooltip>
+                              <Tooltip text="Tra từ điển " />
+                           </tooltip>
                         </Button>
-                        <Label alignment="CENTER" contentDisplay="CENTER" minWidth="66.0" prefHeight="24.0" prefWidth="66.0" styleClass="title-button" text="Search" textOverrun="CLIP" GridPane.rowIndex="2" />
-                        <Button fx:id="addWordBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="42.0" GridPane.rowIndex="3">
+                        <Label alignment="CENTER" contentDisplay="CENTER" styleClass="title-button" text="Search" textOverrun="CLIP">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Button fx:id="addWordBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="42.0">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -73,24 +61,29 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <graphic>
-                              <ImageView fitHeight="33.0" fitWidth="34.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="42.0" fitWidth="51.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../resources/Icons/icons8-plus-and-minus-96.png" />
+                                    <Image url="@../../resources/Icons/icons8-add-100.png" />
                                  </image>
                                  <viewport>
                                     <Rectangle2D />
                                  </viewport>
                               </ImageView>
                            </graphic>
-                           <GridPane.margin>
-                              <Insets left="10.0" right="10.0" />
-                           </GridPane.margin>
                            <styleClass>
                               <String fx:value="menu-item" />
                               <String fx:value="scale-button" />
                            </styleClass>
+                           <tooltip>
+                              <Tooltip text="Thêm từ mới " />
+                           </tooltip>
                         </Button>
-                        <Button fx:id="translateBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="    Translate" GridPane.rowIndex="5">
+                        <Label alignment="CENTER" contentDisplay="CENTER" minWidth="66.0" prefHeight="10.0" prefWidth="66.0" styleClass="title-button" text="Add Word" textOverrun="CLIP">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Button fx:id="translateBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="49.0" prefWidth="50.0">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -98,21 +91,25 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <graphic>
-                              <ImageView fitHeight="34.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="52.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../resources/Icons/icons8-translate-50.png" />
+                                    <Image url="@../../resources/Icons/icons8-translate-48.png" />
                                  </image>
                               </ImageView>
                            </graphic>
-                           <GridPane.margin>
-                              <Insets left="10.0" right="10.0" />
-                           </GridPane.margin>
                            <styleClass>
                               <String fx:value="menu-item" />
                               <String fx:value="scale-button" />
                            </styleClass>
+                           <tooltip>
+                              <Tooltip text="Translate" />
+                           </tooltip>
                         </Button>
-                        <Button fx:id="learningEngBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Learning" GridPane.rowIndex="7">
+                        <Label alignment="CENTER" contentDisplay="CENTER" minWidth="66.0" prefHeight="14.0" prefWidth="66.0" styleClass="title-button" text="Translate" textOverrun="CLIP">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin></Label>
+                        <Button fx:id="learningEngBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="45.0" prefWidth="54.0">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -120,57 +117,44 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <graphic>
-                              <ImageView fitHeight="37.0" fitWidth="36.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="57.0" fitWidth="46.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../resources/Icons/icons8-homework-50.png" />
-                                 </image>
-                                 <viewport>
-                                    <Rectangle2D />
-                                 </viewport>
-                              </ImageView>
-                           </graphic>
-                           <GridPane.margin>
-                              <Insets left="10.0" right="10.0" />
-                           </GridPane.margin>
-                           <styleClass>
-                              <String fx:value="menu-item" />
-                              <String fx:value="scale-button" />
-                           </styleClass>
-                        </Button>
-                        <Button fx:id="btnLogout" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#setLogout" prefHeight="46.0" prefWidth="46.0" styleClass="logout_button" text="    Logout" GridPane.rowIndex="9">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" styleClass="menu-item">
-                                 <image>
-                                    <Image url="@../../resources/Icons/icons8-logout-64.png" />
+                                    <Image url="@../../resources/Icons/icons8-game-48.png" />
                                  </image>
                                  <viewport>
                                     <Rectangle2D />
                                  </viewport>
                               </ImageView>
                            </graphic>
-                           <GridPane.margin>
-                              <Insets left="10.0" right="10.0" top="-30.0" />
-                           </GridPane.margin>
+                           <styleClass>
+                              <String fx:value="menu-item" />
+                              <String fx:value="scale-button" />
+                           </styleClass>
+                           <tooltip>
+                              <Tooltip text="Học tập" />
+                           </tooltip>
                         </Button>
-                        <Label alignment="CENTER" contentDisplay="CENTER" minWidth="66.0" prefHeight="10.0" prefWidth="66.0" styleClass="title-button" text="Add Word" textOverrun="CLIP" GridPane.rowIndex="4" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" minWidth="66.0" prefHeight="10.0" prefWidth="66.0" styleClass="title-button" text="Translate" textOverrun="CLIP" GridPane.rowIndex="6" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" minWidth="66.0" prefHeight="10.0" prefWidth="66.0" styleClass="title-button" text="Games" textOverrun="CLIP" GridPane.rowIndex="8" />
-                        <ImageView fitHeight="57.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../resources/Image/logo.png" />
-                           </image>
-                           <GridPane.margin>
-                              <Insets left="5.0" top="20.0" />
-                           </GridPane.margin>
-                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" minWidth="66.0" prefHeight="10.0" prefWidth="66.0" styleClass="title-button" text="Games" textOverrun="CLIP" />
                      </children>
-                  </GridPane>
+                  </VBox>
+                  <Button fx:id="btnLogout" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" layoutX="22.0" layoutY="520.0" mnemonicParsing="false" onAction="#setLogout" prefHeight="46.0" prefWidth="46.0" styleClass="logout_button" text="    Logout">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" styleClass="menu-item">
+                           <image>
+                              <Image url="@../../resources/Icons/icons8-logout-64.png" />
+                           </image>
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </Pane>
             <AnchorPane fx:id="container" layoutX="115.2" layoutY="13.0" maxHeight="1.7976931348623157E308" maxWidth="800.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" styleClass="shadow-button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />

@@ -1,25 +1,14 @@
 package JavaCode;
 
-import Interface.*;
-import javafx.application.Platform;
 import javafx.scene.control.*;
-import retrofit2.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
-
-import static Constants.Constant.URL_API;
 
 public class SearchComponent implements Initializable{
 
@@ -35,6 +24,7 @@ public class SearchComponent implements Initializable{
     private Label phonetic,  switchLangBtn;
     @FXML
     private Label showWord;
+    @FXML
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -75,7 +65,5 @@ public class SearchComponent implements Initializable{
             }
         }
     }
-
-
 
 }

@@ -1,6 +1,7 @@
 package JavaCode;
 
-import Interface.TranslateAPI;
+import API_Dictionary.RequestAPI;
+import API_Dictionary.TranslateAPI;
 import javafx.animation.PauseTransition;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -11,7 +12,6 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
 
 public class TranslateComponent implements Initializable {

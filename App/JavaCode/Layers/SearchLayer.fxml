@@ -38,14 +38,14 @@
             </Pane>
          </top>
          <right>
-            <VBox prefHeight="519.0" prefWidth="194.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="539.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="50.0" prefHeight="50.0" prefWidth="174.0" text="Lịch sử tìm kiếm" textFill="#0e2c7e">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="44.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="50.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../resources/Icons/icons8-activity-history-100.png" />
                            </image>
@@ -59,20 +59,23 @@
                         <String fx:value="title-coler" />
                      </styleClass>
                   </Label>
-                  <ListView fx:id="list_word_relative" prefHeight="458.0" prefWidth="194.0" styleClass="english-word-input">
+                  <ListView fx:id="history_search" prefHeight="469.0" prefWidth="180.0" styleClass="english-word-input">
                      <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets right="10.0" top="10.0" />
                      </VBox.margin></ListView>
                </children>
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" />
+               </padding>
             </VBox>
          </right>
          <center>
             <AnchorPane prefHeight="519.0" prefWidth="604.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox minWidth="447.0" prefHeight="518.0" prefWidth="603.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                  <VBox minWidth="447.0" prefHeight="518.0" prefWidth="603.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Pane maxHeight="50.0" minHeight="50.0" prefHeight="55.0" prefWidth="598.0" styleClass="shadow-button">
                            <children>
@@ -82,6 +85,9 @@
                                     <String fx:value="shadow-button" />
                                     <String fx:value="scale-button" />
                                  </styleClass>
+                                 <tooltip>
+                                    <Tooltip text="Thay đổi ngôn ngữ" />
+                                 </tooltip>
                               </Label>
                               <Pane layoutX="14.0" layoutY="6.0" prefHeight="40.0" prefWidth="336.0" styleClass="search-box">
                                  <children>
@@ -102,6 +108,9 @@
                                           <String fx:value="cancel-button" />
                                           <String fx:value="scale-button" />
                                        </styleClass>
+                                       <tooltip>
+                                          <Tooltip text="Xóa" />
+                                       </tooltip>
                                     </Button>
                                     <ImageView fitHeight="24.0" fitWidth="26.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -112,47 +121,68 @@
                               </Pane>
                            </children>
                         </Pane>
-                        <Pane prefHeight="456.0" prefWidth="607.0" styleClass="english-word-input">
+                        <Pane prefHeight="481.0" prefWidth="606.0" styleClass="english-word-input">
                            <children>
                               <Pane fx:id="headerOfExplanation" layoutX="4.0" layoutY="4.0" prefHeight="46.0" prefWidth="568.0">
                                  <children>
-                                    <Button fx:id="textToSpeechBtn" layoutX="396.0" layoutY="5.0" minWidth="38.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="38.0" style="-fx-background-color: none;" styleClass="volume-button">
+                                    <Button fx:id="textToSpeechBtn" layoutX="411.0" layoutY="7.0" minWidth="38.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="38.0" style="-fx-background-color: none;">
                                        <graphic>
-                                          <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="33.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../../resources/Icons/icons8-sound-60.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
                                        <tooltip>
-                                          <Tooltip text="Phát âm" />
+                                          <Tooltip text="Phát âm">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font></Tooltip>
                                        </tooltip>
+                                       <styleClass>
+                                          <String fx:value="volume-button" />
+                                          <String fx:value="scale-button" />
+                                       </styleClass>
                                     </Button>
-                                    <Button fx:id="editDefinitionBtn" layoutX="454.0" layoutY="5.0" minWidth="52.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="52.0" style="-fx-background-color: none;" styleClass="edit-button">
+                                    <Button fx:id="editDefinitionBtn" layoutX="473.0" layoutY="5.0" minWidth="52.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="52.0" style="-fx-background-color: none;">
                                        <graphic>
-                                          <ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" styleClass="editBtn">
+                                          <ImageView fitHeight="41.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="editBtn">
                                              <image>
                                                 <Image url="@../../resources/Icons/icons8-edit-50.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
                                        <tooltip>
-                                          <Tooltip text="Cho phép chỉnh sửa" />
+                                          <Tooltip text="Cho phép chỉnh sửa">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font></Tooltip>
                                        </tooltip>
+                                       <styleClass>
+                                          <String fx:value="edit-button" />
+                                          <String fx:value="scale-button" />
+                                       </styleClass>
                                     </Button>
-                                    <Button fx:id="deleteWordBtn" layoutX="506.0" layoutY="5.0" minWidth="48.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="48.0" style="-fx-background-color: none;" styleClass="delete-button">
+                                    <Button fx:id="deleteWordBtn" layoutX="527.0" layoutY="7.0" minWidth="48.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="48.0" style="-fx-background-color: none;">
                                        <graphic>
-                                          <ImageView fitHeight="29.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="36.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../../resources/Icons/icons8-delete-48.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
                                        <tooltip>
-                                          <Tooltip text="Xóa từ này" />
+                                          <Tooltip text="Xóa từ này">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font></Tooltip>
                                        </tooltip>
+                                       <styleClass>
+                                          <String fx:value="delete-button" />
+                                          <String fx:value="scale-button" />
+                                       </styleClass>
                                     </Button>
-                                    <Label fx:id="selectedWord" layoutX="5.0" layoutY="5.0" prefHeight="35.0" prefWidth="386.0" styleClass="title-coler" text="Hello" textFill="#007acc" wrapText="true">
+                                    <Label fx:id="selectedWord" layoutX="8.0" layoutY="6.0" prefHeight="35.0" prefWidth="354.0" styleClass="title-coler" text="Hello" textFill="#007acc" wrapText="true">
                                        <font>
                                           <Font name="System Bold" size="17.0" />
                                        </font>
@@ -162,24 +192,31 @@
                                     </Label>
                                  </children>
                               </Pane>
-                              <Line endX="499.0" endY="-19.999996185302734" layoutX="54.0" layoutY="74.0" startX="-36.80003356933594" startY="-19.999988555908203" stroke="#3efa83" />
+                              <Line endX="515.7999877929688" endY="-19.999996185302734" layoutX="54.0" layoutY="74.0" startX="-36.80003356933594" startY="-19.999988555908203" stroke="#3efa83" />
                               <Label fx:id="phonetic" layoutX="24.0" layoutY="62.0" prefHeight="20.0" prefWidth="63.0" text="/sdwds/" />
-                              <ListView fx:id="listviewMeaning" layoutX="11.0" layoutY="88.0" prefHeight="354.0" prefWidth="556.0" />
-                              <Button fx:id="saveBtn" layoutX="500.0" layoutY="73.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: none;" styleClass="edit-button">
+                              <Button fx:id="saveBtn" layoutX="528.0" layoutY="60.0" minWidth="53.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="53.0" style="-fx-background-color: none;">
+                                 <tooltip>
+                                    <Tooltip text="Lưu chỉnh sửa">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Tooltip>
+                                 </tooltip>
+                                 <styleClass>
+                                    <String fx:value="scale-button" />
+                                    <String fx:value="editBtn" />
+                                 </styleClass>
                                  <graphic>
-                                    <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="41.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" styleClass="editBtn">
                                        <image>
-                                          <Image url="@../../../../Dictionary-OOP/Application/src/main/resources/Utils/icons/save_blue.png" />
+                                          <Image url="@../../resources/Icons/icons8-save-100.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
-                                 <tooltip>
-                                    <Tooltip text="Lưu chỉnh sửa" />
-                                 </tooltip>
                               </Button>
                            </children>
                            <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                              <Insets bottom="10.0" left="10.0" top="10.0" />
                            </VBox.margin>
                         </Pane>
                      </children>
