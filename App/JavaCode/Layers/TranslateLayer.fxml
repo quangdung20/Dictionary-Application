@@ -10,6 +10,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -32,13 +33,22 @@
             </Label>
          </children>
       </Pane>
-      <VBox layoutY="56.8" maxHeight="270.0" maxWidth="800.0" minHeight="250.0" prefHeight="270.0" prefWidth="800.0" AnchorPane.bottomAnchor="280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+      <VBox alignment="TOP_RIGHT" layoutY="56.8" maxHeight="270.0" maxWidth="800.0" minHeight="250.0" prefHeight="270.0" prefWidth="800.0" AnchorPane.bottomAnchor="280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
          <children>
-            <ChoiceBox fx:id="choseLangSource" maxHeight="30.0" minHeight="40.0" prefHeight="30.0" prefWidth="236.0" styleClass="shadow-button">
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </ChoiceBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button maxHeight="40.0" maxWidth="235.0" minHeight="40.0" mnemonicParsing="false" onAction="#translateBtn" prefWidth="200.0" text="DỊCH" textOverrun="CENTER_WORD_ELLIPSIS">
+                     <styleClass>
+                        <String fx:value="shadow-button" />
+                        <String fx:value="title-coler" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets right="377.0" />
+                     </HBox.margin>
+                  </Button>
+                  <ChoiceBox fx:id="choseLangSource" maxHeight="30.0" minHeight="40.0" prefHeight="30.0" prefWidth="200.0" styleClass="shadow-button" />
+               </children>
+            </HBox>
             <Pane minHeight="200.0" prefHeight="200.0" prefWidth="779.0" styleClass="english-word-input">
                <children>
                   <TextArea fx:id="inputSentence" layoutX="5.0" layoutY="4.0" prefHeight="149.0" prefWidth="719.0" promptText="Nhập từ hoặc đoạn văn..." style="-fx-background-color: #fff; -fx-background-position: none; -fx-border-color: #fff;">
@@ -46,7 +56,7 @@
                         <Font size="14.0" />
                      </font>
                   </TextArea>
-                  <Button layoutX="5.0" layoutY="153.0" minWidth="53.0" mnemonicParsing="false" onAction="#speckLangSource" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: none;">
+                  <Button layoutX="5.0" layoutY="153.0" minWidth="53.0" mnemonicParsing="false" onAction="#speakLangSource" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: none;">
                      <graphic>
                         <ImageView fitHeight="34.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" styleClass="edit-button">
                            <image>
@@ -86,9 +96,9 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox layoutY="321.0" maxHeight="282.0" minHeight="270.0" prefHeight="282.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="310.0">
+      <VBox alignment="TOP_RIGHT" layoutY="321.0" maxHeight="282.0" minHeight="270.0" prefHeight="282.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="310.0">
          <children>
-            <ChoiceBox fx:id="choseLangDestination" minHeight="40.0" prefHeight="30.0" prefWidth="235.0" styleClass="shadow-button">
+            <ChoiceBox fx:id="choseLangDestination" minHeight="40.0" prefHeight="30.0" prefWidth="200.0" styleClass="shadow-button">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
@@ -96,7 +106,7 @@
             <Pane maxHeight="230.0" minHeight="200.0" prefHeight="230.0" prefWidth="779.0" styleClass="english-word-input">
                <children>
                   <TextArea fx:id="outputMeaning" layoutX="6.0" layoutY="5.0" prefHeight="165.0" prefWidth="719.0" promptText="Bản dịch" style="-fx-background-color: none; -fx-border-color: none;" />
-                  <Button layoutX="7.0" layoutY="172.0" minWidth="53.0" mnemonicParsing="false" onAction="#speckLangDestination" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: none;">
+                  <Button layoutX="7.0" layoutY="172.0" minWidth="53.0" mnemonicParsing="false" onAction="#speakLangDestination" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: none;">
                      <graphic>
                         <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" styleClass="edit-button">
                            <image>

@@ -22,23 +22,20 @@ public class Question {
     private String answerC;
     private String answerD;
     private String correctAnswer;
-    private int difficulty; //from 1 to 3
-    private String subject;
+//    private int difficulty; //from 1 to 3
+//    private String subject;
 
     private Duration finishedTime;
     private boolean ansIsCorrect = false;
 
     public Question(String questionTitle, String answerA, String answerB,
-                    String answerC, String answerD, String correctAnswer,
-                    int difficulty, String subject) {
+                    String answerC, String answerD, String correctAnswer) {
         this.questionTitle = questionTitle;
         this.answerA = answerA;
         this.answerB = answerB;
         this.answerC = answerC;
         this.answerD = answerD;
         this.correctAnswer = correctAnswer;
-        this.difficulty = difficulty;
-        this.subject = subject;
     }
 
     public String getQuestionTitle() {
@@ -87,22 +84,6 @@ public class Question {
 
     public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
-    }
-
-    public int getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(int difficulty) {
-        this.difficulty = difficulty;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
     }
 
     public Duration getFinishedTime() {
@@ -181,11 +162,10 @@ public class Question {
         String answerC = (String) questionObject.get("answerC");
         String answerD = (String) questionObject.get("answerD");
         String correctAnswer = (String) questionObject.get("correctAnswer");
-        long difficulty = (long) questionObject.get("difficulty"); // Note: casting to long
-        String subject = (String) questionObject.get("subject");
+
 
         Question question = new Question(questionTitle, answerA, answerB, answerC, answerD,
-                correctAnswer, (int) difficulty, subject);
+                correctAnswer);
         return question;
     }
 
@@ -196,9 +176,9 @@ public class Question {
                 "\nB. " + answerB +
                 "\nC. " + answerC +
                 "\nD. " + answerD +
-                "\nCorrect Answer: " + correctAnswer +
-                "\nDifficulty: " + difficulty +
-                "\nSubject: " + subject;
+                "\nCorrect Answer: " + correctAnswer ;
+//                "\nDifficulty: " + difficulty +
+//                "\nSubject: " + subject;
     }
 
     @Override
@@ -209,5 +189,14 @@ public class Question {
         } else {
             return false;
         }
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Question> questions = new ArrayList<>();
+        readQuestionFile(questions);
+        for (Question question : questions) {
+            System.out.println(question);
+        }
+
     }
 }

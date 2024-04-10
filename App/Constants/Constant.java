@@ -8,8 +8,8 @@ public class Constant {
     public static final String DRIVER = Key.DRIVER;
     public static final String LOGO_IMAGE_PATH = "resources/Image/logo.png";
     public static final String NAME_APP = "Dictionary Application";
-    public static final String QUESTION_FILE = "resources/Data/Questions.txt";
-    public static final String STUDY_RECORD_FILE = "resources/Data/Question.txt";
+    public static final String QUESTION_FILE = "resources/Data/BoxQuestions.txt";
+    public static final String STUDY_RECORD_FILE = "resources/Data/StudyRecord.txt";
     public static final String USER_INFO_FILE = "resources/Data/users.txt";
     public static final String IMAGE_BRONZE = "resources/Image/bronze.png";
     public static final String IMAGE_SILVER = "resources/Image/silver.png";
@@ -28,9 +28,10 @@ public class Constant {
 
     public static final String PATH_TO_IMAGE_SAD = "";
 
-    public static final String PATH_TO_CORRECT_CHEERING = "";
+    public static final String PATH_TO_CORRECT_CHEERING = "resources/Audio/correct_ai_la_trieu_phu.mp3";
 
-    public static final String PATH_TO_INCORRECT_SOUND = "";
+    public static final String PATH_TO_INCORRECT_SOUND = "resources/Audio/incorrect_ai_la_trieu_phu.mp3";
+
 
     public static final String MENU_LAYER = "Layers/MenubarLayer.fxml";
     public static final String LOGIN_LAYER = "Layers/LoginLayer.fxml";

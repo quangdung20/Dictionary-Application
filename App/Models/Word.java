@@ -4,9 +4,17 @@ public class Word {
     private String word;
     private String meaning;
 
-    public Word(String word, String meaning) {
+    public String getMeaning() {
+        return meaning;
+    }
+
+    public void setMeaning(String meaning) {
+        this.meaning = meaning;
+    }
+
+    public Word(String word, String def) {
         this.word = word;
-        this.meaning= meaning;
+        this.meaning = def;
     }
 
     public String getWord() {
@@ -17,11 +25,4 @@ public class Word {
         this.word = word;
     }
 
-    public String getMeaning() {
-        return meaning;
-    }
-
-    public void setMeaning(String meaning) {
-        this.meaning = meaning;
-    }
 }
