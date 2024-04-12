@@ -165,9 +165,19 @@
     -fx-font-size: 14px;
 }
 
+.list-cell{
+    -fx-text-fill: #0e2c7e;
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+}
+.list-cell:filled:hover,
+.list-cell:filled:selected{
+    -fx-background-color: #082d93;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
 .answer-text{
-    -fx-text-fill: #333333;
-    -fx-border-color: #4285f4;
+    -fx-text-fill: #082d93;
     -fx-background-color: #FFF;
     -fx-font-size: 14px;
     -fx-border-width: 1.5;

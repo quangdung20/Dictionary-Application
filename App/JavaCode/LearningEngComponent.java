@@ -2,6 +2,7 @@ package JavaCode;
 
 import Models.Question;
 import Models.StudyRecord;
+import com.sun.media.jfxmedia.Media;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -17,13 +18,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-
 import java.io.InputStream;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -129,10 +128,9 @@ public class LearningEngComponent extends DatabaseConnection  implements Initial
         setQuestionProgress(1, currentQuestion);
 
         setupQuestion();
-        vboxListRanking.setVisible(false);
 
-        //Các quyền trợ giúp
-        //50 50
+
+//        50 50
         fiftyPercentBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -142,7 +140,7 @@ public class LearningEngComponent extends DatabaseConnection  implements Initial
             }
         });
 
-        //Tổ tư vấn
+//        Tổ tư vấn
         teamworkBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -152,7 +150,7 @@ public class LearningEngComponent extends DatabaseConnection  implements Initial
             }
         });
 
-        //Đổi câu hỏi khác
+//        Đổi câu hỏi khác
         shuffleBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -658,23 +656,23 @@ public class LearningEngComponent extends DatabaseConnection  implements Initial
 
         ClassLoader classLoader = getClass().getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(PATH_TO_IMAGE_FIREWORK);
-        javafx.scene.image.Image originalImage = new javafx.scene.image.Image(inputStream);
+        Image originalImage = new Image(inputStream);
 
         if (isCorrect) {
             // Tải hình ảnh từ tài nguyên
             inputStream = classLoader.getResourceAsStream(PATH_TO_IMAGE_FIREWORK);
             originalImage = new javafx.scene.image.Image(inputStream);
-            correctAudioMedia = new Media(classLoader.getResource(PATH_TO_CORRECT_CHEERING).toExternalForm());
-            correctAudioMediaPlayer = new MediaPlayer(correctAudioMedia);
+//            correctAudioMedia = new Media(classLoader.getResource(PATH_TO_CORRECT_CHEERING).toExternalForm());
+//            correctAudioMediaPlayer = new MediaPlayer(correctAudioMedia);
         } else {
             // Tải hình ảnh từ tài nguyên
             inputStream = classLoader.getResourceAsStream(PATH_TO_IMAGE_SAD);
             originalImage = new javafx.scene.image.Image(inputStream);
-            correctAudioMedia = new Media(classLoader.getResource(PATH_TO_INCORRECT_SOUND).toExternalForm());
-            correctAudioMediaPlayer = new MediaPlayer(correctAudioMedia);
+//            correctAudioMedia = new Media(classLoader.getResource(PATH_TO_INCORRECT_SOUND).toExternalForm());
+//            correctAudioMediaPlayer = new MediaPlayer(correctAudioMedia);
         }
 
-        correctAudioMediaPlayer.play(); // Phát âm thanh hoan hô
+//        correctAudioMediaPlayer.play(); // Phát âm thanh hoan hô
 
         // Tạo một số lượng hạt pháo hoa
         int numFireworks = 40;
@@ -732,7 +730,7 @@ public class LearningEngComponent extends DatabaseConnection  implements Initial
         mainTimeLine.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                correctAudioMediaPlayer.stop(); // Dừng phát âm thanh sau khi hiệu ứng hoàn thành
+//                correctAudioMediaPlayer.stop(); // Dừng phát âm thanh sau khi hiệu ứng hoàn thành
 
                 //Enable buttons
                 answerBtnA.setDisable(false);

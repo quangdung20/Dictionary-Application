@@ -12,6 +12,8 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.util.Duration;
 
 public class TranslateComponent implements Initializable {
@@ -31,6 +33,10 @@ public class TranslateComponent implements Initializable {
 
         @FXML
         private TextArea outputMeaning;
+        @FXML
+        private Button cancelBtn;
+        @FXML
+        private Button copyText;
 
 
         void LangSource() {
@@ -125,6 +131,17 @@ public class TranslateComponent implements Initializable {
                 }
         }
 
+        // copy text to pc
+        @FXML
+        void copyText() {
+                String text = outputMeaning.getText();
+                if (!text.isEmpty()) {
+                        final Clipboard clipboard = Clipboard.getSystemClipboard();
+                        final ClipboardContent content = new ClipboardContent();
+                        content.putString(text);
+                        clipboard.setContent(content);
+                }
+        }
         @Override
         public void initialize(URL location, ResourceBundle resources) {
 
@@ -137,21 +154,29 @@ public class TranslateComponent implements Initializable {
                 speakFrom = "en-us";
                 languageTo = "vi";
 
-                if (inputSentence.getText().isBlank()) {
-                        PauseTransition pause = new PauseTransition(Duration.seconds(1));
-                        inputSentence.textProperty().addListener((observable, oldValue, newValue) -> {
-                                pause.setOnFinished(event -> {
-                                        try {
-                                                // Gọi API dịch từ
-                                                String translatedText = TranslateAPI.googleTranslate(languageFrom, languageTo, newValue);
-                                                // Hiển thị kết quả dịch vào TextArea
-                                                outputMeaning.setText(translatedText);
-                                        } catch (IOException e) {
-                                                e.printStackTrace();
-                                        }
-                                });
-                                pause.playFromStart();
-                        });
-                }
+                cancelBtn.setOnMouseClicked(event -> {
+                        inputSentence.clear();
+                        outputMeaning.clear();
+                });
+
+                // meaning text không được edit
+                outputMeaning.setEditable(false);
+//                if (inputSentence.getText().isBlank()) {
+//                        PauseTransition pause = new PauseTransition(Duration.seconds(1));
+//                        inputSentence.textProperty().addListener((observable, oldValue, newValue) -> {
+//                                pause.setOnFinished(event -> {
+//                                        try {
+//                                                // Gọi API dịch từ
+//                                                String translatedText = TranslateAPI.googleTranslate(languageFrom, languageTo, newValue);
+//                                                // Hiển thị kết quả dịch vào TextArea
+//                                                outputMeaning.setText(translatedText);
+//                                        } catch (IOException e) {
+//                                                e.printStackTrace();
+//                                        }
+//                                });
+//                                pause.playFromStart();
+//                        });
+//                }
+
         }
 }

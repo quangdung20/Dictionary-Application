@@ -21,17 +21,14 @@ public class Constant {
     public static final String IMAGE_CHALLENGER = "resources/Image/challenger.png";
 
     public static final String DELETED_WORD_MARK = "<deleted>";
+    public static final String SEPARATE_WORD = "<html>";
+
 
     public static final String PATH_TO_IMAGE_FIREWORK = "";
 
     public static final String PATH_TO_IMAGE_DICTIONARY = "";
 
     public static final String PATH_TO_IMAGE_SAD = "";
-
-    public static final String PATH_TO_CORRECT_CHEERING = "resources/Audio/correct_ai_la_trieu_phu.mp3";
-
-    public static final String PATH_TO_INCORRECT_SOUND = "resources/Audio/incorrect_ai_la_trieu_phu.mp3";
-
 
     public static final String MENU_LAYER = "Layers/MenubarLayer.fxml";
     public static final String LOGIN_LAYER = "Layers/LoginLayer.fxml";
@@ -40,6 +37,11 @@ public class Constant {
     public static final String ACTIVE_COMPONENT_LAYER = "Layers/ActiveLayer.fxml";
     public static final String TRANSLATE_LAYER = "Layers/TranslateLayer.fxml";
     public static final String LEARNING_LAYER = "Layers/LearningEngLayer.fxml";
+    public static final String DATA_EV_FILE_PATH = "resources/Data/E_V.txt";
+    public static final String DATA_VE_FILE_PATH = "resources/Data/V_E.txt";
 
-    public static final String URL_API = "https://api.dictionaryapi.dev/api/v2";
+    public static final String EDITED_WORD_EV_FILE = "Application/userdata/Edited_Word_EV.txt";
+    public static final String EDITED_WORD_VE_FILE = "Application/userdata/Edited_Word_VE.txt";
+
+
 }
