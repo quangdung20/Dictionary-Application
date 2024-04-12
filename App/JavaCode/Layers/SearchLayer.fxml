@@ -188,7 +188,7 @@
                                           <String fx:value="scale-button" />
                                        </styleClass>
                                     </Button>
-                                    <Label fx:id="selectedWord" layoutX="8.0" layoutY="6.0" prefHeight="35.0" prefWidth="354.0" styleClass="title-coler" text="Hello" textFill="#007acc" wrapText="true">
+                                    <Label fx:id="selectedWord" layoutX="8.0" layoutY="6.0" prefHeight="35.0" prefWidth="399.0" styleClass="title-coler" text="Hello" textFill="#007acc" wrapText="true">
                                        <font>
                                           <Font name="System Bold" size="17.0" />
                                        </font>
@@ -220,7 +220,7 @@
                                  </graphic>
                               </Button>
                               <WebView fx:id="meaningArea" layoutX="23.0" layoutY="72.0" prefHeight="378.0" prefWidth="505.0" />
-                              <ListView fx:id="suggestWord" layoutX="55.0" layoutY="-19.0" prefHeight="183.0" prefWidth="240.0" style="-fx-background-color: #fff; -fx-background-radius: 0 0 10 10;">
+                              <ListView fx:id="suggestWord" layoutX="54.0" layoutY="-15.0" maxHeight="131.0" maxWidth="240.0" prefHeight="131.0" prefWidth="234.0" style="-fx-background-color: #fff; -fx-background-radius: 0 0 10 10;">
                                  <styleClass>
                                     <String fx:value="shadow-button" />
                                     <String fx:value="answer-text" />

@@ -109,7 +109,6 @@ public class SearchComponent implements Initializable{
 
                 String searchKey = inputWord.getText();
                 if (searchKey.isEmpty()) {
-                    showMeaningWord();
                     cancelBtn.setVisible(false);
                 } else {
                     cancelBtn.setVisible(true);
@@ -125,6 +124,7 @@ public class SearchComponent implements Initializable{
             }
         });
 
+        // listen to key released event
         inputWord.setOnKeyReleased(event -> {
             String searchKey = inputWord.getText();
             handleSearchOnKeyTyped(searchKey);
@@ -166,8 +166,6 @@ public class SearchComponent implements Initializable{
                 currentData = dataEngVie;
             }
             isEngVie = !isEngVie;
-
-           showMeaningWord();
         }
     }
 
@@ -197,20 +195,10 @@ public class SearchComponent implements Initializable{
             }
         });
 
-        showMeaningWord();
         suggestWord.setVisible(false);
     }
 
-    private void showMeaningWord() {
-        // Chuyển danh sách từ Map thành danh sách có thứ tự
-        List<String> sortedWords = new ArrayList<>(currentData.keySet());
 
-        // Sắp xếp danh sách các từ theo thứ tự bảng chữ cái (alpha)
-        Collections.sort(sortedWords);
-
-        // Đặt danh sách đã sắp xếp vào wordListView
-        this.history_search.getItems().setAll(sortedWords);
-    }
 
     private void showResultSuggest(List<String> searchResultList) {
         // Sắp xếp danh sách các từ theo thứ tự bảng chữ cái (alpha)
@@ -233,7 +221,6 @@ public class SearchComponent implements Initializable{
         }
 
         if (searchResultList.isEmpty()) {
-            showMeaningWord();
             suggestWord.setVisible(false);
             suggestWord.getItems().clear();
         } else {
