@@ -22,9 +22,6 @@ public class Question {
     private String answerC;
     private String answerD;
     private String correctAnswer;
-//    private int difficulty; //from 1 to 3
-//    private String subject;
-
     private Duration finishedTime;
     private boolean ansIsCorrect = false;
 
@@ -102,13 +99,13 @@ public class Question {
         this.ansIsCorrect = ansIsCorrect;
     }
 
-    // Chuyển đối tượng Question thành chuỗi JSON
+    //change Question object to JSON string
     public String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this);
     }
 
-    // Chuyển chuỗi JSON thành đối tượng Question
+    // Change JSON string to Question object
     public static Question fromJson(String jsonString) {
         Gson gson = new Gson();
         return gson.fromJson(jsonString, Question.class);
@@ -177,8 +174,6 @@ public class Question {
                 "\nC. " + answerC +
                 "\nD. " + answerD +
                 "\nCorrect Answer: " + correctAnswer ;
-//                "\nDifficulty: " + difficulty +
-//                "\nSubject: " + subject;
     }
 
     @Override

@@ -5,13 +5,13 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -24,13 +24,18 @@ public class MenuBarController extends DatabaseConnection implements Initializab
     private Button addWordBtn;
     @FXML
     private Button btnLogout;
-
     @FXML
     private Button learningEngBtn;
     @FXML
     private Button searchBtn;
     @FXML
     private Button translateBtn;
+    @FXML
+    private ImageView imageUser;
+    @FXML
+    private Button changeImage;
+    @FXML
+    private Label userTitle;
 
     @FXML
     void setLogout(ActionEvent event) throws Exception {
@@ -52,11 +57,35 @@ public class MenuBarController extends DatabaseConnection implements Initializab
             main.initializeStage(stage);
         }
     }
-    @FXML
-    void initialize() {
 
+    private void setLabelUser() {
+        // set label user red color
+        userTitle.setText(currentUser.getUsername());
+        userTitle.setStyle("-fx-text-fill: #FF0000;");
+    }
+
+    private void setChangeImage() {
+        changeImage.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Open Resource File");
+                fileChooser.getExtensionFilters().addAll(
+                        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
+                File selectedFile = fileChooser.showOpenDialog(changeImage.getScene().getWindow());
+                if (selectedFile != null) {
+                    Image image = new Image(selectedFile.toURI().toString());
+                    imageUser.setImage(image);
+                }
+            }
+        });
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         // Set the default component to display when the application is started.
         showComponent(SEARCH_LAYER);
+        setLabelUser();
+        setChangeImage();
         addWordBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -81,11 +110,5 @@ public class MenuBarController extends DatabaseConnection implements Initializab
                 showComponent(ACTIVE_COMPONENT_LAYER);
             }
         });
-
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        initialize();
     }
 }

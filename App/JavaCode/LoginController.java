@@ -1,4 +1,5 @@
 package JavaCode;
+import Models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.*;
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -77,6 +79,7 @@ public class LoginController extends DatabaseConnection implements Initializable
     private Button changePass_backBtn, changePass_proceedBtn;
     @FXML
     private TextField changeConFirmPassword, changePass_password;
+
 
     @FXML
     void changePassword(ActionEvent event) {
@@ -145,14 +148,16 @@ public class LoginController extends DatabaseConnection implements Initializable
         String verifyLogin = "SELECT count(1) FROM user_account WHERE username = " +
                 "'" + login_username.getText() + "' AND password = '" + login_password.getText() + "'";
 
-        try (Connection connectDB = getConnection()) {
+        try (Connection connectDB = getConnection()){
             Statement statement = connectDB.createStatement();
             ResultSet queryResult = statement.executeQuery(verifyLogin);
 
             while (queryResult.next()) {
                 if (queryResult.getInt(1) == 1) {
-//                    alert.successMessage("Đăng nhập thành công");
+                    saveCurrentUser(login_username.getText());
                     gotoMainApp();
+                    getScoreUsers();
+
                 } else {
                     alert.errorMessage("Thông tin đăng nhập không chính xác, vui lòng kiểm tra lại");
                 }
@@ -212,15 +217,10 @@ public class LoginController extends DatabaseConnection implements Initializable
                 if (queryResult.getInt(1) == 1) {
                     alert.errorMessage("Tên " + nameSignup.getText() + " đã tồn tại");
                 } else {
-                    String insertSignUp = "INSERT INTO user_account(username, password, email, question, answer) VALUES (?, ?, ?, ?, ?)";
-                    PreparedStatement insertStatement = connectDB.prepareStatement(insertSignUp);
-                    insertStatement.setString(1, nameSignup.getText());
-                    insertStatement.setString(2, signup_password.getText());
-                    insertStatement.setString(3, emailSignup.getText());
-                    insertStatement.setString(4, selectQuestion_signup.getValue());
-                    insertStatement.setString(5, answer_signup.getText());
-                    insertStatement.executeUpdate();
-                    alert.successMessage("Đăng ký thành công!");
+                    DatabaseConnection databaseConnection = new DatabaseConnection();
+                    databaseConnection.insertUser(new User(nameSignup.getText(), signup_password.getText(),
+                            emailSignup.getText(), selectQuestion_signup.getValue(), answer_signup.getText(), 0));
+                    alert.successMessage("Đăng ký thành công" + "\n" + "Chào mừng bạn đến với " + NAME_APP);
                 }
             }
         } catch (Exception e) {
@@ -279,4 +279,6 @@ public class LoginController extends DatabaseConnection implements Initializable
         answerCheckPass.setItems(questions);
         forgotPassText.setOnMouseClicked(event -> switchForgotForm(event));
     }
+
+
 }

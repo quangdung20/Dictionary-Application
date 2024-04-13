@@ -10,7 +10,9 @@ public class Constant {
     public static final String NAME_APP = "Dictionary Application";
     public static final String QUESTION_FILE = "resources/Data/BoxQuestions.txt";
     public static final String STUDY_RECORD_FILE = "resources/Data/StudyRecord.txt";
-    public static final String USER_INFO_FILE = "resources/Data/users.txt";
+    public static final String USER_INFO_FILE = "resources/Data/saveUser.txt";
+
+    // image ranking
     public static final String IMAGE_BRONZE = "resources/Image/bronze.png";
     public static final String IMAGE_SILVER = "resources/Image/silver.png";
     public static final String IMAGE_GOLD = "resources/Image/gold.png";
@@ -42,6 +44,9 @@ public class Constant {
 
     public static final String EDITED_WORD_EV_FILE = "Application/userdata/Edited_Word_EV.txt";
     public static final String EDITED_WORD_VE_FILE = "Application/userdata/Edited_Word_VE.txt";
+
+
+    public static final String SAVE_USER_FILE = "resources/Data/saveUser.txt";
 
 
 }

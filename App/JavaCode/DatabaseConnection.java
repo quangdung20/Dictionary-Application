@@ -1,5 +1,5 @@
 package JavaCode;
-import Models.StudyRecord;
+
 import Models.User;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -15,11 +15,13 @@ import java.util.ResourceBundle;
 
 import Constants.Constant;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 
-import static JavaCode.ActiveComponent.listRankingUsers;
 
-public abstract class DatabaseConnection {
+import static JavaCode.LoginController.currentUser;
+
+public class DatabaseConnection {
 
     @FXML
     AnchorPane container;
@@ -27,12 +29,12 @@ public abstract class DatabaseConnection {
     public Connection databaseLink;
     protected static Timeline countdownTimer;
 
-    protected static User user;
+    protected static User user, currentUser;
 
-    public static HashMap<String, User> mapUsers = new HashMap<>();
+
     public static ArrayList<User> listUsers = new ArrayList<>();
 
-    public Connection getConnection(){
+    public Connection getConnection() {
 
         try {
             Class.forName(Constant.DRIVER);
@@ -43,7 +45,7 @@ public abstract class DatabaseConnection {
         }
         return databaseLink;
     }
-    
+
     void showComponent(String path) {
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource(path));
@@ -53,40 +55,89 @@ public abstract class DatabaseConnection {
         }
     }
 
-    public void getListUserData() {
+    public void getScoreUsers() {
         Connection connection = getConnection();
-        String query = "SELECT * FROM user_account";
-
+        String query = "SELECT username, score\n" +
+                "FROM user_account\n" +
+                "ORDER BY score DESC;";
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
-            listUsers.clear();
-            mapUsers.clear();
             while (resultSet.next()) {
-                User retrievedUser = new User();
-                retrievedUser.setUsername(resultSet.getString("username"));
-                // Set other fields...
-
-                listUsers.add(retrievedUser);
-                mapUsers.put(retrievedUser.getUsername(), retrievedUser);
-                System.out.println("+1 user: " + retrievedUser.getUsername());
-                // Set the user object to the retrievedUser
-                user = retrievedUser;
-            }
-
-            if (listRankingUsers != null) {
-                listRankingUsers.clear();
-                sortRankingByPoint();
-                listRankingUsers.addAll(listUsers);
+                String username = resultSet.getString("username");
+                int score = resultSet.getInt("score");
+                User user = new User(username, score);
+                listUsers.add(user);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void sortRankingByPoint() {
-        Collections.sort(listUsers);
-        Collections.reverse(listUsers);
+    public void updateScoreUser(User user) {
+        Connection connection = getConnection();
+        String query = "UPDATE user_account\n" +
+                "SET score = ?\n" +
+                "WHERE username = ?;";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, user.getScore());
+            preparedStatement.setString(2, user.getUsername());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
+    public void insertUser(User user) {
+        Connection connection = getConnection();
+        String insertUser = "INSERT INTO user_account(username, password, email, question, answer, score) VALUES (?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(insertUser);
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getEmail());
+            preparedStatement.setString(4, user.getQuestion());
+            preparedStatement.setString(5, user.getAnswer());
+            preparedStatement.setInt(6, user.getScore());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Lưu username và score của user hiện tại sau khi đăng nhập thành công
+    public void saveCurrentUser(String username) {
+        Connection connection = getConnection();
+        String query = "SELECT username, score\n" +
+                "FROM user_account\n" +
+                "WHERE username = ?;";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String username1 = resultSet.getString("username");
+                int score = resultSet.getInt("score");
+                currentUser = new User(username1, score);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    // test score of user
+    public static void main(String[] args) {
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        databaseConnection.getScoreUsers();
+        databaseConnection.updateScoreUser(new User("quangdung", 1000));
+
+        // print username and score of user
+        for (User user : listUsers) {
+            System.out.println(user.getUsername() + " \t" + user.getScore());
+        }
+    }
 }

@@ -311,3 +311,7 @@
 .volume-button:pressed{
     -fx-effect: dropshadow(three-pass-box, #4f2258, 4, 0, 0, 1) ;
 }
+
+.current-user {
+    -fx-text-fill: red; /* Thay đổi màu sắc tại đây */
+}

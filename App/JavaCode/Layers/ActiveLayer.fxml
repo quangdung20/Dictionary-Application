@@ -27,7 +27,7 @@
                   <Insets bottom="10.0" />
                </BorderPane.margin>
                <children>
-                  <Label fx:id="progressTitle" layoutY="-10.0" prefHeight="71.0" prefWidth="359.0" styleClass="title" text="Thông số  NA">
+                  <Label layoutY="-10.0" prefHeight="71.0" prefWidth="256.0" styleClass="title" text="Học tập ">
                      <graphic>
                         <ImageView fitHeight="76.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -58,15 +58,19 @@
                         <Insets left="10.0" />
                      </padding>
                         </Label>
-                  <Pane prefHeight="139.0" prefWidth="205.0" styleClass="english-word-input">
+                  <AnchorPane prefHeight="131.0" prefWidth="210.0" styleClass="english-word-input">
                      <children>
-                        <ImageView fitHeight="92.0" fitWidth="113.0" layoutX="54.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label alignment="CENTER" layoutX="62.0" layoutY="96.0" prefHeight="17.0" prefWidth="86.0" styleClass="title-coler" text="Rank" />
+                        <ImageView fx:id="imageRanking" fitHeight="109.0" fitWidth="126.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/Image/master.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="labelRanking" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="104.0" prefHeight="27.0" prefWidth="162.0" style="-fx-text-fill: #d1460f;" styleClass="title-coler" text="Rank" textFill="#d1460f40" AnchorPane.bottomAnchor="1.5999999999999943" AnchorPane.rightAnchor="24.19999999999999" AnchorPane.topAnchor="104.0" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
-                  </Pane>
+                  </AnchorPane>
                             <Label fx:id="progressTitle11" maxHeight="50.0" maxWidth="250.0" minHeight="50.0" minWidth="230.0" prefHeight="50.0" text="Bảng xếp hạng" textFill="#FFF" wrapText="true">
                      <styleClass>
                         <String fx:value="title-coler" />
@@ -86,7 +90,7 @@
                         <Insets left="10.0" />
                      </padding>
                             </Label>
-                          <ListView fx:id="listViewRanking" prefHeight="269.0" prefWidth="214.0" styleClass="english-word-input">
+                  <ListView fx:id="listViewRanking" prefHeight="258.0" prefWidth="210.0" styleClass="english-word-input">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
@@ -155,7 +159,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                             </VBox>
-                  <Button fx:id="btnOffline" contentDisplay="CENTER" layoutX="220.0" layoutY="218.0" maxHeight="40.0" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #2173ed, #04b4e0ec)linear-gradient(from 25% 25% to 100% 100%, #2173ed, #04b4e0ec); -fx-text-fill: #fff;" text="Vào học">
+                  <Button fx:id="leaningBtn" contentDisplay="CENTER" layoutX="220.0" layoutY="218.0" maxHeight="40.0" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #2173ed, #04b4e0ec)linear-gradient(from 25% 25% to 100% 100%, #2173ed, #04b4e0ec); -fx-text-fill: #fff;" text="Vào học">
                      <styleClass>
                         <String fx:value="scale-button" />
                         <String fx:value="shadow-button" />

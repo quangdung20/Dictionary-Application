@@ -1,7 +1,6 @@
 package JavaCode;
 
 import Models.Question;
-import Models.StudyRecord;
 import com.sun.media.jfxmedia.Media;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -437,59 +436,7 @@ public class LearningEngComponent extends DatabaseConnection  implements Initial
     }
 
     private void updateTestRecord(int score, int numberOfCorrectAns, Duration duration) {
-        StudyRecord studyRecord = StudyRecord.readRecordFile();
-        if (user != null) {
-            if (user.getStudyRecord() != null) {
-                studyRecord = user.getStudyRecord();
-            }
-        }
-        // Lấy ngày hôm nay
-        Date currentDate = new Date();
-        // Định dạng ngày thành chuỗi
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        String formattedDate = dateFormat.format(currentDate);
 
-        if (studyRecord == null) {
-            HashMap<String, Duration> mapStudyTime = new HashMap<>();
-            mapStudyTime.put(formattedDate, duration);
-            studyRecord = new StudyRecord(
-                    score,
-                    1,
-                    listQuestion.size(),
-                    numberOfCorrectAns,
-                    listQuestion.size() - numberOfCorrectAns,
-                    duration,
-                    mapStudyTime
-            );
-        } else {
-            int newScore = studyRecord.getTotalScore() + score;
-            Duration newTotalTime = studyRecord.getTotalTimeSpend().plus(duration);
-            int newTotalQuestion = studyRecord.getTotalQuestion() + listQuestion.size();
-            int newTimeAttempt = studyRecord.getTimesAttempt() + 1;
-            int newCorrectAns = studyRecord.getCorrectQuestions() + numberOfCorrectAns;
-            int newIncorrectAns = studyRecord.getIncorrectQuestions()
-                    + listQuestion.size() - numberOfCorrectAns;
-
-            Duration newDayStudyTime = studyRecord.getMapStudyTime().get(formattedDate);
-            if (newDayStudyTime == null) {
-                studyRecord.getMapStudyTime().put(formattedDate, duration);
-            } else {
-                newDayStudyTime = newDayStudyTime.plus(duration); // Cập nhật newDayStudyTime
-                studyRecord.getMapStudyTime().put(formattedDate, newDayStudyTime);
-            }
-
-            studyRecord.setTotalScore(newScore);
-            studyRecord.setTotalTimeSpend(newTotalTime);
-            studyRecord.setTotalQuestion(newTotalQuestion);
-            studyRecord.setTimesAttempt(newTimeAttempt);
-            studyRecord.setCorrectQuestions(newCorrectAns);
-            studyRecord.setIncorrectQuestions(newIncorrectAns);
-        }
-
-        studyRecord.writeStudyRecord();
-        ActiveComponent.studyRecord = studyRecord;
-        user.setStudyRecord(studyRecord);
-//        LoginController.saveUserToFirebase(user);
     }
 
     private void showScoreSummaryDialog() {
