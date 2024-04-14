@@ -110,7 +110,7 @@ public class DatabaseConnection {
     // Lưu username và score của user hiện tại sau khi đăng nhập thành công
     public void saveCurrentUser(String username) {
         Connection connection = getConnection();
-        String query = "SELECT username, score\n" +
+        String query = "SELECT username, email, score\n" +
                 "FROM user_account\n" +
                 "WHERE username = ?;";
 
@@ -121,7 +121,8 @@ public class DatabaseConnection {
             while (resultSet.next()) {
                 String username1 = resultSet.getString("username");
                 int score = resultSet.getInt("score");
-                currentUser = new User(username1, score);
+                String email = resultSet.getString("email");
+                currentUser = new User(username1, score, email);
             }
         } catch (SQLException e) {
             e.printStackTrace();

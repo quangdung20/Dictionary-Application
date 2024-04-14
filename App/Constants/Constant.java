@@ -38,7 +38,9 @@ public class Constant {
     public static final String ADD_WORD_LAYER = "Layers/AddWordLayer.fxml";
     public static final String ACTIVE_COMPONENT_LAYER = "Layers/ActiveLayer.fxml";
     public static final String TRANSLATE_LAYER = "Layers/TranslateLayer.fxml";
-    public static final String LEARNING_LAYER = "Layers/LearningEngLayer.fxml";
+    public static final String GAME_TESTING = "Layers/GameTesting..fxml";
+    public static final String GAME_WORD = "App/resources/Data/game.html";
+    public static final String GAME_UNSCRAMBLE = "Layers/GameUnscramble.fxml";
     public static final String DATA_EV_FILE_PATH = "resources/Data/E_V.txt";
     public static final String DATA_VE_FILE_PATH = "resources/Data/V_E.txt";
 

@@ -64,6 +64,11 @@ public class User {
         this.score = score;
     }
 
+    public User(String username, int score, String email) {
+        this.username = username;
+        this.score = score;
+        this.email = email;
+    }
     public User() {
     }
 

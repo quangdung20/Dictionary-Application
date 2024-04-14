@@ -25,7 +25,6 @@ import javafx.stage.Stage;
 import java.io.InputStream;
 import java.net.URL;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -33,7 +32,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static Constants.Constant.*;
 
-public class LearningEngComponent extends DatabaseConnection  implements Initializable{
+public class GameQuiz extends DatabaseConnection  implements Initializable{
 
     @FXML
     public AnchorPane bodyContainer, headerContainer;

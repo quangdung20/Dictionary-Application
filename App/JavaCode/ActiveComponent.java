@@ -34,43 +34,42 @@ public class ActiveComponent extends DatabaseConnection implements Initializable
     private ImageView imageRanking;
 
     @FXML
-    private Label labelCorrectRatio;
+    private Label emailtitle;
 
     @FXML
-    private Label labelRanking;
+    private Label nametitle;
 
     @FXML
-    private Label labelTimeAverage;
+    private Label pointitle;
 
     @FXML
-    private Label labelTimeSpend;
+    private Label labelRanking, ranktitle;
+
 
     @FXML
-    private Label labelTotalAttempt;
+    private Button learningBtn1, learningBtn2;
 
-    @FXML
-    private Button leaningBtn;
-
-    @FXML
-    private LineChart<String, Number> lineChartTime;
 
     @FXML
     private ListView<String> listViewRanking;
 
-    @FXML
-    private PieChart pieChartQuestion;
-
-    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        leaningBtn.setOnAction(new EventHandler<ActionEvent>() {
+        showInfoUser();
+        learningBtn2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                showComponent("Layers/LearningEngLayer.fxml");
+                showComponent(GAME_TESTING);
             }
         });
 
+        learningBtn1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                showComponent(GAME_UNSCRAMBLE);
+            }
+        });
         showListRank(listUsers);
         setupImageRanking(String.valueOf(currentUser.getScore()));
         // set label user
@@ -149,6 +148,12 @@ public class ActiveComponent extends DatabaseConnection implements Initializable
             }
         }
         labelRanking.setText(Ranking.getRanking(Integer.parseInt(totalScore)).getValue());
+        ranktitle.setText(Ranking.getRanking(Integer.parseInt(totalScore)).getValue());
+    }
+    private void showInfoUser() {
+        nametitle.setText(currentUser.getUsername());
+        emailtitle.setText(currentUser.getEmail());
+        pointitle.setText(String.valueOf(currentUser.getScore()));
     }
 
 }
