@@ -1,4 +1,4 @@
 package JavaCode;
 
-public class AddWordComponent extends DatabaseConnection {
+public class AddWordController extends DatabaseConnection {
 }

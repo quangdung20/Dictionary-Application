@@ -25,7 +25,7 @@ import java.util.*;
 import static Constants.Constant.*;
 import static Models.Request_ListWord.*;
 
-public class SearchComponent implements Initializable{
+public class SearchController implements Initializable{
 
     @FXML
     private Button cancelBtn;

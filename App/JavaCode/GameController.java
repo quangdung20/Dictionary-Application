@@ -28,7 +28,7 @@ import java.util.*;
 
 import static Constants.Constant.*;
 
-public class ActiveComponent extends DatabaseConnection implements Initializable {
+public class GameController extends DatabaseConnection implements Initializable {
 
     @FXML
     private ImageView imageRanking;

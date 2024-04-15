@@ -16,7 +16,7 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.util.Duration;
 
-public class TranslateComponent extends DatabaseConnection implements Initializable {
+public class TranslateController extends DatabaseConnection implements Initializable {
         String languageFrom = "";
         String languageTo = "vi";
         String speakFrom;
