@@ -15,8 +15,6 @@ public class GameUnscramble {
     private WebView webView;
     @FXML
     public void initialize() {
-            // Đường dẫn của tệp chứa nội dung HTML
-
             try {
                 // Đọc nội dung từ tệp và tạo một chuỗi chứa nó
                 StringBuilder contentBuilder = new StringBuilder();
@@ -34,6 +32,8 @@ public class GameUnscramble {
                 e.printStackTrace();
             }
 //        String url = "https://e.gamevui.vn/web/2017/06/duoi-hinh-bat-chu-tieng-anh/?gid=15908&amp;returnurl=https%3a%2f%2fgamevui.vn%2fduoi-hinh-bat-chu-tieng-anh%2fgame&amp;ratedages=0";
+//        String url = "https://gamevui.vn/https://e.gamevui.vn/web/2023/08/ban-bong-pha-gach-3?gid=22500&returnurl=https%3a%2f%2fgamevui.vn%2fban-bong-pha-gach-3%2fgame&ratedages=0";
 //        webView.getEngine().load(url);
+
         }
     }

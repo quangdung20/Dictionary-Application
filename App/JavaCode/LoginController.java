@@ -205,6 +205,9 @@ public class LoginController extends DatabaseConnection implements Initializable
             checkSigUp();
         }
     }
+
+    // Check if the username is already in the database
+    // If not, insert the user into the database
     private void checkSigUp() {
         AlertMessage alert = new AlertMessage();
         String usernameCheckQuery = "SELECT count(1) FROM user_account WHERE username = ?";
@@ -229,17 +232,7 @@ public class LoginController extends DatabaseConnection implements Initializable
         }
     }
 
-    @FXML
-    void switchForgotForm(MouseEvent event) {
-        Object source = event.getSource();
-        if (source == forgotPassText) {
-            signup_form.setVisible(false);
-            login_form.setVisible(false);
-            forgot_form.setVisible(true);
-            changePass_form.setVisible(false);
-        }
 
-    }
     @FXML
     void switchForm(ActionEvent event) {
         // the login form will be visible
@@ -277,7 +270,15 @@ public class LoginController extends DatabaseConnection implements Initializable
         );
         selectQuestion_signup.setItems(questions);
         answerCheckPass.setItems(questions);
-        forgotPassText.setOnMouseClicked(event -> switchForgotForm(event));
+
+        // forgotPassText is a Text object
+        // when the user clicks on the text, the forgot form will be visible
+        forgotPassText.setOnMouseClicked(event -> {
+            signup_form.setVisible(false);
+            login_form.setVisible(false);
+            forgot_form.setVisible(true);
+            changePass_form.setVisible(false);
+        });
     }
 
 

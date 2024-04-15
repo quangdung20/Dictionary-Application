@@ -16,7 +16,7 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.util.Duration;
 
-public class TranslateComponent implements Initializable {
+public class TranslateComponent extends DatabaseConnection implements Initializable {
         String languageFrom = "";
         String languageTo = "vi";
         String speakFrom;
@@ -38,6 +38,28 @@ public class TranslateComponent implements Initializable {
         @FXML
         private Button copyText;
 
+
+        // khởi tạo và interface với các thành phần trong UI
+        @Override
+        public void initialize(URL location, ResourceBundle resources) {
+
+                LangSource();
+                LangDestination();
+                // Thiết lập "Phát hiện ngôn ngữ" là mặc định
+                choseLangSource.setValue("Phát hiện ngôn ngữ");
+                speakTo = "vi-vn";
+                speakFrom = "en-us";
+                languageTo = "vi";
+
+                // xử lý sự kiện khi click vào nút cancel
+                cancelBtn.setOnMouseClicked(event -> {
+                        inputSentence.clear();
+                        outputMeaning.clear();
+                });
+
+                // meaning text không được edit
+                outputMeaning.setEditable(false);
+        }
 
         void LangSource() {
                 choseLangSource.getItems().addAll("Phát hiện ngôn ngữ", "Tiếng Anh", "Tiếng Việt", "Tiếng Hàn", "Tiếng Nga", "Tiếng Trung");
@@ -71,6 +93,8 @@ public class TranslateComponent implements Initializable {
                         }
                 });
         }
+
+        // Chọn ngôn ngữ đích
         void LangDestination() {
                 choseLangDestination.getItems().addAll("Tiếng Việt", "Tiếng Anh", "Tiếng Hàn", "Tiếng Nga", "Tiếng Trung");
                 choseLangDestination.setValue("Tiếng Việt");
@@ -100,7 +124,7 @@ public class TranslateComponent implements Initializable {
                 });
         }
 
-
+        // Phát âm từ ngôn ngữ nguồn
         @FXML
         void speakLangSource() throws Exception {
                 if (!Objects.equals(inputSentence.getText(), "")) {
@@ -113,6 +137,7 @@ public class TranslateComponent implements Initializable {
                 }
         }
 
+        // Phát âm từ ngôn ngữ đích
         @FXML
         void  speakLangDestination() throws Exception {
                 if (!Objects.equals(outputMeaning.getText(), "")) {
@@ -142,41 +167,5 @@ public class TranslateComponent implements Initializable {
                         clipboard.setContent(content);
                 }
         }
-        @Override
-        public void initialize(URL location, ResourceBundle resources) {
 
-                LangSource();
-                LangDestination();
-                // Thiết lập "Phát hiện ngôn ngữ" là mặc định
-                choseLangSource.setValue("Phát hiện ngôn ngữ");
-//               meaning.setText("Tiếng Việt");
-                speakTo = "vi-vn";
-                speakFrom = "en-us";
-                languageTo = "vi";
-
-                cancelBtn.setOnMouseClicked(event -> {
-                        inputSentence.clear();
-                        outputMeaning.clear();
-                });
-
-                // meaning text không được edit
-                outputMeaning.setEditable(false);
-//                if (inputSentence.getText().isBlank()) {
-//                        PauseTransition pause = new PauseTransition(Duration.seconds(1));
-//                        inputSentence.textProperty().addListener((observable, oldValue, newValue) -> {
-//                                pause.setOnFinished(event -> {
-//                                        try {
-//                                                // Gọi API dịch từ
-//                                                String translatedText = TranslateAPI.googleTranslate(languageFrom, languageTo, newValue);
-//                                                // Hiển thị kết quả dịch vào TextArea
-//                                                outputMeaning.setText(translatedText);
-//                                        } catch (IOException e) {
-//                                                e.printStackTrace();
-//                                        }
-//                                });
-//                                pause.playFromStart();
-//                        });
-//                }
-
-        }
 }

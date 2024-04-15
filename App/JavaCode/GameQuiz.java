@@ -35,13 +35,11 @@ import static Constants.Constant.*;
 public class GameQuiz extends DatabaseConnection  implements Initializable{
 
     @FXML
-    public AnchorPane bodyContainer, headerContainer;
-    @FXML
     public Pane questionAndAnswerPane;
     @FXML
     private RadioButton answerBtnA, answerBtnB, answerBtnC, answerBtnD;
     @FXML
-    private Button nextBtn, shuffleBtn, teamworkBtn, fiftyPercentBtn;
+    private Button nextBtn, changeBtn, teamworkBtn, fiftyPercentBtn;
     @FXML
     private Circle circle1, circle2, circle3, circle4, circle5, circle6,
             circle7, circle8, circle9, circle10;
@@ -49,8 +47,6 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
     private Label progressText1, progressText2, progressText3, progressText4,
             progressText5, progressText6, progressText7, progressText8, progressText9, progressText10,
             questionText, questionTitle, scoreLabel, countdownLabel;
-    @FXML
-    private VBox vboxListRanking;
 
     private Media correctAudioMedia;
     private MediaPlayer correctAudioMediaPlayer;
@@ -64,58 +60,21 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
 
     private String answer = "";
 
-    private boolean isCompleted = false;
-
+    private boolean isFinish = false;
     private boolean isHandledFinishAnimation = false;
-
     private Timeline mainTimeLine = new Timeline();
-
     private int score = 0;
-
     private final int correctScore = 10;
-
     private final int incorrectScore = -5;
 
     private boolean isUsedFiftyPercentHelp = false;
-    private boolean isUsedShuffleHelp = false;
+    private boolean isChangeQuestion = false;
     private boolean isUsedTeamworkHelp = false;
     private final int countDownTime = 30;
     private AtomicInteger secondsRemaining;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        answerBtnA.setOnAction(event -> {
-            answer = "A";
-            answerBtnA.setSelected(true);
-            answerBtnB.setSelected(false);
-            answerBtnC.setSelected(false);
-            answerBtnD.setSelected(false);
-        });
-
-        answerBtnB.setOnAction(event -> {
-            answer = "B";
-            answerBtnA.setSelected(false);
-            answerBtnB.setSelected(true);
-            answerBtnC.setSelected(false);
-            answerBtnD.setSelected(false);
-        });
-
-        answerBtnC.setOnAction(event -> {
-            answer = "C";
-            answerBtnA.setSelected(false);
-            answerBtnB.setSelected(false);
-            answerBtnC.setSelected(true);
-            answerBtnD.setSelected(false);
-        });
-
-        answerBtnD.setOnAction(event -> {
-            answer = "D";
-            answerBtnA.setSelected(false);
-            answerBtnB.setSelected(false);
-            answerBtnC.setSelected(false);
-            answerBtnD.setSelected(true);
-        });
-
         nextBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -126,7 +85,6 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
         setQuestionProgress(1, currentQuestion);
 
         setupQuestion();
-
 
 //        50 50
         fiftyPercentBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -149,19 +107,49 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
         });
 
 //        Đổi câu hỏi khác
-        shuffleBtn.setOnAction(new EventHandler<ActionEvent>() {
+        changeBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (!isUsedShuffleHelp) {
-                    handleShuffleHelp();
+                if (!isChangeQuestion) {
+                    implementChangeQuestion();
                 }
             }
         });
     }
 
-    private void handleShuffleHelp() {
-        isUsedShuffleHelp = true;
-        shuffleBtn.setDisable(true);
+
+    @FXML
+    void chooseAnswer(ActionEvent event) {
+        if (event.getSource() == answerBtnA) {
+            answer = "A";
+            answerBtnA.setSelected(true);
+            answerBtnB.setSelected(false);
+            answerBtnC.setSelected(false);
+            answerBtnD.setSelected(false);
+        } else if (event.getSource() == answerBtnB) {
+            answer = "B";
+            answerBtnA.setSelected(false);
+            answerBtnB.setSelected(true);
+            answerBtnC.setSelected(false);
+            answerBtnD.setSelected(false);
+        } else if (event.getSource() == answerBtnC) {
+            answer = "C";
+            answerBtnA.setSelected(false);
+            answerBtnB.setSelected(false);
+            answerBtnC.setSelected(true);
+            answerBtnD.setSelected(false);
+        } else if (event.getSource() == answerBtnD) {
+            answer = "D";
+            answerBtnA.setSelected(false);
+            answerBtnB.setSelected(false);
+            answerBtnC.setSelected(false);
+            answerBtnD.setSelected(true);
+        }
+    }
+
+    private void implementChangeQuestion() {
+        isChangeQuestion = true;
+        changeBtn.setDisable(true);
 
         Question currentQuestion = listQuestion.get(currentQuestionIndex);
 
@@ -400,7 +388,7 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
             answerBtnD.setDisable(true);
             nextBtn.setDisable(true);
 
-            isCompleted = true;
+            isFinish = true;
 
             Platform.runLater(new Runnable() {
                 @Override
@@ -495,7 +483,7 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
         alert.setResultConverter(dialogButton -> {
             if (dialogButton == ButtonType.OK) {
                 // Code to be executed when the "OK" button is clicked
-                showComponent("/Views/LearningOverviewView.fxml");
+                showComponent(ACTIVE_COMPONENT_LAYER);
             }
             return null;
         });
