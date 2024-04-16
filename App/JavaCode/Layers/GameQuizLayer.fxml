@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="470.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaCode.GameQuiz">
+<AnchorPane fx:id="container" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="470.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaCode.GameQuiz">
    <BorderPane prefHeight="470.0" prefWidth="670.0" stylesheets="@../../resources/Css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
             <AnchorPane maxWidth="634.0" prefHeight="493.0" prefWidth="634.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
@@ -87,7 +95,7 @@
                      </Pane>
                   </children>
                </HBox>
-                    <Pane fx:id="questionAndAnswerPane" layoutX="-1.0" layoutY="64.8" prefHeight="474.0" prefWidth="570.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="65.0">
+                    <Pane fx:id="questionAndAnswerPane" layoutY="56.0" prefHeight="491.0" prefWidth="570.0" AnchorPane.bottomAnchor="-8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="56.0">
 
                                           <RadioButton fx:id="answerBtnA" layoutX="71.0" layoutY="197.0" onAction="#chooseAnswer" prefHeight="60.0" prefWidth="151.0" styleClass="answer-button">
                             <wrapText>true</wrapText>
@@ -104,7 +112,7 @@
                   <RadioButton fx:id="answerBtnB" layoutX="332.0" layoutY="197.0" onAction="#chooseAnswer" prefHeight="60.0" prefWidth="151.0" styleClass="answer-button" wrapText="true" />
                   <RadioButton fx:id="answerBtnD" layoutX="332.0" layoutY="309.0" onAction="#chooseAnswer" prefHeight="60.0" prefWidth="151.0" styleClass="answer-button" wrapText="true" />
                   <RadioButton fx:id="answerBtnC" layoutX="71.0" layoutY="309.0" onAction="#chooseAnswer" prefHeight="60.0" prefWidth="151.0" styleClass="answer-button" wrapText="true" />
-                          <Label fx:id="questionTitle" layoutX="27.0" layoutY="32.0" prefHeight="26.0" prefWidth="195.0" styleClass="title-coler" text="Câu hỏi" textFill="#FFF">
+                          <Label fx:id="questionTitle" layoutX="25.0" layoutY="14.0" prefHeight="30.0" prefWidth="273.0" styleClass="title-coler" text="Hãy chọn đáp án đúng!" textFill="#FFF">
                      <graphic>
                         <ImageView fitHeight="27.0" fitWidth="24.0" opacity="0.69" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -118,7 +126,7 @@
             </AnchorPane>
       </center>
       <right>
-              <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="230.0" minWidth="230.0" prefHeight="493.0" prefWidth="215.0" style="-fx-background-color: #fff;" styleClass="definition-wrapper" BorderPane.alignment="TOP_CENTER">
+              <VBox maxHeight="1.7976931348623157E308" maxWidth="230.0" minWidth="230.0" prefHeight="493.0" prefWidth="215.0" style="-fx-background-color: #fff;" BorderPane.alignment="TOP_CENTER">
                   <children>
                         <Label fx:id="infoTitle" minHeight="50.0" prefHeight="50.0" prefWidth="230.0" text="Thông tin" textFill="#FFF">
                             <graphic>
@@ -141,14 +149,14 @@
                         </Label>
                       <HBox alignment="CENTER_LEFT" styleClass="box">
                           <children>
-                              <Label prefHeight="27.0" prefWidth="125.0" styleClass="title-coler" text="Timer:" textFill="#007acc">
+                              <Label prefHeight="27.0" prefWidth="107.0" styleClass="title-coler" text="Timer:" textFill="#007acc">
                                   <font>
-                                      <Font name="System Bold" size="14.0" />
+                                      <Font name="System Bold" size="16.0" />
                                   </font>
                               </Label>
-                              <Label fx:id="timeCounter" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="23.0" prefWidth="31.0" text="30s" textFill="RED">
+                              <Label fx:id="timeCounter" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="73.0" text="30s" textFill="RED">
                                   <font>
-                                      <Font name="System Bold" size="14.0" />
+                                      <Font name="System Bold" size="20.0" />
                                   </font>
                               </Label>
                           </children>
@@ -158,14 +166,14 @@
                       </HBox>
                       <HBox alignment="CENTER_LEFT">
                           <children>
-                              <Label prefHeight="27.0" prefWidth="130.0" styleClass="title-coler" text="Score:" textFill="#007acc">
+                              <Label prefHeight="27.0" prefWidth="110.0" styleClass="title-coler" text="Score:" textFill="#007acc">
                                   <font>
                                       <Font name="System Bold" size="14.0" />
                                   </font>
                               </Label>
-                              <Label fx:id="scoreTest" text="0/100" textFill="#007acc">
+                              <Label fx:id="scoreTest" prefHeight="30.0" prefWidth="91.0" text="0/100" textFill="#007acc">
                                   <font>
-                                      <Font name="System Bold" size="14.0" />
+                                      <Font name="System Bold" size="20.0" />
                                   </font>
                               </Label>
                           </children>
@@ -176,28 +184,31 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                           </VBox.margin>
                       </HBox>
-               <Line endX="953.7093505859375" endY="164.85366821289062" startX="724.016357421875" startY="164.85379028320312" stroke="#28d0ea" />
-                      <Label prefHeight="26.0" prefWidth="183.0" styleClass="title-coler" text="Trợ giúp:" textFill="#007acc">
+                      <Label contentDisplay="CENTER" minHeight="50.0" prefHeight="50.0" prefWidth="244.0" text="Trợ gúp" textFill="#007acc">
                           <font>
                               <Font name="System Bold" size="14.0" />
                           </font>
                           <VBox.margin>
-                              <Insets bottom="5.0" left="10.0" top="5.0" />
+                              <Insets />
                           </VBox.margin>
+                  <styleClass>
+                     <String fx:value="title-coler" />
+                     <String fx:value="shadow-button" />
+                  </styleClass>
+                  <padding>
+                     <Insets left="10.0" />
+                  </padding>
                       </Label>
-                      <HBox alignment="CENTER" minHeight="50.0" spacing="10.0">
-                          <children>
-                              <Button fx:id="fiftyPercentBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: none;">
+               <VBox alignment="CENTER" prefHeight="346.0" prefWidth="230.0">
+                  <children>
+                              <Button fx:id="fiftyPercentBtn" mnemonicParsing="false" prefHeight="85.0" prefWidth="73.0" style="-fx-background-color: none;">
                                   <graphic>
-                                      <ImageView fitHeight="38.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                      <ImageView fitHeight="80.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                                           <image>
                                               <Image url="@../../resources/Icons/50-percent.png" />
                                           </image>
                                       </ImageView>
                                   </graphic>
-                                  <HBox.margin>
-                                      <Insets />
-                                  </HBox.margin>
                                   <tooltip>
                                       <Tooltip text="Bỏ đi 2 phương án sai" />
                                   </tooltip>
@@ -205,10 +216,13 @@
                            <String fx:value="edit-button" />
                            <String fx:value="scale-button" />
                         </styleClass>
+                        <VBox.margin>
+                           <Insets bottom="10.0" />
+                        </VBox.margin>
                               </Button>
-                              <Button fx:id="teamworkBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: none;">
+                              <Button fx:id="teamworkBtn" mnemonicParsing="false" prefHeight="80.0" prefWidth="70.0" style="-fx-background-color: none;">
                                   <graphic>
-                                      <ImageView fitHeight="33.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                      <ImageView fitHeight="72.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                                           <image>
                                               <Image url="@../../resources/Icons/collaborative.png" />
                                           </image>
@@ -221,10 +235,13 @@
                            <String fx:value="edit-button" />
                            <String fx:value="scale-button" />
                         </styleClass>
+                        <VBox.margin>
+                           <Insets bottom="10.0" />
+                        </VBox.margin>
                               </Button>
-                              <Button fx:id="changeBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: none;">
+                              <Button fx:id="changeBtn" mnemonicParsing="false" prefHeight="66.0" prefWidth="72.0" style="-fx-background-color: none;">
                                   <graphic>
-                                      <ImageView fitHeight="32.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                      <ImageView fitHeight="74.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
                                           <image>
                                               <Image url="@../../resources/Icons/reverse.png" />
                                           </image>
@@ -238,100 +255,13 @@
                            <String fx:value="scale-button" />
                         </styleClass>
                               </Button>
-                          </children>
-                          <VBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                          </VBox.margin>
-                      </HBox>
-               <Line endX="129.6929473876953" endY="0.7348548769950867" startX="-100.0" stroke="#28d0ea">
-                  <VBox.margin>
-                     <Insets top="10.0" />
-                  </VBox.margin></Line>
-                      <VBox fx:id="vboxListRanking" prefHeight="186.0" prefWidth="178.0" VBox.vgrow="ALWAYS">
-                          <children>
-                              <Label prefHeight="26.0" prefWidth="206.0" styleClass="title-coler" text="Đánh giá">
-                                  <font>
-                                      <Font name="System Bold" size="14.0" />
-                                  </font>
-                                  <VBox.margin>
-                                      <Insets top="10.0" />
-                                  </VBox.margin>
-                        <graphic>
-                           <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@../../resources/Icons/rank.png" />
-                              </image>
-                           </ImageView>
-                        </graphic>
-                        <padding>
-                           <Insets left="10.0" />
-                        </padding>
-                        <textFill>
-                           <RadialGradient centerX="0.5265486050496059" centerY="0.5189393939393939" radius="0.5">
-                              <stops>
-                                 <Stop>
-                                    <color>
-                                       <Color red="0.048500001430511475" green="0.25080907344818115" blue="0.9700000286102295" />
-                                    </color>
-                                 </Stop>
-                                 <Stop offset="1.0">
-                                    <color>
-                                       <Color red="1.0" green="1.0" blue="1.0" />
-                                    </color>
-                                 </Stop>
-                              </stops>
-                           </RadialGradient>
-                        </textFill>
-                              </Label>
-                          </children>
-                      </VBox>
-               <VBox alignment="CENTER_LEFT" prefHeight="390.0" prefWidth="230.0">
-                  <children>
-                     <Label fx:id="labelTotalAttempt" alignment="TOP_RIGHT" contentDisplay="TOP" text="Tổng số lần học: NA" textFill="#636b66">
-                        <font>
-                           <Font name="System Bold" size="13.0" />
-                        </font>
-                        <VBox.margin>
-                           <Insets bottom="10.0" />
-                        </VBox.margin>
-                     </Label>
-                     <Label fx:id="labelTimeSpend" text="Tổng thời gian học: NA" textFill="#636b66">
-                        <font>
-                           <Font name="System Bold" size="13.0" />
-                        </font>
-                        <VBox.margin>
-                           <Insets bottom="10.0" />
-                        </VBox.margin>
-                     </Label>
-                     <Label fx:id="labelCorrectRatio" text="Tỉ lệ trả lời đúng: NA" textFill="#636b66">
-                        <font>
-                           <Font name="System Bold" size="13.0" />
-                        </font>
-                        <VBox.margin>
-                           <Insets bottom="10.0" />
-                        </VBox.margin>
-                     </Label>
-                     <Label fx:id="labelTimeAverage" text="Trung bình: NA" textFill="#636b66">
-                        <font>
-                           <Font name="System Bold" size="13.0" />
-                        </font>
-                        <VBox.margin>
-                           <Insets bottom="10.0" />
-                        </VBox.margin>
-                     </Label>
                   </children>
-                  <padding>
-                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                  </padding>
-                  <styleClass>
-                     <String fx:value="title-coler" />
-                     <String fx:value="english-word-input" />
-                  </styleClass>
-                  <VBox.margin>
-                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                  </VBox.margin>
                </VBox>
                   </children>
+            <styleClass>
+               <String fx:value="definition-wrapper" />
+               <String fx:value="shadow-button" />
+            </styleClass>
               </VBox>
       </right>
       <top>

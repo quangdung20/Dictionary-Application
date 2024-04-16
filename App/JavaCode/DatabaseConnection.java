@@ -1,5 +1,6 @@
 package JavaCode;
 
+import Models.StudyRecord;
 import Models.User;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -18,9 +19,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 
-
-import static JavaCode.LoginController.currentUser;
-
 public class DatabaseConnection {
 
     @FXML
@@ -28,10 +26,7 @@ public class DatabaseConnection {
 
     public Connection databaseLink;
     protected static Timeline countdownTimer;
-
-    protected static User user, currentUser;
-
-
+    protected static User currentUser;
     public static ArrayList<User> listUsers = new ArrayList<>();
 
     public Connection getConnection() {
@@ -55,90 +50,114 @@ public class DatabaseConnection {
         }
     }
 
-    public void getScoreUsers() {
-        Connection connection = getConnection();
-        String query = "SELECT username, score\n" +
-                "FROM user_account\n" +
-                "ORDER BY score DESC;";
+
+    // sau khi đăng ký thành công, thực hiện kéo uerID của người dùng đó để tạo row mới trong bảng score
+    public void setScoreNewUsers(String username) {
+        // dựa vào username để lấy ID trong bảng user_account
         try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {
-                String username = resultSet.getString("username");
-                int score = resultSet.getInt("score");
-                User user = new User(username, score);
-                listUsers.add(user);
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user_account WHERE username = ?");
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                int userID = resultSet.getInt("userID");
+                PreparedStatement preparedStatement1 = connection.prepareStatement("INSERT INTO study (userID, score, times_attend, total_question, correct_question, incorrect_question ) VALUES (?, ?, ?, ?, ?, ?)");
+                preparedStatement1.setInt(1, userID);
+                preparedStatement1.setInt(2, 0);
+                preparedStatement1.setInt(3, 0);
+                preparedStatement1.setInt(4, 0);
+                preparedStatement1.setInt(5, 0);
+                preparedStatement1.setInt(6, 0);
+                preparedStatement1.executeUpdate();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void updateScoreUser(User user) {
+    // lấy thông tin người dùng khi đăng nhập thành công vào current user để có thể sử dụng ở các controller khác
+    public void setCurrentUser(String username) {
         Connection connection = getConnection();
-        String query = "UPDATE user_account\n" +
-                "SET score = ?\n" +
-                "WHERE username = ?;";
-
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, user.getScore());
-            preparedStatement.setString(2, user.getUsername());
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void insertUser(User user) {
-        Connection connection = getConnection();
-        String insertUser = "INSERT INTO user_account(username, password, email, question, answer, score) VALUES (?, ?, ?, ?, ?, ?)";
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(insertUser);
-            preparedStatement.setString(1, user.getUsername());
-            preparedStatement.setString(2, user.getPassword());
-            preparedStatement.setString(3, user.getEmail());
-            preparedStatement.setString(4, user.getQuestion());
-            preparedStatement.setString(5, user.getAnswer());
-            preparedStatement.setInt(6, user.getScore());
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Lưu username và score của user hiện tại sau khi đăng nhập thành công
-    public void saveCurrentUser(String username) {
-        Connection connection = getConnection();
-        String query = "SELECT username, email, score\n" +
-                "FROM user_account\n" +
-                "WHERE username = ?;";
-
+        String query = "SELECT * FROM user_account WHERE username = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
+                int userID = resultSet.getInt("userID");
                 String username1 = resultSet.getString("username");
-                int score = resultSet.getInt("score");
+                String password = resultSet.getString("password");
                 String email = resultSet.getString("email");
-                currentUser = new User(username1, score, email);
+                currentUser = new User(userID, username1, password, email);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+    }
+
+
+
+    // lấy thông tin study của người dùng từ ID đã lưu trong current user
+    public void getStudyRecord() {
+        try {
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM study WHERE userID = ?");
+            preparedStatement.setInt(1, currentUser.getUserID());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int score = resultSet.getInt("score");
+                int timesAttend = resultSet.getInt("times_attend");
+                int totalQuestion = resultSet.getInt("total_question");
+                int correctQuestion = resultSet.getInt("correct_question");
+                int incorrectQuestion = resultSet.getInt("incorrect_question");
+                currentUser.setStudyRecord(new StudyRecord(score, timesAttend, totalQuestion, correctQuestion, incorrectQuestion));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-
-    // test score of user
-    public static void main(String[] args) {
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-        databaseConnection.getScoreUsers();
-        databaseConnection.updateScoreUser(new User("quangdung", 1000));
-
-        // print username and score of user
-        for (User user : listUsers) {
-            System.out.println(user.getUsername() + " \t" + user.getScore());
+    // trong bảng study có cột userId và cột score, tôi cần lấy ra tên của tất cả ngươid dùng và điểm số của họ và sắp xếp điểm theo chiều giảm dần.
+    public void getRanking() {
+        try {
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user_account INNER JOIN study ON user_account.userID = study.userID");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int userID = resultSet.getInt("userID");
+                String username = resultSet.getString("username");
+                String password = resultSet.getString("password");
+                String email = resultSet.getString("email");
+                int score = resultSet.getInt("score");
+                int timesAttend = resultSet.getInt("times_attend");
+                int totalQuestion = resultSet.getInt("total_question");
+                int correctQuestion = resultSet.getInt("correct_question");
+                int incorrectQuestion = resultSet.getInt("incorrect_question");
+                User user = new User(userID, username, password, email);
+                user.setStudyRecord(new StudyRecord(score, timesAttend, totalQuestion, correctQuestion, incorrectQuestion));
+                listUsers.add(user);
+            }
+            Collections.sort(listUsers, (o1, o2) -> o2.getStudyRecord().getScore() - o1.getStudyRecord().getScore());
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
+
+
+    // lấy tất cả các userID trong bảng user_account sang bảng study
+
+    public static void main(String[] args) {
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        databaseConnection.getConnection();
+        databaseConnection.getRanking();
+        databaseConnection.setCurrentUser("quangdung");
+        databaseConnection.getStudyRecord();
+        for (User user : listUsers) {
+            System.out.println(user.getUserID() + " " + user.getUsername() + " " + user.getEmail() + " " + user.getStudyRecord().getScore() + " " + user.getStudyRecord().getTimesAttend() + " " + user.getStudyRecord().getTotalQuestion() + " " + user.getStudyRecord().getCorrectQuestions() + " " + user.getStudyRecord().getIncorrectQuestions());
+        }
+//            System.out.println(currentUser.getUserID()+ " " + currentUser.getUsername() + " " + currentUser.getEmail() + " " + currentUser.getStudyRecord().getScore() + " " + currentUser.getStudyRecord().getTimesAttend() + " " + currentUser.getStudyRecord().getTotalQuestion() + " " + currentUser.getStudyRecord().getCorrectQuestions() + " " + currentUser.getStudyRecord().getIncorrectQuestions());
+        }
+
+
 }

@@ -1,9 +1,31 @@
 package Models;
 
 public class User {
+
+    private int userID;
     private String username;
     private String password;
     private String email;
+    private String question;
+    private String answer;
+
+    private StudyRecord studyRecord;
+
+    public StudyRecord getStudyRecord() {
+        return studyRecord;
+    }
+
+    public void setStudyRecord(StudyRecord studyRecord) {
+        this.studyRecord = studyRecord;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
 
     public String getQuestion() {
         return question;
@@ -21,8 +43,6 @@ public class User {
         this.answer = answer;
     }
 
-    private String question;
-    private String answer;
 
     public String getPassword() {
         return password;
@@ -40,9 +60,6 @@ public class User {
         this.email = email;
     }
 
-
-    private int score;
-
     public String getUsername() {
         return username;
     }
@@ -51,37 +68,16 @@ public class User {
         this.username = username;
     }
 
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public User(String username, int score) {
+    public User(String username, StudyRecord score){
         this.username = username;
-        this.score = score;
+        this.studyRecord = score;
     }
 
-    public User(String username, int score, String email) {
-        this.username = username;
-        this.score = score;
-        this.email = email;
-    }
-    public User() {
-    }
-
-    public User(String username) {
-        this.username = username;
-    }
-
-    public User(String username, String password, String email, String question, String answer, int score) {
+    public User(int userID, String username, String password, String email) {
+        this.userID = userID;
         this.username = username;
         this.password = password;
         this.email = email;
-        this.question = question;
-        this.answer = answer;
-        this.score = 0;
     }
+
 }

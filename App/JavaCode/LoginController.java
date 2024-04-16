@@ -154,9 +154,8 @@ public class LoginController extends DatabaseConnection implements Initializable
 
             while (queryResult.next()) {
                 if (queryResult.getInt(1) == 1) {
-                    saveCurrentUser(login_username.getText());
+                    setCurrentUser(login_username.getText());
                     gotoMainApp();
-                    getScoreUsers();
 
                 } else {
                     alert.errorMessage("Thông tin đăng nhập không chính xác, vui lòng kiểm tra lại");
@@ -220,9 +219,15 @@ public class LoginController extends DatabaseConnection implements Initializable
                 if (queryResult.getInt(1) == 1) {
                     alert.errorMessage("Tên " + nameSignup.getText() + " đã tồn tại");
                 } else {
-                    DatabaseConnection databaseConnection = new DatabaseConnection();
-                    databaseConnection.insertUser(new User(nameSignup.getText(), signup_password.getText(),
-                            emailSignup.getText(), selectQuestion_signup.getValue(), answer_signup.getText(), 0));
+                    String insertQuery = "INSERT INTO user_account (username, password, email, question, answer) VALUES (?, ?, ?, ?, ?)";
+                    PreparedStatement preparedStatement1 = connectDB.prepareStatement(insertQuery);
+                    preparedStatement1.setString(1, nameSignup.getText());
+                    preparedStatement1.setString(2, signup_password.getText());
+                    preparedStatement1.setString(3, emailSignup.getText());
+                    preparedStatement1.setString(4, selectQuestion_signup.getValue());
+                    preparedStatement1.setString(5, answer_signup.getText());
+                    preparedStatement1.executeUpdate();
+                    setScoreNewUsers(nameSignup.getText());
                     alert.successMessage("Đăng ký thành công" + "\n" + "Chào mừng bạn đến với " + NAME_APP);
                 }
             }

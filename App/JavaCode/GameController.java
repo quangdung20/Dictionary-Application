@@ -34,25 +34,27 @@ public class GameController extends DatabaseConnection implements Initializable 
     private ImageView imageRanking;
 
     @FXML
-    private Label emailtitle;
+    private Label emailTitle;
 
     @FXML
-    private Label nametitle;
+    private Label nameTitle;
 
     @FXML
-    private Label pointitle;
+    private Label pointTitle;
 
     @FXML
-    private Label labelRanking, ranktitle;
+    private Label labelRanking, rankTitle;
 
+    @FXML
+    private Label timesLeaning;
+    @FXML
+    private Label correctRate;
 
     @FXML
     private Button learningBtn1, learningBtn2;
 
-
     @FXML
     private ListView<String> listViewRanking;
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -71,24 +73,24 @@ public class GameController extends DatabaseConnection implements Initializable 
             }
         });
         showListRank(listUsers);
-        setupImageRanking(String.valueOf(currentUser.getScore()));
+        setupImageRanking(String.valueOf(currentUser.getStudyRecord().getScore()));
         // set label user
-        System.out.println("Username: " + currentUser.getUsername() + " Score: " + currentUser.getScore()+ listUsers.size());
+        System.out.println("Username: " + currentUser.getUsername() + " Score: " + currentUser.getStudyRecord().getScore()+ listUsers.size());
     }
 
     private void showListRank(ArrayList<User> listUsers) {
         // Create a new ObservableList
         ObservableList<String> observableList = FXCollections.observableArrayList();
 
-        // Convert each User to a String and add it to the ObservableList
+//         Convert each User to a String and add it to the ObservableList
         for (int i = 0; i < listUsers.size(); i++) {
-            observableList.add(i + 1 + ". " + listUsers.get(i).getUsername() + ": " + listUsers.get(i).getScore() + " points");
+            observableList.add(i + 1 + ". " + listUsers.get(i).getUsername() + ": " + listUsers.get(i).getStudyRecord().getScore() + " points");
         }
 
         // Set the items of the ListView
         listViewRanking.setItems(observableList);
 
-        // Optionally, you can add a custom cell factory to change the way the items are displayed
+//         Optionally, you can add a custom cell factory to change the way the items are displayed
         listViewRanking.setCellFactory(param -> new ListCell<>() {
             @Override
             protected void updateItem(String item, boolean empty) {
@@ -98,7 +100,7 @@ public class GameController extends DatabaseConnection implements Initializable 
                     setText(null);
                 } else {
                     // set backgpound color for user current
-                    if (item.contains(currentUser.getUsername() + ": " + currentUser.getScore()) ){
+                    if (item.contains(currentUser.getUsername() + ": " + currentUser.getStudyRecord().getScore()) ){
                         setText(item);
                         setStyle("-fx-background-color: #ffde23; -fx-text-fill: #000000;");
                     }
@@ -148,12 +150,17 @@ public class GameController extends DatabaseConnection implements Initializable 
             }
         }
         labelRanking.setText(Ranking.getRanking(Integer.parseInt(totalScore)).getValue());
-        ranktitle.setText(Ranking.getRanking(Integer.parseInt(totalScore)).getValue());
+        rankTitle.setText(Ranking.getRanking(Integer.parseInt(totalScore)).getValue());
     }
     private void showInfoUser() {
-        nametitle.setText(currentUser.getUsername());
-        emailtitle.setText(currentUser.getEmail());
-        pointitle.setText(String.valueOf(currentUser.getScore()));
+        double correctQuestionsRate = (double) currentUser.getStudyRecord().getCorrectQuestions() / currentUser.getStudyRecord().getScore() * 100;
+        nameTitle.setText(currentUser.getUsername());
+        emailTitle.setText(currentUser.getEmail());
+        pointTitle.setText(String.valueOf(currentUser.getStudyRecord().getScore()));
+        timesLeaning.setText(String.valueOf(currentUser.getStudyRecord().getTimesAttend()));
+        correctRate.setText(String.format("%.2f", correctQuestionsRate) + "%");
+//        System.out.println(currentUser.getUserID()+ " " + currentUser.getUsername() + " " + currentUser.getEmail() + " " + currentUser.getStudyRecord().getScore() + " " + currentUser.getStudyRecord().getTimesAttend() + " " + currentUser.getStudyRecord().getTotalQuestion() + " " + currentUser.getStudyRecord().getCorrectQuestions() + " " + currentUser.getStudyRecord().getIncorrectQuestions());
+
     }
 
 }

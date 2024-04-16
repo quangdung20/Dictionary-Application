@@ -25,18 +25,15 @@ public class Constant {
     public static final String DELETED_WORD_MARK = "<deleted>";
     public static final String SEPARATE_WORD = "<html>";
 
+    public static final String IMAGE_FIREWORK = "resources/Icons/firework.png";
 
-    public static final String PATH_TO_IMAGE_FIREWORK = "";
-
-    public static final String PATH_TO_IMAGE_DICTIONARY = "";
-
-    public static final String PATH_TO_IMAGE_SAD = "";
+    public static final String IMAGE_SAD = "resources/Icons/sad.png";
 
     public static final String MENU_LAYER = "Layers/MenubarLayer.fxml";
     public static final String LOGIN_LAYER = "Layers/LoginLayer.fxml";
     public static final String SEARCH_LAYER = "Layers/SearchLayer.fxml";
     public static final String ADD_WORD_LAYER = "Layers/AddWordLayer.fxml";
-    public static final String ACTIVE_COMPONENT_LAYER = "Layers/ActiveLayer.fxml";
+    public static final String GAMES_LAYER = "Layers/ActiveLayer.fxml";
     public static final String TRANSLATE_LAYER = "Layers/TranslateLayer.fxml";
     public static final String GAME_TESTING = "Layers/GameQuizLayer.fxml";
     public static final String GAME_WORD = "App/resources/Data/game.html";

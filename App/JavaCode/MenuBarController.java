@@ -86,6 +86,8 @@ public class MenuBarController extends DatabaseConnection implements Initializab
         showComponent(SEARCH_LAYER);
         setLabelUser();
         setChangeImage();
+        getStudyRecord();
+        getRanking();
         addWordBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -107,7 +109,7 @@ public class MenuBarController extends DatabaseConnection implements Initializab
         learningEngBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                showComponent(ACTIVE_COMPONENT_LAYER);
+                showComponent(GAMES_LAYER);
             }
         });
     }

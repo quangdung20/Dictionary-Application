@@ -51,7 +51,7 @@
                         </VBox>
                     </children>
                 </Pane>
-                <AnchorPane fx:id="login_form" layoutX="-7.0" layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" stylesheets="@../../resources/Css/style.css" visible="false" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+                <AnchorPane fx:id="login_form" layoutX="-7.0" layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" stylesheets="@../../resources/Css/style.css" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
                     <children>
                         <VBox alignment="TOP_CENTER" layoutX="413.0" layoutY="83.0" prefHeight="336.0" prefWidth="238.0" spacing="10.0">
                             <children>
@@ -292,7 +292,7 @@
                 <!--                        <ComboBox id="signup_selectQuestion" fx:id="signup_selectQuestion" layoutX="204.0" layoutY="253.0" prefHeight="26.0" prefWidth="222.0" promptText="Chọn câu hỏi" />-->
                 <!--                    </children>-->
                 <!--                </AnchorPane>-->
-                <AnchorPane fx:id="signup_form" layoutX="2.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0">
+                <AnchorPane fx:id="signup_form" layoutX="2.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" visible="false">
                     <children>
                         <VBox alignment="CENTER" layoutX="408.0" layoutY="29.0" prefHeight="442.0" prefWidth="238.0" spacing="10.0">
                             <children>

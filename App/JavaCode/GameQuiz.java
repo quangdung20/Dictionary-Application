@@ -1,6 +1,7 @@
 package JavaCode;
 
 import Models.Question;
+import Models.StudyRecord;
 import com.sun.media.jfxmedia.Media;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -24,6 +25,9 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import java.io.InputStream;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.time.Duration;
 import java.util.*;
@@ -46,7 +50,7 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
     @FXML
     private Label progressText1, progressText2, progressText3, progressText4,
             progressText5, progressText6, progressText7, progressText8, progressText9, progressText10,
-            questionText, questionTitle, scoreLabel, countdownLabel;
+            questionText, questionTitle, scoreTest, timeCounter;
 
     private Media correctAudioMedia;
     private MediaPlayer correctAudioMediaPlayer;
@@ -71,6 +75,7 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
     private boolean isChangeQuestion = false;
     private boolean isUsedTeamworkHelp = false;
     private final int countDownTime = 30;
+
     private AtomicInteger secondsRemaining;
 
     @Override
@@ -86,7 +91,7 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
 
         setupQuestion();
 
-//        50 50
+        //  50 - 50
         fiftyPercentBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -96,7 +101,7 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
             }
         });
 
-//        Tổ tư vấn
+        //  Tổ tư vấn
         teamworkBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -106,7 +111,7 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
             }
         });
 
-//        Đổi câu hỏi khác
+        //  Đổi câu hỏi khác
         changeBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -144,6 +149,59 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
             answerBtnB.setSelected(false);
             answerBtnC.setSelected(false);
             answerBtnD.setSelected(true);
+        }
+    }
+
+    private String getAnswerChoice(int index) {
+        // Map index to corresponding answer choices A, B, C, D
+        switch (index) {
+            case 0:
+                return "A";
+            case 1:
+                return "B";
+            case 2:
+                return "C";
+            case 3:
+                return "D";
+            default:
+                return "";  // Handle the default case or error
+        }
+    }
+
+    private int getAnswerIndex(String answer) {
+        // Map answer choices A, B, C, D to corresponding indices
+        switch (answer) {
+            case "A":
+                return 0;
+            case "B":
+                return 1;
+            case "C":
+                return 2;
+            case "D":
+                return 3;
+            default:
+                return -1;  // Handle the default case or error
+        }
+    }
+
+    private void disableAnswer(String answer) {
+        switch (answer) {
+            case "A": {
+                answerBtnA.setDisable(true);
+                break;
+            }
+            case "B": {
+                answerBtnB.setDisable(true);
+                break;
+            }
+            case "C": {
+                answerBtnC.setDisable(true);
+                break;
+            }
+            case "D": {
+                answerBtnD.setDisable(true);
+                break;
+            }
         }
     }
 
@@ -258,45 +316,6 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
         dialog.showAndWait();
     }
 
-
-    // Format a percentage with one decimal place
-    private String formatPercentage(double value) {
-        DecimalFormat df = new DecimalFormat("#.#");
-        return df.format(value * 100) + "%";
-    }
-
-    private String getAnswerChoice(int index) {
-        // Map index to corresponding answer choices A, B, C, D
-        switch (index) {
-            case 0:
-                return "A";
-            case 1:
-                return "B";
-            case 2:
-                return "C";
-            case 3:
-                return "D";
-            default:
-                return "";  // Handle the default case or error
-        }
-    }
-
-    private int getAnswerIndex(String answer) {
-        // Map answer choices A, B, C, D to corresponding indices
-        switch (answer) {
-            case "A":
-                return 0;
-            case "B":
-                return 1;
-            case "C":
-                return 2;
-            case "D":
-                return 3;
-            default:
-                return -1;  // Handle the default case or error
-        }
-    }
-
     private void handleFiftyPercentHelp() {
         isUsedFiftyPercentHelp = true;
         fiftyPercentBtn.setDisable(true);
@@ -327,25 +346,10 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
         disableAnswer(randomAnswer2);
     }
 
-    private void disableAnswer(String answer) {
-        switch (answer) {
-            case "A": {
-                answerBtnA.setDisable(true);
-                break;
-            }
-            case "B": {
-                answerBtnB.setDisable(true);
-                break;
-            }
-            case "C": {
-                answerBtnC.setDisable(true);
-                break;
-            }
-            case "D": {
-                answerBtnD.setDisable(true);
-                break;
-            }
-        }
+    // Format a percentage with one decimal place
+    private String formatPercentage(double value) {
+        DecimalFormat df = new DecimalFormat("#.#");
+        return df.format(value * 100) + "%";
     }
 
     public void pickQuestions() {
@@ -373,7 +377,6 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
         }
     }
 
-
     private void nextQuestion() {
         if (currentQuestionIndex + 1 < listQuestion.size()) {
             currentQuestionIndex++;
@@ -394,36 +397,43 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
                 @Override
                 public void run() {
                     showScoreSummaryDialog();
-                    saveTestRecord();
+                    saveTestQuiz();
                 }
             });
         }
     }
 
-    private void saveTestRecord() {
+    private void saveTestQuiz() {
         int numberOfCorrectAns = 0;
-        long totalSeconds = 0;
-
         for (Question question : listQuestion) {
             if (question.isAnsIsCorrect()) {
                 numberOfCorrectAns++;
             }
-            if (question.getFinishedTime() != null) {
-                totalSeconds += question.getFinishedTime().getSeconds();
-            }
         }
-
-        Duration duration = Duration.ofSeconds(totalSeconds);
-
-        long minutes = duration.toMinutes();
-        long seconds = totalSeconds -
-                TimeUnit.MINUTES.toSeconds(minutes);
-
-        updateTestRecord(score, numberOfCorrectAns, duration);
+        updateTestStudy(score, numberOfCorrectAns);
     }
 
-    private void updateTestRecord(int score, int numberOfCorrectAns, Duration duration) {
+    // cập nhật điểm sau mỗi lần chơi
+    public void updateTestStudy(int score, int numberOfCorrectAns) {
+        int newScore = currentUser.getStudyRecord().getScore() + score;
+        int newTimesAttend = currentUser.getStudyRecord().getTimesAttend() + 1;
+        int newTotalQuestion = currentUser.getStudyRecord().getTotalQuestion() + 10;
+        int newCorrectQuestion = currentUser.getStudyRecord().getCorrectQuestions() + numberOfCorrectAns;
+        int newIncorrectQuestion = currentUser.getStudyRecord().getIncorrectQuestions() + (10 - numberOfCorrectAns);
 
+        try {
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE study SET score = ?, times_attend = ?, total_question = ?, correct_question = ?, incorrect_question = ? WHERE userID = ?");
+            preparedStatement.setInt(1, newScore);
+            preparedStatement.setInt(2, newTimesAttend);
+            preparedStatement.setInt(3, newTotalQuestion);
+            preparedStatement.setInt(4, newCorrectQuestion);
+            preparedStatement.setInt(5, newIncorrectQuestion);
+            preparedStatement.setInt(6, currentUser.getUserID());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showScoreSummaryDialog() {
@@ -436,7 +446,7 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
         alert.getDialogPane().setPrefHeight(200);  // Adjust as needed
 
         ClassLoader classLoader = getClass().getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(PATH_TO_IMAGE_FIREWORK);
+        InputStream inputStream = classLoader.getResourceAsStream(IMAGE_FIREWORK);
         Image originalImage = new Image(inputStream);
 
         // Create a scaled-down version of the image
@@ -483,7 +493,7 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
         alert.setResultConverter(dialogButton -> {
             if (dialogButton == ButtonType.OK) {
                 // Code to be executed when the "OK" button is clicked
-                showComponent(ACTIVE_COMPONENT_LAYER);
+                showComponent(GAMES_LAYER);
             }
             return null;
         });
@@ -528,7 +538,7 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
 
     private void updateScore(int correctScore) {
         score += correctScore;
-        scoreLabel.setText(score + "/100");
+        scoreTest.setText(score + "/100");
     }
 
     private void setupQuestion() {
@@ -559,11 +569,11 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
         secondsRemaining = new AtomicInteger(countDownTime);
         super.countdownTimer = new Timeline(new KeyFrame(javafx.util.Duration.seconds(1), (ActionEvent event) -> {
             secondsRemaining.getAndDecrement();
-            countdownLabel.setText(String.valueOf(secondsRemaining.get()) + "s");
+            timeCounter.setText(String.valueOf(secondsRemaining.get()) + "s");
 
             if (secondsRemaining.get() <= 0) {
                 super.countdownTimer.stop();
-                countdownLabel.setText("Time's up!");
+                timeCounter.setText("Time's up!");
                 handleTimeUp();
             }
         }));
@@ -589,18 +599,18 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
         nextBtn.setDisable(true);
 
         ClassLoader classLoader = getClass().getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(PATH_TO_IMAGE_FIREWORK);
+        InputStream inputStream = classLoader.getResourceAsStream(IMAGE_FIREWORK);
         Image originalImage = new Image(inputStream);
 
         if (isCorrect) {
             // Tải hình ảnh từ tài nguyên
-            inputStream = classLoader.getResourceAsStream(PATH_TO_IMAGE_FIREWORK);
+            inputStream = classLoader.getResourceAsStream(IMAGE_FIREWORK);
             originalImage = new javafx.scene.image.Image(inputStream);
 //            correctAudioMedia = new Media(classLoader.getResource(PATH_TO_CORRECT_CHEERING).toExternalForm());
 //            correctAudioMediaPlayer = new MediaPlayer(correctAudioMedia);
         } else {
             // Tải hình ảnh từ tài nguyên
-            inputStream = classLoader.getResourceAsStream(PATH_TO_IMAGE_SAD);
+            inputStream = classLoader.getResourceAsStream(IMAGE_SAD);
             originalImage = new javafx.scene.image.Image(inputStream);
 //            correctAudioMedia = new Media(classLoader.getResource(PATH_TO_INCORRECT_SOUND).toExternalForm());
 //            correctAudioMediaPlayer = new MediaPlayer(correctAudioMedia);
@@ -619,7 +629,7 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
 
             // Đặt tỷ lệ thu nhỏ (scale) hình ảnh
             firework.setPreserveRatio(true);
-            firework.setFitWidth(originalImage.getWidth() / 10); // Thu nhỏ ảnh lại 10 lần
+            firework.setFitWidth(originalImage.getWidth() / 20); // Thu nhỏ ảnh lại 20 lần
 
             // Đặt vị trí ban đầu của hạt pháo hoa
             double initialX = Math.random() * container.getWidth();
