@@ -49,7 +49,7 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="779.0">
                            <children>
-                              <Button minHeight="40.0" minWidth="150.0" mnemonicParsing="false" text="Thêm" textFill="#081ac1">
+                              <Button minHeight="40.0" minWidth="150.0" mnemonicParsing="false" onAction="#addWordBtn" text="Thêm" textFill="#081ac1">
                                  <HBox.margin>
                                     <Insets right="20.0" />
                                  </HBox.margin>
@@ -79,7 +79,7 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Button minHeight="40.0" minWidth="150.0" mnemonicParsing="false" text="ENGLISH">
+                              <Button fx:id="switchLang" minHeight="40.0" minWidth="150.0" mnemonicParsing="false" onAction="#switchLangBtn" text="ENGLISH">
                                  <HBox.margin>
                                     <Insets left="240.0" />
                                  </HBox.margin>

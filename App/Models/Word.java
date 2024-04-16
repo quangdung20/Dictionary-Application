@@ -12,9 +12,9 @@ public class Word {
         this.meaning = meaning;
     }
 
-    public Word(String word, String def) {
+    public Word(String word, String meaning) {
         this.word = word;
-        this.meaning = def;
+        this.meaning = meaning;
     }
 
     public String getWord() {
