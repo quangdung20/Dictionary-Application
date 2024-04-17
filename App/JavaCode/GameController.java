@@ -60,7 +60,7 @@ public class GameController extends DatabaseConnection implements Initializable 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Timeline timeline = new Timeline(new KeyFrame(javafx.util.Duration.millis(1000), event -> updateAfterGame()));
+        Timeline timeline = new Timeline(new KeyFrame(javafx.util.Duration.millis(500), event -> updateAfterGame()));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
         learningBtn2.setOnAction(new EventHandler<ActionEvent>() {
@@ -78,28 +78,23 @@ public class GameController extends DatabaseConnection implements Initializable 
         });
 
         // set label user
-        System.out.println("Username: " + currentUser.getUsername() + " Score: " + currentUser.getStudyRecord().getScore()+ listUsers.size());
+        System.out.println("Username: " + currentUser.getUsername() + " Score: " + currentUser.getStudyRecord().getScore()+ "\t number user: " + listUsers.size());
     }
 
     public void updateAfterGame() {
         // Cập nhật thông tin người dùng
         showInfoUser();
-
         // Cập nhật xếp hạng
         showListRank(listUsers);
-
         // Cập nhật hình ảnh xếp hạng
         setupImageRanking(String.valueOf(currentUser.getStudyRecord().getScore()));
     }
     private void showListRank(ArrayList<User> listUsers) {
         // Create a new ObservableList
         ObservableList<String> observableList = FXCollections.observableArrayList();
-
-//         Convert each User to a String and add it to the ObservableList
         for (int i = 0; i < listUsers.size(); i++) {
             observableList.add(i + 1 + ". " + listUsers.get(i).getUsername() + ": " + listUsers.get(i).getStudyRecord().getScore() + " points");
         }
-
         // Set the items of the ListView
         listViewRanking.setItems(observableList);
 
@@ -108,7 +103,6 @@ public class GameController extends DatabaseConnection implements Initializable 
             @Override
             protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
-
                 if (empty || item == null) {
                     setText(null);
                 } else {
@@ -172,8 +166,6 @@ public class GameController extends DatabaseConnection implements Initializable 
         pointTitle.setText(String.valueOf(currentUser.getStudyRecord().getScore()));
         timesLeaning.setText(String.valueOf(currentUser.getStudyRecord().getTimesAttend()));
         correctRate.setText(String.format("%.2f", correctQuestionsRate) + "%");
-//        System.out.println(currentUser.getUserID()+ " " + currentUser.getUsername() + " " + currentUser.getEmail() + " " + currentUser.getStudyRecord().getScore() + " " + currentUser.getStudyRecord().getTimesAttend() + " " + currentUser.getStudyRecord().getTotalQuestion() + " " + currentUser.getStudyRecord().getCorrectQuestions() + " " + currentUser.getStudyRecord().getIncorrectQuestions());
-
     }
 
 }

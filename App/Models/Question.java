@@ -167,16 +167,6 @@ public class Question {
     }
 
     @Override
-    public String toString() {
-        return "Question: " + questionTitle +
-                "\nA. " + answerA +
-                "\nB. " + answerB +
-                "\nC. " + answerC +
-                "\nD. " + answerD +
-                "\nCorrect Answer: " + correctAnswer ;
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (obj instanceof  Question) {
             Question question = (Question) obj;

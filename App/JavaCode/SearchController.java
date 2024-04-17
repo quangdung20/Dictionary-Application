@@ -2,11 +2,14 @@ package JavaCode;
 
 import API_Dictionary.DataLoadedInterface;
 import API_Dictionary.VoiceRequest;
-import Models.Request_ListWord;
+import AlertBox.AlertMessage;
+import Models.User;
 import Models.Word;
 import com.voicerss.tts.Languages;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,12 +23,16 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 
 import static Constants.Constant.*;
-import static Models.Request_ListWord.*;
+import static java.sql.DriverManager.getConnection;
 
-public class SearchController implements Initializable{
+public class SearchController extends DatabaseConnection implements Initializable {
 
     @FXML
     private Button cancelBtn;
@@ -37,7 +44,7 @@ public class SearchController implements Initializable{
     private Button editDefinitionBtn;
 
     @FXML
-    private ListView<String> history_search, suggestWord;
+    private ListView<String> listWordView, suggestListWord;
 
     @FXML
     private TextField inputWord;
@@ -49,7 +56,7 @@ public class SearchController implements Initializable{
     private WebView meaningArea;
 
     @FXML
-    private Label selectedWord;
+    private TextField setWord;
 
     @FXML
     private Button speakBtn;
@@ -63,107 +70,64 @@ public class SearchController implements Initializable{
 
     private Word currentSelectedWord;
 
+    HashMap<String, Word> currentData = new HashMap<>();
+    public static final String engTable = "dictionary_en";
+    public static final String vietTable = "dictionary_vi";
+
     public static final String engLangCode = "en-US";
     public static final String vieLangCode = "vi-VN";
-
     public static String currentLang = "en-US";
+
     public static boolean isEngVie = true;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        suggestWord.setVisible(false);
-        suggestWord.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 1) {
-                suggestWord.setVisible(false);
-            }
-        });
-        selectedWord.setText("");
+        updateListAddWord();
+        handleListAddedWord();
+        showListAddedWords(listAddWords);
+        handleListWordDic();
+        saveBtn.setDisable(true);
+        deleteWordBtn.setDisable(true);
+        editDefinitionBtn.setDisable(true);
+        setWord.setText("");
+        setWord.setEditable(false);
         switchLangBtn.setText("ENGLISH");
-        // switch language button
+        suggestListWord.setVisible(false);
         switchLangBtn.setOnMouseClicked(event -> switchLanguage(event));
-        // search word button
-        if (dataEngVie.isEmpty()) {
-            Request_ListWord.addDataLoadedListener(new DataLoadedInterface() {
-                @Override
-                public void onDataLoaded() {
-                    loadWordList();
-                }
-            });
-        } else {
-            loadWordList();
-        }
-        inputWord.setOnKeyTyped(new EventHandler<KeyEvent>() {
-            private final Timeline searchTimeline = new Timeline();
-            {
-                // Set the delay
-                searchTimeline.getKeyFrames().add(
-                        new KeyFrame(Duration.millis(500), this::executeSearch)
-                );
-                searchTimeline.setCycleCount(1);
-            }
-
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                // Reset the timeline to cancel any pending execution
-                searchTimeline.stop();
-
-                String searchKey = inputWord.getText();
-                if (searchKey.isEmpty()) {
-                    cancelBtn.setVisible(false);
-                } else {
-                    cancelBtn.setVisible(true);
-                    // Schedule the search operation after the delay
-                    searchTimeline.playFromStart();
-                }
-            }
-
-            private void executeSearch(ActionEvent event) {
-                // This method will be called after the delay
-                String searchKey =inputWord.getText();
-                handleSearchOnKeyTyped(searchKey);
+        suggestListWord.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 1) {
+                suggestListWord.setVisible(false);
             }
         });
-
-        // listen to key released event
-        inputWord.setOnKeyReleased(event -> {
-            String searchKey = inputWord.getText();
-            handleSearchOnKeyTyped(searchKey);
-            if (!inputWord.getText().isEmpty()) {
-                suggestWord.setVisible(true);
-            }
-            else {
-                suggestWord.setVisible(false);
-            }
-            setShowWord(inputWord.getText());
-        });
-        // cancel button
         cancelBtn.setOnMouseClicked(event -> {
             inputWord.clear();
             meaningArea.getEngine().loadContent("");
-            suggestWord.setVisible(false);
-            selectedWord.setText("");
+            suggestListWord.setVisible(false);
+            setWord.setText("");
+        });
 
+        // lắng nghe sự kiện khi người dùng nhập từ cần tìm kiếm
+        inputWord.setOnKeyReleased(event -> {
+            handleSearchOnKeyTyped(inputWord.getText());
         });
     }
 
-    private void setShowWord(String text) {
-        selectedWord.setText(inputWord.getText());
+    public void updateListAddWord() {
+        listAddWords.clear();
+        pullAddedWords();
+        showListAddedWords(listAddWords);
     }
-
-
     public void switchLanguage(MouseEvent event) {
         Object source = event.getSource();
-        if (source == switchLangBtn){
+        if (source == switchLangBtn) {
             if (isEngVie) {
                 currentLang = vieLangCode;
                 switchLangBtn.setText("VIET NAM");
                 speckLang = "vi-vn";
-                currentData = dataVieEng;
             } else {
                 currentLang = engLangCode;
                 switchLangBtn.setText("ENGLISH");
                 speckLang = "en-us";
-                currentData = dataEngVie;
             }
             isEngVie = !isEngVie;
         }
@@ -171,60 +135,161 @@ public class SearchController implements Initializable{
 
     @FXML
     public void setSpeakBtn(ActionEvent event) throws Exception {
-        if (selectedWord == null || selectedWord.getText().isEmpty()) return;
-        VoiceRequest wordListening = new VoiceRequest(selectedWord.getText(), speckLang);
-            wordListening.valueProperty().addListener(
-                    (observable, oldValue, newValue) -> newValue.start());
-            Thread thread = new Thread(wordListening);
-            thread.setDaemon(true);
-            thread.start();
+        if (setWord == null || setWord.getText().isEmpty()) return;
+        VoiceRequest wordListening = new VoiceRequest(setWord.getText(), speckLang);
+        wordListening.valueProperty().addListener(
+                (observable, oldValue, newValue) -> newValue.start());
+        Thread thread = new Thread(wordListening);
+        thread.setDaemon(true);
+        thread.start();
     }
 
-    public void loadWordList() {
-        this.suggestWord.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+    public void handleSearchOnKeyTyped(String searchKey) {
+        if (searchKey.isEmpty()) {
+            suggestListWord.setVisible(false);
+            return;
+        }
+        suggestListWord.setVisible(true);
+
+        if (isEngVie) {
+            currentData = searchWord(searchKey, engTable);
+        } else {
+            currentData = searchWord(searchKey, vietTable);
+        }
+        ObservableList<String> list = FXCollections.observableArrayList();
+        for (String key : currentData.keySet()) {
+            list.add(key);
+        }
+        suggestListWord.setItems(list);
+    }
+
+    private void showListAddedWords(ArrayList<Word> listAddWords) {
+        ObservableList<String> list = FXCollections.observableArrayList();
+        int i = 0;
+        for (Word word : listAddWords) {
+            i++;
+            list.add(i +". "+ word.getWord());
+        }
+        listWordView.setItems(list);
+        listWordView.setCellFactory(param -> new ListCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item);
+                }
+            }
+        });
+    }
+
+    private void handleListAddedWord() {
+        this.listWordView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 // Đảm bảo rằng newValue không null
-                Word selectedWord = currentData.get(newValue.trim());
+                Word selectedWord = listAddWords.get(Integer.parseInt(newValue.split("\\.")[0].trim()) - 1);
                 currentSelectedWord = selectedWord;
-                saveBtn.setVisible(false);
+                saveBtn.setDisable(false);
+                deleteWordBtn.setDisable(false);
+                editDefinitionBtn.setDisable(false);
                 String definition = selectedWord.getMeaning();
-                this.selectedWord.setText(selectedWord.getWord());
-
+                this.setWord.setText(selectedWord.getWord());
                 definitionWebEngine = meaningArea.getEngine();
                 definitionWebEngine.loadContent(definition, "text/html");
             }
         });
-
-        suggestWord.setVisible(false);
     }
 
-
-
-    private void showResultSuggest(List<String> searchResultList) {
-        // Sắp xếp danh sách các từ theo thứ tự bảng chữ cái (alpha)
-        Collections.sort(searchResultList);
-          suggestWord.setPrefHeight(suggestWord.getItems().size() * 25); // 25 is the height of each item
-        // Đặt danh sách gợi ý cho suggestWord
-        this.suggestWord.getItems().setAll(searchResultList);
+    public void handleListWordDic() {
+        this.suggestListWord.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                // Đảm bảo rằng newValue không null
+                Word selectedWord = currentData.get(newValue);
+                currentSelectedWord = selectedWord;
+                String definition = selectedWord.getMeaning();
+                this.setWord.setText(selectedWord.getWord());
+                definitionWebEngine = meaningArea.getEngine();
+                definitionWebEngine.loadContent(definition, "text/html");
+            }
+        });
     }
+
+    // cho lưu chỉnh sửa từ đã thêm
 
     @FXML
-    private void handleSearchOnKeyTyped(String searchKey) {
-        List<String> searchResultList = new ArrayList<>();
-        // Chuyển sang chữ thường để tìm kiếm không phân biệt chữ hoa/chữ thường
-        searchKey = searchKey.trim().toLowerCase();
-
-        for (String key : currentData.keySet()) {
-            if (key.toLowerCase().startsWith(searchKey)) {
-                searchResultList.add(key);
-            }
+    public void saveWord(ActionEvent event){
+        AlertMessage alert = new AlertMessage();
+        if (currentSelectedWord != null) {
+            String definition = definitionWebEngine.getDocument().getDocumentElement().getTextContent();
+            currentSelectedWord.setMeaning(definition);
+            listAddWords.clear();
+            // update từ đã chỉnh sửa vào bảng add_word
+            updateWordInAddWordTable(currentSelectedWord.getWord(), definition);
+            // thông bảo lưu thành công
+            alert.successMessage("Lưu từ mới thành công!");
+            saveBtn.setDisable(true);
+            deleteWordBtn.setDisable(true);
+            editDefinitionBtn.setDisable(true);
+            updateListAddWord();
         }
+    }
 
-        if (searchResultList.isEmpty()) {
-            suggestWord.setVisible(false);
-            suggestWord.getItems().clear();
-        } else {
-            showResultSuggest(searchResultList);
+    // cho phép người dùng xóa từ đã thêm vào database từ đã thêm
+    @FXML
+    public void deleteWord(ActionEvent event) {
+        AlertMessage alert = new AlertMessage();
+        if (currentSelectedWord != null) {
+            listAddWords.remove(currentSelectedWord);
+            // xóa từ đó trong bảng add_word
+            Connection connection = getConnection();
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM add_word WHERE word = ? AND userID = ?");
+                preparedStatement.setString(1, currentSelectedWord.getWord());
+                preparedStatement.setInt(2, currentUser.getUserID());
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            saveBtn.setDisable(true);
+            deleteWordBtn.setDisable(true);
+            editDefinitionBtn.setDisable(true);
+            setWord.setText("");
+            meaningArea.getEngine().loadContent("");
+            // thông báo xóa thành công
+            alert.successMessage("Xóa từ thành công!");
+            updateListAddWord();
+        }
+    }
+
+    // cho phép người dùng chỉnh sửa từ nằm trong list từ đã thêm
+    @FXML
+    public void editDefinition(ActionEvent event) {
+        if (currentSelectedWord != null) {
+            saveBtn.setDisable(false);
+            // cho phep nguoi dung sua selectedWord va definition
+            definitionWebEngine.setJavaScriptEnabled(true);
+            definitionWebEngine.executeScript("document.body.contentEditable = true;");
+            // cho phép chỉnh sửa selectword
+            setWord.setEditable(true);
+        }
+    }
+
+    // xóa từ trong bảng add_word
+    public void deleteWordInAddWordTable(String word) {
+
+    }
+    // update từ được chỉnh sửa vào bảng add_word
+    public void updateWordInAddWordTable(String word, String meaning) {
+        Connection connection = getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE add_word SET meaning = ? WHERE word = ? AND userID = ?");
+            preparedStatement.setString(1, meaning);
+            preparedStatement.setString(2, word);
+            preparedStatement.setInt(3, currentUser.getUserID());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -2,7 +2,8 @@ package JavaCode;
 
 import Models.Question;
 import Models.StudyRecord;
-import com.sun.media.jfxmedia.Media;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -121,7 +122,6 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
             }
         });
     }
-
 
     @FXML
     void chooseAnswer(ActionEvent event) {
@@ -606,17 +606,19 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
             // Tải hình ảnh từ tài nguyên
             inputStream = classLoader.getResourceAsStream(IMAGE_FIREWORK);
             originalImage = new javafx.scene.image.Image(inputStream);
-//            correctAudioMedia = new Media(classLoader.getResource(PATH_TO_CORRECT_CHEERING).toExternalForm());
-//            correctAudioMediaPlayer = new MediaPlayer(correctAudioMedia);
+            // Tải âm thanh từ tài nguyên
+            correctAudioMedia = new Media(classLoader.getResource(CORRECT_SOUND).toString());
+            correctAudioMediaPlayer = new MediaPlayer(correctAudioMedia);
         } else {
             // Tải hình ảnh từ tài nguyên
             inputStream = classLoader.getResourceAsStream(IMAGE_SAD);
             originalImage = new javafx.scene.image.Image(inputStream);
-//            correctAudioMedia = new Media(classLoader.getResource(PATH_TO_INCORRECT_SOUND).toExternalForm());
-//            correctAudioMediaPlayer = new MediaPlayer(correctAudioMedia);
-        }
+            // Tải âm thanh từ tài nguyên
+            correctAudioMedia = new Media(classLoader.getResource(INCORRECT_SOUND).toString());
+            correctAudioMediaPlayer = new MediaPlayer(correctAudioMedia);
 
-//        correctAudioMediaPlayer.play(); // Phát âm thanh hoan hô
+        }
+        correctAudioMediaPlayer.play(); // Phát âm thanh hoan hô
 
         // Tạo một số lượng hạt pháo hoa
         int numFireworks = 40;

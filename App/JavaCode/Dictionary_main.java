@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import static Constants.Constant.*;
-import static Models.Request_ListWord.*;
 
 
 public class Dictionary_main extends Application {
@@ -21,8 +20,6 @@ public class Dictionary_main extends Application {
         stg = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource(LOGIN_LAYER));
         primaryStage.setTitle("Dictionary Application");
-
-
         primaryStage.setResizable(false);
         ClassLoader classLoader = Dictionary_main.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(LOGO_IMAGE_PATH);
@@ -37,15 +34,7 @@ public class Dictionary_main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         initializeStage(primaryStage);
-        readData(dataVieEng, DATA_VE_FILE_PATH, EDITED_WORD_VE_FILE);
-        readData(dataEngVie, DATA_EV_FILE_PATH, EDITED_WORD_EV_FILE);
     }
-
-    public void changeScene(String fxml) throws IOException {
-        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
-        stg.getScene().setRoot(pane);
-    }
-
 
     public static void main(String[] args) {
         launch(args);

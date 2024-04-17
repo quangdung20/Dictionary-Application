@@ -2,6 +2,7 @@ package JavaCode;
 
 import Models.StudyRecord;
 import Models.User;
+import Models.Word;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import java.io.IOException;
@@ -15,25 +16,31 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import Constants.Constant;
+import Constants.Key;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
+
+import static Constants.Key.DATABASE_PASSWORD;
+import static Constants.Key.DATABASE_USER;
+import static JavaCode.SearchController.listAddWords;
 
 public class DatabaseConnection {
 
     @FXML
     AnchorPane container;
-
     public Connection databaseLink;
     protected static Timeline countdownTimer;
     protected static User currentUser;
     public static ArrayList<User> listUsers = new ArrayList<>();
+    public static ArrayList<Word> listAddWords = new ArrayList<>();
+
 
     public Connection getConnection() {
 
         try {
             Class.forName(Constant.DRIVER);
-            databaseLink = DriverManager.getConnection(Constant.URL, Constant.DATABASE_USER, Constant.DATABASE_PASSWORD);
+            databaseLink = DriverManager.getConnection(Constant.URL, DATABASE_USER, DATABASE_PASSWORD);
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
@@ -143,10 +150,44 @@ public class DatabaseConnection {
             e.printStackTrace();
         }
     }
+    public void pullAddedWords() {
+        Connection connection = getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM add_word WHERE userID = ?");
+            preparedStatement.setInt(1, currentUser.getUserID());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String word = resultSet.getString("word");
+                String meaning = resultSet.getString("meaning");
+                Word listWord = new Word(word, meaning);
+                listAddWords.add(listWord);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
-
-    // lấy tất cả các userID trong bảng user_account sang bảng study
-
+    // tìm kiếm từ trong bảng dictionary_vi trong database theo chiều tăng dần
+    // phương thức này dùng cho cả tìm kiếm trong bảng từ điển tiếng anh và tiếng việt
+    public HashMap<String, Word> searchWord(String searchKey, String tableName) {
+        HashMap<String, Word> currentData = new HashMap<>();
+        searchKey = searchKey.trim().toLowerCase();
+        try {
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM " + tableName + " WHERE word LIKE ? ORDER BY word ASC");
+            preparedStatement.setString(1, searchKey + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String word = resultSet.getString("word");
+                String meaning = resultSet.getString("meaning");
+                Word word1 = new Word(word, meaning);
+                currentData.put(word, word1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return currentData;
+    }
     public static void main(String[] args) {
         DatabaseConnection databaseConnection = new DatabaseConnection();
         databaseConnection.getConnection();
@@ -156,8 +197,11 @@ public class DatabaseConnection {
         for (User user : listUsers) {
             System.out.println(user.getUserID() + " " + user.getUsername() + " " + user.getEmail() + " " + user.getStudyRecord().getScore() + " " + user.getStudyRecord().getTimesAttend() + " " + user.getStudyRecord().getTotalQuestion() + " " + user.getStudyRecord().getCorrectQuestions() + " " + user.getStudyRecord().getIncorrectQuestions());
         }
-//            System.out.println(currentUser.getUserID()+ " " + currentUser.getUsername() + " " + currentUser.getEmail() + " " + currentUser.getStudyRecord().getScore() + " " + currentUser.getStudyRecord().getTimesAttend() + " " + currentUser.getStudyRecord().getTotalQuestion() + " " + currentUser.getStudyRecord().getCorrectQuestions() + " " + currentUser.getStudyRecord().getIncorrectQuestions());
+        databaseConnection.pullAddedWords();
+        for (Word word : listAddWords) {
+            System.out.println(word.getWord() + " " + word.getMeaning());
         }
 
 
+    }
 }
