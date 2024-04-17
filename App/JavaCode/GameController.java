@@ -3,6 +3,8 @@ package JavaCode;
 //import Models.StudyRecord;
 import Models.Ranking;
 import Models.User;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -58,7 +60,9 @@ public class GameController extends DatabaseConnection implements Initializable 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        showInfoUser();
+        Timeline timeline = new Timeline(new KeyFrame(javafx.util.Duration.millis(1000), event -> updateAfterGame()));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
         learningBtn2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -72,12 +76,21 @@ public class GameController extends DatabaseConnection implements Initializable 
                 showComponent(GAME_UNSCRAMBLE);
             }
         });
-        showListRank(listUsers);
-        setupImageRanking(String.valueOf(currentUser.getStudyRecord().getScore()));
+
         // set label user
         System.out.println("Username: " + currentUser.getUsername() + " Score: " + currentUser.getStudyRecord().getScore()+ listUsers.size());
     }
 
+    public void updateAfterGame() {
+        // Cập nhật thông tin người dùng
+        showInfoUser();
+
+        // Cập nhật xếp hạng
+        showListRank(listUsers);
+
+        // Cập nhật hình ảnh xếp hạng
+        setupImageRanking(String.valueOf(currentUser.getStudyRecord().getScore()));
+    }
     private void showListRank(ArrayList<User> listUsers) {
         // Create a new ObservableList
         ObservableList<String> observableList = FXCollections.observableArrayList();

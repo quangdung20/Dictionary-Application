@@ -36,7 +36,7 @@ public class Constant {
     public static final String GAMES_LAYER = "Layers/ActiveLayer.fxml";
     public static final String TRANSLATE_LAYER = "Layers/TranslateLayer.fxml";
     public static final String GAME_TESTING = "Layers/GameQuizLayer.fxml";
-    public static final String GAME_WORD = "App/resources/Data/game.html";
+    public static final String GAME_WORD = "App/resources/Data/game.txt";
     public static final String GAME_UNSCRAMBLE = "Layers/GameUnscramble.fxml";
     public static final String DATA_EV_FILE_PATH = "resources/Data/E_V.txt";
     public static final String DATA_VE_FILE_PATH = "resources/Data/V_E.txt";

@@ -104,7 +104,7 @@
          <center>
             <AnchorPane prefHeight="519.0" prefWidth="559.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="learningBtn1" contentDisplay="CENTER" layoutX="319.0" layoutY="305.0" maxHeight="223.0" minHeight="33.0" mnemonicParsing="false" prefHeight="186.0" prefWidth="197.0" style="-fx-background-color: none; -fx-background-radius: 100;">
+                  <Button fx:id="learningBtn1" contentDisplay="CENTER" layoutX="319.0" layoutY="280.0" maxHeight="223.0" minHeight="33.0" mnemonicParsing="false" prefHeight="211.0" prefWidth="198.0" style="-fx-background-color: none; -fx-background-radius: 100;">
                      <styleClass>
                         <String fx:value="scale-button" />
                         <String fx:value="shadow-button" />
