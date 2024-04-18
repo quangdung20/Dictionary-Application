@@ -1,6 +1,5 @@
 package JavaCode;
 
-import API_Dictionary.DataLoadedInterface;
 import API_Dictionary.VoiceRequest;
 import AlertBox.AlertMessage;
 import Models.User;
@@ -275,10 +274,6 @@ public class SearchController extends DatabaseConnection implements Initializabl
         }
     }
 
-    // xóa từ trong bảng add_word
-    public void deleteWordInAddWordTable(String word) {
-
-    }
     // update từ được chỉnh sửa vào bảng add_word
     public void updateWordInAddWordTable(String word, String meaning) {
         Connection connection = getConnection();

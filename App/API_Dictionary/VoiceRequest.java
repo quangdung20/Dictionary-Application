@@ -11,8 +11,7 @@ import java.io.FileOutputStream;
 
 import static Constants.Key.APIKEY;
 import static com.voicerss.tts.Languages.*;
-//import static com.voicerss.tts.Voices.*;
-//import static com.voicerss.tts.Voices.English_UnitedStates.*;
+
 
 
 public class VoiceRequest extends Task<Clip> {
@@ -51,12 +50,4 @@ public class VoiceRequest extends Task<Clip> {
         clip.open(audioStream);
         return clip;
     }
-
-    public static void main(String[] args) {
-        VoiceRequest voiceRequest = new VoiceRequest("hello", English_Australia);
-        try {
-            voiceRequest.call();
-        } catch (Exception e) {
-            e.printStackTrace();
-    }}
 }
