@@ -82,11 +82,8 @@ public class GameController extends DatabaseConnection implements Initializable 
     }
 
     public void updateAfterGame() {
-        // Cập nhật thông tin người dùng
         showInfoUser();
-        // Cập nhật xếp hạng
         showListRank(listUsers);
-        // Cập nhật hình ảnh xếp hạng
         setupImageRanking(String.valueOf(currentUser.getStudyRecord().getScore()));
     }
     private void showListRank(ArrayList<User> listUsers) {
