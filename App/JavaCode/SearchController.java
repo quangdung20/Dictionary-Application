@@ -225,7 +225,7 @@ public class SearchController extends DatabaseConnection implements Initializabl
             currentSelectedWord.setMeaning(definition);
             listAddWords.clear();
             // update từ đã chỉnh sửa vào bảng add_word
-            updateWordInAddWordTable(currentSelectedWord.getWord(), definition);
+            updateWordInAddWordTable(currentSelectedWord.getWord(), setWord.getText(), definition);
             // thông bảo lưu thành công
             alert.successMessage("Lưu từ mới thành công!");
             saveBtn.setDisable(true);
@@ -275,21 +275,19 @@ public class SearchController extends DatabaseConnection implements Initializabl
         }
     }
 
-    // xóa từ trong bảng add_word
-    public void deleteWordInAddWordTable(String word) {
-
-    }
-    // update từ được chỉnh sửa vào bảng add_word
-    public void updateWordInAddWordTable(String word, String meaning) {
+    // update từ được chỉnh sửa vào bảng add_word update cả nghĩa và từ
+    public void updateWordInAddWordTable(String word, String word_replace, String meaning) {
         Connection connection = getConnection();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE add_word SET meaning = ? WHERE word = ? AND userID = ?");
-            preparedStatement.setString(1, meaning);
-            preparedStatement.setString(2, word);
-            preparedStatement.setInt(3, currentUser.getUserID());
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE add_word SET word = ?, meaning = ? WHERE word = ? AND userID = ?");
+            preparedStatement.setString(1, word_replace);
+            preparedStatement.setString(2, meaning);
+            preparedStatement.setString(3, word);
+            preparedStatement.setInt(4, currentUser.getUserID());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 }
