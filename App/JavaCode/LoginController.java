@@ -1,5 +1,4 @@
 package JavaCode;
-import Models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,18 +10,15 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.sql.*;
-import java.util.HashMap;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-import AlertBox.AlertMessage;
+import Models.AlertMessage;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -154,7 +150,7 @@ public class LoginController extends DatabaseConnection implements Initializable
 
             while (queryResult.next()) {
                 if (queryResult.getInt(1) == 1) {
-                    setCurrentUser(login_username.getText());
+                    getCurrentUser(login_username.getText());
                     gotoMainApp();
 
                 } else {

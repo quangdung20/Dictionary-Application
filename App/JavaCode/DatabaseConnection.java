@@ -4,6 +4,8 @@ import Models.StudyRecord;
 import Models.User;
 import Models.Word;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import java.io.IOException;
 import java.net.URL;
@@ -83,7 +85,7 @@ public class DatabaseConnection {
     }
 
     // lấy thông tin người dùng khi đăng nhập thành công vào current user để có thể sử dụng ở các controller khác
-    public void setCurrentUser(String username) {
+    public void getCurrentUser(String username) {
         Connection connection = getConnection();
         String query = "SELECT * FROM user_account WHERE username = ?";
         try {
@@ -167,8 +169,7 @@ public class DatabaseConnection {
         }
     }
 
-    // tìm kiếm từ trong bảng dictionary_vi trong database theo chiều tăng dần
-    // phương thức này dùng cho cả tìm kiếm trong bảng từ điển tiếng anh và tiếng việt
+    // tìm kiếm từ trong bảng dictionary trong database
     public HashMap<String, Word> searchWord(String searchKey, String tableName) {
         HashMap<String, Word> currentData = new HashMap<>();
         searchKey = searchKey.trim().toLowerCase();
@@ -188,19 +189,17 @@ public class DatabaseConnection {
         }
         return currentData;
     }
+
     public static void main(String[] args) {
+        HashMap<String, Word> currentData = new HashMap<>();
         DatabaseConnection databaseConnection = new DatabaseConnection();
         databaseConnection.getConnection();
-        databaseConnection.getRanking();
-        databaseConnection.setCurrentUser("quangdung");
-        databaseConnection.getStudyRecord();
-        for (User user : listUsers) {
-            System.out.println(user.getUserID() + " " + user.getUsername() + " " + user.getEmail() + " " + user.getStudyRecord().getScore() + " " + user.getStudyRecord().getTimesAttend() + " " + user.getStudyRecord().getTotalQuestion() + " " + user.getStudyRecord().getCorrectQuestions() + " " + user.getStudyRecord().getIncorrectQuestions());
+        databaseConnection.searchWord("mar", "dictionary_en");
+        for (String key : currentData.keySet()) {
+            System.out.println(key + " " + currentData.get(key).getMeaning());
         }
-        databaseConnection.pullAddedWords();
-        for (Word word : listAddWords) {
-            System.out.println(word.getWord() + " " + word.getMeaning());
-        }
+
+
 
 
     }

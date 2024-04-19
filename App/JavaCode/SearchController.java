@@ -1,34 +1,24 @@
 package JavaCode;
 
 import API_Dictionary.VoiceRequest;
-import AlertBox.AlertMessage;
-import Models.User;
+import Models.AlertMessage;
 import Models.Word;
-import com.voicerss.tts.Languages;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import javafx.util.Duration;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-import static Constants.Constant.*;
 import static java.sql.DriverManager.getConnection;
 
 public class SearchController extends DatabaseConnection implements Initializable {
@@ -105,7 +95,7 @@ public class SearchController extends DatabaseConnection implements Initializabl
             setWord.setText("");
         });
 
-        // lắng nghe sự kiện khi người dùng nhập từ cần tìm kiếm
+        // lắng nghe sự kiện khi người dùng nhập từ cần tìm kiếm tuy nhiên muốn sau 0,5s mới thực hiện nghe
         inputWord.setOnKeyReleased(event -> {
             handleSearchOnKeyTyped(inputWord.getText());
         });
@@ -154,6 +144,10 @@ public class SearchController extends DatabaseConnection implements Initializabl
             currentData = searchWord(searchKey, engTable);
         } else {
             currentData = searchWord(searchKey, vietTable);
+        }
+        // nếu không có kết quả trong 2 bảng thì tìm kiếm trong bảnh addword của user current
+        if (currentData.isEmpty()) {
+            currentData = searchWord(searchKey, "add_word");
         }
         ObservableList<String> list = FXCollections.observableArrayList();
         for (String key : currentData.keySet()) {
@@ -238,26 +232,33 @@ public class SearchController extends DatabaseConnection implements Initializabl
     @FXML
     public void deleteWord(ActionEvent event) {
         AlertMessage alert = new AlertMessage();
-        if (currentSelectedWord != null) {
-            listAddWords.remove(currentSelectedWord);
-            // xóa từ đó trong bảng add_word
-            Connection connection = getConnection();
-            try {
-                PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM add_word WHERE word = ? AND userID = ?");
-                preparedStatement.setString(1, currentSelectedWord.getWord());
-                preparedStatement.setInt(2, currentUser.getUserID());
-                preparedStatement.executeUpdate();
-            } catch (SQLException e) {
-                e.printStackTrace();
+        Alert warningAlert = alert.warningAlertDialog(
+                "Xoá từ " + currentSelectedWord.getWord(),
+                "Bạn có chắc chắn muốn xoá từ này không?"
+        );
+        warningAlert.getButtonTypes().add(ButtonType.CANCEL);
+        Optional<ButtonType> option = warningAlert.showAndWait();
+        if (option.get() == ButtonType.OK) {
+            if (currentSelectedWord != null) {
+                listAddWords.remove(currentSelectedWord);
+                // xóa từ đó trong bảng add_word
+                Connection connection = getConnection();
+                try {
+                    PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM add_word WHERE word = ? AND userID = ?");
+                    preparedStatement.setString(1, currentSelectedWord.getWord());
+                    preparedStatement.setInt(2, currentUser.getUserID());
+                    preparedStatement.executeUpdate();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                saveBtn.setDisable(true);
+                deleteWordBtn.setDisable(true);
+                editDefinitionBtn.setDisable(true);
+                setWord.setText("");
+                meaningArea.getEngine().loadContent("");
+                // thông báo xóa thành công
+                updateListAddWord();
             }
-            saveBtn.setDisable(true);
-            deleteWordBtn.setDisable(true);
-            editDefinitionBtn.setDisable(true);
-            setWord.setText("");
-            meaningArea.getEngine().loadContent("");
-            // thông báo xóa thành công
-            alert.successMessage("Xóa từ thành công!");
-            updateListAddWord();
         }
     }
 
