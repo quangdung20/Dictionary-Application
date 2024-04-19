@@ -2,23 +2,31 @@ package JavaCode;
 
 import API_Dictionary.VoiceRequest;
 import Models.AlertMessage;
+import Models.User;
 import Models.Word;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.util.Duration;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
-import static Constants.Constant.*;
 
+import static Constants.Constant.*;
+import static java.sql.DriverManager.getConnection;
 
 public class SearchController extends DatabaseConnection implements Initializable {
 
@@ -59,7 +67,8 @@ public class SearchController extends DatabaseConnection implements Initializabl
     private Word currentSelectedWord;
 
     HashMap<String, Word> currentData = new HashMap<>();
-
+    public static final String engTable = "dictionary_en";
+    public static final String vietTable = "dictionary_vi";
 
     public static final String engLangCode = "en-US";
     public static final String vieLangCode = "vi-VN";
@@ -93,7 +102,7 @@ public class SearchController extends DatabaseConnection implements Initializabl
             setWord.setText("");
         });
 
-        // lắng nghe sự kiện khi người dùng nhập từ cần tìm kiếm tuy nhiên muốn sau 0,5s mới thực hiện nghe
+        // lắng nghe sự kiện khi người dùng nhập từ cần tìm kiếm
         inputWord.setOnKeyReleased(event -> {
             handleSearchOnKeyTyped(inputWord.getText());
         });
@@ -139,13 +148,9 @@ public class SearchController extends DatabaseConnection implements Initializabl
         suggestListWord.setVisible(true);
 
         if (isEngVie) {
-            currentData = searchWord(searchKey, TABLE_ENG_VIE);
+            currentData = searchWord(searchKey, engTable);
         } else {
-            currentData = searchWord(searchKey, TABLE_VIE_ENG);
-        }
-        // nếu không có kết quả trong 2 bảng thì tìm kiếm trong bảnh addword của user current
-        if (currentData.isEmpty()) {
-            currentData = searchWord(searchKey, TABLE_ADD_WORD);
+            currentData = searchWord(searchKey, vietTable);
         }
         ObservableList<String> list = FXCollections.observableArrayList();
         for (String key : currentData.keySet()) {
@@ -216,7 +221,7 @@ public class SearchController extends DatabaseConnection implements Initializabl
             currentSelectedWord.setMeaning(definition);
             listAddWords.clear();
             // update từ đã chỉnh sửa vào bảng add_word
-            updateWordInAddWordTable(currentSelectedWord.getWord(), definition);
+            updateWordInAddWordTable(currentSelectedWord.getWord(), setWord.getText(), definition);
             // thông bảo lưu thành công
             alert.successMessage("Lưu từ mới thành công!");
             saveBtn.setDisable(true);
@@ -230,33 +235,26 @@ public class SearchController extends DatabaseConnection implements Initializabl
     @FXML
     public void deleteWord(ActionEvent event) {
         AlertMessage alert = new AlertMessage();
-        Alert warningAlert = alert.warningAlertDialog(
-                "Xoá từ " + currentSelectedWord.getWord(),
-                "Bạn có chắc chắn muốn xoá từ này không?"
-        );
-        warningAlert.getButtonTypes().add(ButtonType.CANCEL);
-        Optional<ButtonType> option = warningAlert.showAndWait();
-        if (option.get() == ButtonType.OK) {
-            if (currentSelectedWord != null) {
-                listAddWords.remove(currentSelectedWord);
-                // xóa từ đó trong bảng add_word
-                Connection connection = getConnection();
-                try {
-                    PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM add_word WHERE word = ? AND userID = ?");
-                    preparedStatement.setString(1, currentSelectedWord.getWord());
-                    preparedStatement.setInt(2, currentUser.getUserID());
-                    preparedStatement.executeUpdate();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                saveBtn.setDisable(true);
-                deleteWordBtn.setDisable(true);
-                editDefinitionBtn.setDisable(true);
-                setWord.setText("");
-                meaningArea.getEngine().loadContent("");
-                // thông báo xóa thành công
-                updateListAddWord();
+        if (currentSelectedWord != null) {
+            listAddWords.remove(currentSelectedWord);
+            // xóa từ đó trong bảng add_word
+            Connection connection = getConnection();
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM add_word WHERE word = ? AND userID = ?");
+                preparedStatement.setString(1, currentSelectedWord.getWord());
+                preparedStatement.setInt(2, currentUser.getUserID());
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
+            saveBtn.setDisable(true);
+            deleteWordBtn.setDisable(true);
+            editDefinitionBtn.setDisable(true);
+            setWord.setText("");
+            meaningArea.getEngine().loadContent("");
+            // thông báo xóa thành công
+            alert.successMessage("Xóa từ thành công!");
+            updateListAddWord();
         }
     }
 
@@ -273,17 +271,19 @@ public class SearchController extends DatabaseConnection implements Initializabl
         }
     }
 
-    // update từ được chỉnh sửa vào bảng add_word
-    public void updateWordInAddWordTable(String word, String meaning) {
+    // update từ được chỉnh sửa vào bảng add_word update cả nghĩa và từ
+    public void updateWordInAddWordTable(String word, String word_replace, String meaning) {
         Connection connection = getConnection();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE add_word SET meaning = ? WHERE word = ? AND userID = ?");
-            preparedStatement.setString(1, meaning);
-            preparedStatement.setString(2, word);
-            preparedStatement.setInt(3, currentUser.getUserID());
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE add_word SET word = ?, meaning = ? WHERE word = ? AND userID = ?");
+            preparedStatement.setString(1, word_replace);
+            preparedStatement.setString(2, meaning);
+            preparedStatement.setString(3, word);
+            preparedStatement.setInt(4, currentUser.getUserID());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 }
