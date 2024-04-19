@@ -35,5 +35,8 @@ public class Constant {
     public static final String CORRECT_SOUND = "resources/Audio/correct.mp3";
 
     public static final String INCORRECT_SOUND = "resources/Audio/incorrect.mp3";
+    public static final String TABLE_ENG_VIE = "dictionary_en";
+    public static final String TABLE_VIE_ENG = "dictionary_vi";
+    public static final String TABLE_ADD_WORD = "add_word";
 
 }

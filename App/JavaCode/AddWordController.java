@@ -43,7 +43,6 @@ public class AddWordController extends DatabaseConnection implements Initializab
         titleWord.setText("Nhập từ tiếng Anh");
         currentKeyLang = 2;
 
-        //
         inpputAddword.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
@@ -81,6 +80,7 @@ public class AddWordController extends DatabaseConnection implements Initializab
             pause.play();
         }
     }
+
     // switch language
     @FXML
     void switchLangBtn(ActionEvent event) {

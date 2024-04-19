@@ -12,14 +12,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.*;
+import static Constants.Constant.*;
 
-import static java.sql.DriverManager.getConnection;
 
 public class SearchController extends DatabaseConnection implements Initializable {
 
@@ -60,8 +59,7 @@ public class SearchController extends DatabaseConnection implements Initializabl
     private Word currentSelectedWord;
 
     HashMap<String, Word> currentData = new HashMap<>();
-    public static final String engTable = "dictionary_en";
-    public static final String vietTable = "dictionary_vi";
+
 
     public static final String engLangCode = "en-US";
     public static final String vieLangCode = "vi-VN";
@@ -141,13 +139,13 @@ public class SearchController extends DatabaseConnection implements Initializabl
         suggestListWord.setVisible(true);
 
         if (isEngVie) {
-            currentData = searchWord(searchKey, engTable);
+            currentData = searchWord(searchKey, TABLE_ENG_VIE);
         } else {
-            currentData = searchWord(searchKey, vietTable);
+            currentData = searchWord(searchKey, TABLE_VIE_ENG);
         }
         // nếu không có kết quả trong 2 bảng thì tìm kiếm trong bảnh addword của user current
         if (currentData.isEmpty()) {
-            currentData = searchWord(searchKey, "add_word");
+            currentData = searchWord(searchKey, TABLE_ADD_WORD);
         }
         ObservableList<String> list = FXCollections.observableArrayList();
         for (String key : currentData.keySet()) {

@@ -42,10 +42,6 @@ public class StudyRecord {
         this.incorrectQuestions = incorrectQuestions;
     }
 
-    public StudyRecord(int score) {
-        this.score = score;
-    }
-
     public StudyRecord(int score, int timesAttend, int totalQuestion, int correctQuestions, int incorrectQuestions) {
         this.score = score;
         this.timesAttend = timesAttend;
