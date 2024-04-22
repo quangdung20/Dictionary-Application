@@ -54,24 +54,24 @@ The application is designed to support learning English. The application is writ
   
   - Search Word & Translate Text:
   <p>
-    <img src="https://github.com/quangdung20/Dictionary-Application/blob/main/ImageOOP/SreachWord.jpg" width="400" height="280">
-    <img src="https://github.com/quangdung20/Dictionary-Application/blob/main/ImageOOP/translateText.jpg" width="400" height="280">
+    <img src="https://github.com/quangdung20/Dictionary-Application/blob/Image/ImageOOP/SreachWord.jpg" width="400" height="280">
+    <img src="https://github.com/quangdung20/Dictionary-Application/blob/Image/ImageOOP/translateText.jpg" width="400" height="280">
   </p>
   
   - Add new word :
   <p>
-    <img src="https://github.com/quangdung20/Dictionary-Application/blob/main/ImageOOP/AddWord.jpg" width="800" height="560">
+    <img src="https://github.com/quangdung20/Dictionary-Application/blob/Image/ImageOOP/AddWord.jpg" width="400" height="280">
   </p>
   
   - Mini game:
   <p>
-    <img src="https://github.com/quangdung20/Dictionary-Application/blob/main/ImageOOP/Game1.jpg" width="800" height="560">
+    <img src="https://github.com/quangdung20/Dictionary-Application/blob/Image/ImageOOP/Game1.jpg" width="400" height="280">
   </p>
   
   - Practive & Learn:
   <p>
-    <img src="https://github.com/quangdung20/Dictionary-Application/blob/main/ImageOOP/Practive.jpg" width="400" height="280">
-    <img src="https://github.com/quangdung20/Dictionary-Application/blob/main/ImageOOP/Learn.jpg" width="400" height="280">
+    <img src="https://github.com/quangdung20/Dictionary-Application/blob/Image/ImageOOP/Practive.jpg" width="400" height="280">
+    <img src="https://github.com/quangdung20/Dictionary-Application/blob/Image/ImageOOP/Learn.jpg" width="400" height="280">
   </p>
   
 ## Future improvements
