@@ -26,7 +26,7 @@ public class Constant {
     public static final String LOGIN_LAYER = "Layers/LoginLayer.fxml";
     public static final String SEARCH_LAYER = "Layers/SearchLayer.fxml";
     public static final String ADD_WORD_LAYER = "Layers/AddWordLayer.fxml";
-    public static final String GAMES_LAYER = "Layers/ActiveLayer.fxml";
+    public static final String GAMES_LAYER = "Layers/GamesOverview.fxml";
     public static final String TRANSLATE_LAYER = "Layers/TranslateLayer.fxml";
     public static final String GAME_TESTING = "Layers/GameQuizLayer.fxml";
     public static final String GAME_WORD = "App/resources/Data/game.txt";
@@ -35,5 +35,8 @@ public class Constant {
     public static final String CORRECT_SOUND = "resources/Audio/correct.mp3";
 
     public static final String INCORRECT_SOUND = "resources/Audio/incorrect.mp3";
+    public static final String TABLE_ENG_VIE = "dictionary_en";
+    public static final String TABLE_VIE_ENG = "dictionary_vi";
+    public static final String TABLE_ADD_WORD = "add_word";
 
 }

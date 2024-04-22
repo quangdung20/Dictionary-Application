@@ -1,7 +1,6 @@
 package JavaCode;
 
 import Models.Question;
-import Models.StudyRecord;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.animation.KeyFrame;
@@ -15,11 +14,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
@@ -32,7 +28,6 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.time.Duration;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static Constants.Constant.*;
@@ -62,16 +57,13 @@ public class GameQuiz extends DatabaseConnection  implements Initializable{
     private ArrayList<Question> listQuestionData = new ArrayList<>();
     private ArrayList<Question> listQuestion = new ArrayList<>();
     private int currentQuestionIndex;
-
     private String answer = "";
-
     private boolean isFinish = false;
     private boolean isHandledFinishAnimation = false;
     private Timeline mainTimeLine = new Timeline();
     private int score = 0;
     private final int correctScore = 10;
     private final int incorrectScore = -5;
-
     private boolean isUsedFiftyPercentHelp = false;
     private boolean isChangeQuestion = false;
     private boolean isUsedTeamworkHelp = false;

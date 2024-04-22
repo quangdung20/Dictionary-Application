@@ -105,12 +105,6 @@ public class Question {
         return gson.toJson(this);
     }
 
-    // Change JSON string to Question object
-    public static Question fromJson(String jsonString) {
-        Gson gson = new Gson();
-        return gson.fromJson(jsonString, Question.class);
-    }
-
     public static void readQuestionFile(ArrayList<Question> questions) {
         ClassLoader classLoader = Question.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(QUESTION_FILE);

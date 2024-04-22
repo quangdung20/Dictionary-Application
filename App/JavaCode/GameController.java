@@ -1,21 +1,15 @@
 package JavaCode;
 
-//import Models.StudyRecord;
 import Models.Ranking;
 import Models.User;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -24,8 +18,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.util.*;
 
 import static Constants.Constant.*;
@@ -82,11 +74,8 @@ public class GameController extends DatabaseConnection implements Initializable 
     }
 
     public void updateAfterGame() {
-        // Cập nhật thông tin người dùng
         showInfoUser();
-        // Cập nhật xếp hạng
         showListRank(listUsers);
-        // Cập nhật hình ảnh xếp hạng
         setupImageRanking(String.valueOf(currentUser.getStudyRecord().getScore()));
     }
     private void showListRank(ArrayList<User> listUsers) {

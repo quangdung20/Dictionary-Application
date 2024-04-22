@@ -94,7 +94,7 @@ public class TranslateController extends DatabaseConnection implements Initializ
                 });
         }
 
-        // Chọn ngôn ngữ đích
+
         void LangDestination() {
                 choseLangDestination.getItems().addAll("Tiếng Việt", "Tiếng Anh", "Tiếng Hàn", "Tiếng Nga", "Tiếng Trung");
                 choseLangDestination.setValue("Tiếng Việt");
@@ -124,7 +124,6 @@ public class TranslateController extends DatabaseConnection implements Initializ
                 });
         }
 
-        // Phát âm từ ngôn ngữ nguồn
         @FXML
         void speakLangSource() throws Exception {
                 if (!Objects.equals(inputSentence.getText(), "")) {
@@ -137,7 +136,6 @@ public class TranslateController extends DatabaseConnection implements Initializ
                 }
         }
 
-        // Phát âm từ ngôn ngữ đích
         @FXML
         void  speakLangDestination() throws Exception {
                 if (!Objects.equals(outputMeaning.getText(), "")) {
@@ -149,6 +147,7 @@ public class TranslateController extends DatabaseConnection implements Initializ
                         thread.start();
                 }
         }
+
         @FXML
         void translateBtn() throws IOException {
                 if (!inputSentence.getText().isBlank()) {
@@ -167,5 +166,4 @@ public class TranslateController extends DatabaseConnection implements Initializ
                         clipboard.setContent(content);
                 }
         }
-
 }

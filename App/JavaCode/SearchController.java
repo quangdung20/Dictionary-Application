@@ -67,8 +67,6 @@ public class SearchController extends DatabaseConnection implements Initializabl
     private Word currentSelectedWord;
 
     HashMap<String, Word> currentData = new HashMap<>();
-    public static final String engTable = "dictionary_en";
-    public static final String vietTable = "dictionary_vi";
 
     public static final String engLangCode = "en-US";
     public static final String vieLangCode = "vi-VN";
@@ -113,6 +111,7 @@ public class SearchController extends DatabaseConnection implements Initializabl
         pullAddedWords();
         showListAddedWords(listAddWords);
     }
+
     public void switchLanguage(MouseEvent event) {
         Object source = event.getSource();
         if (source == switchLangBtn) {
@@ -148,16 +147,24 @@ public class SearchController extends DatabaseConnection implements Initializabl
         suggestListWord.setVisible(true);
 
         if (isEngVie) {
-            currentData = searchWord(searchKey, engTable);
+            currentData = searchWord(searchKey, TABLE_ENG_VIE);
         } else {
-            currentData = searchWord(searchKey, vietTable);
+            currentData = searchWord(searchKey, TABLE_VIE_ENG);
         }
+<<<<<<< HEAD
+=======
+        // nếu không có kết quả trong 2 bảng thì tìm kiếm trong bảnh addword của user current
+        if (currentData.isEmpty()) {
+            currentData = searchWord(searchKey, TABLE_ADD_WORD);
+        }
+>>>>>>> 2ab52577daff1fdd5c07b908753e9eb06644ece0
         ObservableList<String> list = FXCollections.observableArrayList();
         for (String key : currentData.keySet()) {
             list.add(key);
         }
         suggestListWord.setItems(list);
     }
+
 
     private void showListAddedWords(ArrayList<Word> listAddWords) {
         ObservableList<String> list = FXCollections.observableArrayList();
