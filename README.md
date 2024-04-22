@@ -12,9 +12,9 @@ The application is designed to support learning English. The application is writ
   3. The application is based on the MVC model.
   4. The application has two types of dictionaries: English-Vietnamese and Vietnamese-English.
   5. The application use Database to store data and word search features.
-  6. Game-intergrated application to practice English, study time statistics and ranking user.
+  6. Game-intergrated application to practice English, study time statistics and ranking user.**
   7. The application use Database to store user's data.
-  8. Use Google' Cloud Text-to-Speech API to translate the entire paragraph.
+  8. Use Google' Cloud Text-to-Speech API to translate the entire paragraph. **
   9. Use Google' Cloud Translation API to pronounce each word.
 ## UML diagram
 ![UML diagram](https://github.com/quangdung20/Dictionary-Application/blob/main/ImageOOP/darkmode.jpg)
@@ -40,7 +40,7 @@ The application is designed to support learning English. The application is writ
   5. To edit a word, click the Edit button (Pencil icon).
   6. To save the changes, click the Save button (Disk icon).
   7. To pronounce the word, click the Pronounce button (Speaker icon).
-  8. To practice, click the Practice button (Readbook icon), then the application will display a Game window.
+  8. To practice, click the Practice button (Readbook icon), then the application will display a Game window. **
   9. To exit the application, click the Blue Power button.
 ## Demo
   1. Video: (https://drive.google.com/file/d/1TLd0UXtu5qmLr5MCD_NTcFYVqYaeggG9/view?usp=drivesdk)
