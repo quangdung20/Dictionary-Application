@@ -26,7 +26,7 @@ public class Constant {
     public static final String LOGIN_LAYER = "Layers/LoginLayer.fxml";
     public static final String SEARCH_LAYER = "Layers/SearchLayer.fxml";
     public static final String ADD_WORD_LAYER = "Layers/AddWordLayer.fxml";
-    public static final String GAMES_LAYER = "Layers/ActiveLayer.fxml";
+    public static final String GAMES_LAYER = "Layers/GamesOverview.fxml";
     public static final String TRANSLATE_LAYER = "Layers/TranslateLayer.fxml";
     public static final String GAME_TESTING = "Layers/GameQuizLayer.fxml";
     public static final String GAME_WORD = "App/resources/Data/game.txt";
