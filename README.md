@@ -48,7 +48,7 @@ The application is designed to support learning English. The application is writ
   2. Screenshots:
   - Login and Register:
   <p>
-    <img src="https://github.com/quangdung20/Dictionary-Application/blob/main/ImageOOP/LoginImage.jpg" width="400" height="300">
+    <img src="https://drive.google.com/file/d/1AaemF1x4ZiebQMDUyBZYpmuIfNygg9g5/view?usp=sharing" width="400" height="300">
     <img src="https://github.com/quangdung20/Dictionary-Application/blob/main/ImageOOP/Register.jpg" width="400" height="300">
   </p>
   
