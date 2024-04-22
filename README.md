@@ -6,14 +6,14 @@ Group Noobies
   2. Nguyễn Văn Quyền - 20020709
   3. Phạm Nguyễn Phú Sĩ - 
 ## Description
-The application is designed to support learning English. The application is written in Java and uses the JavaFX library. The application is based on the MVC model. The application has two types of dictionaries: English-Vietnamese and Vietnamese-English. The application use E_V.txt and V_E.txt files to store data.
+The application is designed to support learning English. The application is written in Java and uses the JavaFX library. The application is based on the MVC model. The application has two types of dictionaries: English-Vietnamese and Vietnamese-English. The application use Database to store data.
   1. The application is designed to support learning English.
   2. The application is written in Java and uses the JavaFX library.
   3. The application is based on the MVC model.
   4. The application has two types of dictionaries: English-Vietnamese and Vietnamese-English.
   5. The application use Database to store data and word search features.
   6. Game-intergrated application to practice English, study time statistics and ranking user.
-  7. The application use Firebase Realtime Database to store user's data.
+  7. The application use Database to store user's data.
   8. Use Google' Cloud Text-to-Speech API to translate the entire paragraph.
   9. Use Google' Cloud Translation API to pronounce each word.
 ## UML diagram
