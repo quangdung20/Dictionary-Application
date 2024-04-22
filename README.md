@@ -60,12 +60,12 @@ The application is designed to support learning English. The application is writ
   
   - Add new word :
   <p>
-    <img src="https://github.com/quangdung20/Dictionary-Application/blob/Image/ImageOOP/AddWord.jpg" width="800" height="560">
+    <img src="https://github.com/quangdung20/Dictionary-Application/blob/Image/ImageOOP/AddWord.jpg" width="400" height="280">
   </p>
   
   - Mini game:
   <p>
-    <img src="https://github.com/quangdung20/Dictionary-Application/blob/Image/ImageOOP/Game1.jpg" width="800" height="560">
+    <img src="https://github.com/quangdung20/Dictionary-Application/blob/Image/ImageOOP/Game1.jpg" width="400" height="280">
   </p>
   
   - Practive & Learn:
