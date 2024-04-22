@@ -17,7 +17,7 @@ The application is designed to support learning English. The application is writ
   8. Use Google' Cloud Text-to-Speech API to translate the entire paragraph. **
   9. Use Google' Cloud Translation API to pronounce each word.
 ## UML diagram
-![UML diagram](https://drive.google.com/file/d/1_U5MMX--ag7Qk1E2FVcE7xziYL6CAc78/view?usp=sharing)
+![UML diagram](https://github.com/quangdung20/Dictionary-Application/blob/Image/ImageOOP/DiagramUML.jpg)
 
 ## Installation
   1. Clone the project from the repository by command: git clone https://github.com/quangdung20/Dictionary-Application
