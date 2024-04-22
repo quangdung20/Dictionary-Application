@@ -14,7 +14,7 @@ The application is designed to support learning English. The application is writ
   5. The application use Database to store data and word search features.
   6. Game-intergrated application to practice English, study time statistics,summarize scores and ranking user.
   7. The application use Database to store user's data.
-  8. Use Google' Cloud Text-to-Speech API to translate the entire paragraph. **
+  8. Use Google' Apps Script to translate the entire paragraph. 
   9. Use Google' Cloud Translation API to pronounce each word.
 ## UML diagram
 ![UML diagram](https://github.com/quangdung20/Dictionary-Application/blob/Image/ImageOOP/DiagramUML.jpg)
