@@ -40,7 +40,7 @@ The application is designed to support learning English. The application is writ
   5. To edit a word, click the Edit button (Pencil icon).
   6. To save the changes, click the Save button (Disk icon).
   7. To pronounce the word, click the Pronounce button (Speaker icon).
-  8. To practice, click the Practice button (Readbook icon), then the application will display a Game window. **
+  8. To Play Game, click the Game button (Gaming handle icon), then the application will display a Game window. 
   9. To exit the application, click the Blue Power button.
 ## Demo
   1. Video: (https://drive.google.com/file/d/1TLd0UXtu5qmLr5MCD_NTcFYVqYaeggG9/view?usp=drivesdk)
