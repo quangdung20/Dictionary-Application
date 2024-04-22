@@ -43,9 +43,7 @@ The application is designed to support learning English. The application is writ
   8. To Play Game, click the Game button (Gaming handle icon), then the application will display a Game window. 
   9. To exit the application, click the Blue Power button.
 ## Demo
-  1. Video: (https://drive.google.com/file/d/1TLd0UXtu5qmLr5MCD_NTcFYVqYaeggG9/view?usp=drivesdk)
-    
-  2. Screenshots:
+  Screenshots:
   - Login and Register:
   <p>
     <img src="https://github.com/quangdung20/Dictionary-Application/blob/Image/ImageOOP/LoginImage.jpg" width="400" height="300">
