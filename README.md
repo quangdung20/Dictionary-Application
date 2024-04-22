@@ -17,7 +17,7 @@ The application is designed to support learning English. The application is writ
   8. Use Google' Cloud Text-to-Speech API to translate the entire paragraph.
   9. Use Google' Cloud Translation API to pronounce each word.
 ## UML diagram
-![UML diagram](https://github.com/Quyen2k2-dev/Demo/blob/main/ImageOOP/darkmode.jpg)
+![UML diagram](https://github.com/quangdung20/Dictionary-Application/blob/main/ImageOOP/darkmode.jpg)
 
 ## Installation
   1. Clone the project from the repository by command: git clone https://github.com/quangdung20/Dictionary-Application
@@ -48,30 +48,30 @@ The application is designed to support learning English. The application is writ
   2. Screenshots:
   - Login and Register:
   <p>
-    <img src="https://github.com/Quyen2k2-dev/Demo/blob/main/ImageOOP/LoginImage.jpg" width="400" height="300">
-    <img src="https://github.com/Quyen2k2-dev/Demo/blob/main/ImageOOP/Register.jpg" width="400" height="300">
+    <img src="https://github.com/quangdung20/Dictionary-Application/blob/main/ImageOOP/LoginImage.jpg" width="400" height="300">
+    <img src="https://github.com/quangdung20/Dictionary-Application/blob/main/ImageOOP/Register.jpg" width="400" height="300">
   </p>
   
   - Search Word & Translate Text:
   <p>
-    <img src="https://github.com/Quyen2k2-dev/Demo/blob/main/ImageOOP/InterFace.jpg" width="400" height="280">
-    <img src="https://github.com/Quyen2k2-dev/Demo/blob/main/ImageOOP/Transle.jpg" width="400" height="280">
+    <img src="https://github.com/quangdung20/Dictionary-Application/blob/main/ImageOOP/SreachWord.jpg" width="400" height="280">
+    <img src="https://github.com/quangdung20/Dictionary-Application/blob/main/ImageOOP/translateText.jpg" width="400" height="280">
   </p>
   
   - Add new word :
   <p>
-    <img src="https://github.com/Quyen2k2-dev/Demo/blob/main/ImageOOP/Use.jpg" width="800" height="560">
+    <img src="https://github.com/quangdung20/Dictionary-Application/blob/main/ImageOOP/AddWord.jpg" width="800" height="560">
   </p>
   
   - Mini game:
   <p>
-    <img src="https://github.com/Quyen2k2-dev/Demo/blob/main/ImageOOP/Game1.jpg" width="800" height="560">
+    <img src="https://github.com/quangdung20/Dictionary-Application/blob/main/ImageOOP/Game1.jpg" width="800" height="560">
   </p>
   
   - Practive & Learn:
   <p>
-    <img src="https://github.com/Quyen2k2-dev/Demo/blob/main/ImageOOP/Game2.jpg" width="400" height="280">
-    <img src="https://github.com/Quyen2k2-dev/Demo/blob/main/ImageOOP/Game3.jpg" width="400" height="280">
+    <img src="https://github.com/quangdung20/Dictionary-Application/blob/main/ImageOOP/Practive.jpg" width="400" height="280">
+    <img src="https://github.com/quangdung20/Dictionary-Application/blob/main/ImageOOP/Learn.jpg" width="400" height="280">
   </p>
   
 ## Future improvements
