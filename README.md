@@ -1,4 +1,3 @@
-![image](https://github.com/quangdung20/Dictionary-Application/assets/105673472/bc7b0058-4787-4e31-bfeb-f0a8838a223e)
 # Application to support learning English using Java
 ## Author
 Group Noobies
