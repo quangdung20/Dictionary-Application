@@ -1,29 +1,29 @@
-
+![image](https://github.com/quangdung20/Dictionary-Application/assets/105673472/bc7b0058-4787-4e31-bfeb-f0a8838a223e)
 # Application to support learning English using Java
 ## Author
 Group Noobies
-  1. Đào Quang Dũng -
+  1. Đào Quang Dũng - 20020639
   2. Nguyễn Văn Quyền - 20020709
-  3. Phạm Nguyễn Phú Sĩ - 
+  3. Phạm Nguyễn Phú Sĩ - 20020330 
 ## Description
-The application is designed to support learning English. The application is written in Java and uses the JavaFX library. The application is based on the MVC model. The application has two types of dictionaries: English-Vietnamese and Vietnamese-English. The application use Database to store data.
+The application is designed to support learning English. The application is written in Java and uses the JavaFX library. The application is based on the MVC model. The application has two types of dictionaries: English-Vietnamese and Vietnamese-English. The application uses SQL Database to store data.
   1. The application is designed to support learning English.
   2. The application is written in Java and uses the JavaFX library.
   3. The application is based on the MVC model.
   4. The application has two types of dictionaries: English-Vietnamese and Vietnamese-English.
-  5. The application use Database to store data and word search features.
-  6. Game-intergrated application to practice English, study time statistics,summarize scores and ranking user.
-  7. The application use Database to store user's data.
-  8. Use Google' Apps Script to translate the entire paragraph. 
-  9. Use Google' Cloud Translation API to pronounce each word.
+  5. The application uses a Database to store data and word search features.
+  6. Game-integrated application to practice English, study time statistics, summarize scores, and rank of users.
+  7. The application uses SQL Database  to store user data.
+  8. Use Google API to translate the entire paragraph. 
+  9. Use Voicess API to pronounce each word.
 ## UML diagram
 ![UML diagram](https://github.com/quangdung20/Dictionary-Application/blob/Image/ImageOOP/DiagramUML.jpg)
 
 ## Installation
   1. Clone the project from the repository by command: git clone https://github.com/quangdung20/Dictionary-Application
   2. Open the project in the IDE.
-  3. Instruction for build app:
-- Project Stucture -> Modules -> DictionaryApplication:
+  3. Instruction for building the app:
+- Project Structure -> Modules -> DictionaryApplication:
   + Source Folders: src\main\java
   + Resource Folders: src\main\resources
 - Run -> Edit Configurations... -> Add new run configuration... -> Application
